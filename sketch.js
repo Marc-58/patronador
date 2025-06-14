@@ -1,8 +1,12 @@
 let tipus = "";
 let mides = {};
+const peces = [
+  { nom: 'faldilla', img: 'https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg' },
+  { nom: 'camisa', img: 'https://via.placeholder.com/150?text=Camisa' }
+];
+let indexPeca = 0;
 
 function mostrarOpcions() {
-  // Llegeix les mides bàsiques
   const cinturaVal = parseInt(document.getElementById("cintura").value);
   const caderaVal = parseInt(document.getElementById("cadera").value);
   if (isNaN(cinturaVal) || isNaN(caderaVal)) {
@@ -12,16 +16,31 @@ function mostrarOpcions() {
   mides.cintura = cinturaVal;
   mides.cadera = caderaVal;
 
-  // Amaga el pas 1, mostra pas 2
   document.getElementById("mides-basiques").style.display = "none";
   document.getElementById("triar-peca").style.display = "block";
+
+  indexPeca = 0;
+  mostrarPeca();
 }
 
-function seleccionar(peça) {
-  tipus = peça;
+function mostrarPeca() {
+  const imatge = document.getElementById("imatge-peca");
+  imatge.src = peces[indexPeca].img;
+  imatge.alt = peces[indexPeca].nom;
+}
 
-  // Amaga selecció i mostra només el formulari específic
+function canviarPeca(direccio) {
+  indexPeca += direccio;
+  if (indexPeca < 0) indexPeca = peces.length - 1;
+  if (indexPeca >= peces.length) indexPeca = 0;
+  mostrarPeca();
+}
+
+function seleccionarPeca() {
+  tipus = peces[indexPeca].nom;
+
   document.getElementById("triar-peca").style.display = "none";
+
   if (tipus === "faldilla") {
     document.getElementById("faldilla-form").style.display = "block";
   } else if (tipus === "camisa") {
@@ -50,18 +69,19 @@ function generarPatro(peça) {
     mides.llarg = llarg;
   }
 
-  // Amaga formulari i prepara canvas
+  // Amaga formulari
   if (tipus === "faldilla") {
     document.getElementById("faldilla-form").style.display = "none";
   } else if (tipus === "camisa") {
     document.getElementById("camisa-form").style.display = "none";
   }
+
   dibuixarPatro();
 }
 
 function dibuixarPatro() {
   const container = document.getElementById("canvas-container");
-  container.innerHTML = ""; // esborra canvas anterior
+  container.innerHTML = "";
   new p5(p => {
     p.setup = function() {
       p.createCanvas(500, 500);
@@ -70,10 +90,8 @@ function dibuixarPatro() {
       p.noFill();
 
       if (tipus === "faldilla") {
-        // Exemple patró faldilla (rectangle)
         p.rect(100, 100, mides.cadera, mides.llarg);
       } else if (tipus === "camisa") {
-        // Exemple patró camisa (rectangle i línia espatlles)
         p.rect(100, 100, mides.pit, mides.llarg);
         p.line(100, 100, 100 + mides.espatlles, 100);
       }
@@ -89,7 +107,9 @@ function descarregarCanvas() {
     const canvas = canvases[0];
     const link = document.createElement("a");
     link.download = tipus + "_patro.png";
-    link.href = canvas.toDataURL();
+    link.href = canvas.toDataURL("image/png");
     link.click();
+  } else {
+    alert("No s'ha generat cap patró per descarregar.");
   }
 }
