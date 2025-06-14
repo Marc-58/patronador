@@ -4,73 +4,85 @@
   <meta charset="UTF-8" />
   <title>Generador de Patrons</title>
   <style>
-    body { font-family: sans-serif; padding: 20px; }
-    #triar-peca, .formulari, #canvas-container, #descarrega-btn {
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+    }
+
+    .formulari, #triar-peca {
       display: none;
       margin-top: 20px;
     }
-    #selector-peca {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    #selector-peca img {
-      width: 200px;
+
+    .opcions-peces img {
+      width: 150px;
+      margin: 10px;
       cursor: pointer;
       border: 2px solid transparent;
     }
-    #selector-peca img:hover {
+
+    .opcions-peces img:hover {
       border-color: #333;
     }
+
+    #canvas-container {
+      margin-top: 20px;
+      text-align: center;
+    }
+
     button {
+      margin-top: 10px;
       padding: 10px;
       background-color: #333;
       color: white;
       border: none;
       border-radius: 5px;
-      cursor: pointer;
+    }
+
+    input {
+      margin: 5px;
     }
   </style>
 </head>
 <body>
   <h1>Generador de Patrons</h1>
 
-  <!-- Pas 1: Mides bàsiques -->
+  <!-- PAS 1: Mides bàsiques -->
   <div id="mides-basiques">
     <h2>Pas 1: Introdueix mides bàsiques</h2>
-    Cintura: <input id="cintura" type="number" min="0"><br>
-    Cadera: <input id="cadera" type="number" min="0"><br>
+    Cintura: <input id="cintura" type="number"><br>
+    Cadera: <input id="cadera" type="number"><br>
     <button onclick="mostrarOpcions()">Continuar</button>
   </div>
 
-  <!-- Pas 2: Selector de peça -->
+  <!-- PAS 2: Tria de peça -->
   <div id="triar-peca">
     <h2>Pas 2: Tria la peça</h2>
-    <div id="selector-peca">
-      <button onclick="canviarPeca(-1)">Anterior</button>
-      <img id="imatge-peca" src="" alt="Peça" onclick="seleccionarPeca()">
-      <button onclick="canviarPeca(1)">Següent</button>
+    <div class="opcions-peces">
+      <img src="faldilla.png" alt="Faldilla" onclick="seleccionar('faldilla')">
+      <img src="camisa.png" alt="Camisa" onclick="seleccionar('camisa')">
     </div>
   </div>
 
-  <!-- Formularis específics -->
+  <!-- Formulari de faldilla -->
   <div id="faldilla-form" class="formulari">
     <h2>Faldilla</h2>
-    Llarg: <input id="llargFaldilla" type="number" min="0"><br>
+    Llarg: <input id="llargFaldilla" type="number"><br>
     <button onclick="generarPatro('faldilla')">Generar patró</button>
   </div>
 
+  <!-- Formulari de camisa -->
   <div id="camisa-form" class="formulari">
     <h2>Camisa</h2>
-    Espatlles: <input id="espatlles" type="number" min="0"><br>
-    Pit: <input id="pit" type="number" min="0"><br>
-    Llarg: <input id="llargCamisa" type="number" min="0"><br>
+    Espatlles: <input id="espatlles" type="number"><br>
+    Pit: <input id="pit" type="number"><br>
+    Llarg: <input id="llargCamisa" type="number"><br>
     <button onclick="generarPatro('camisa')">Generar patró</button>
   </div>
 
-  <!-- Canvas i descàrrega -->
+  <!-- Canvas i botó de descàrrega -->
   <div id="canvas-container"></div>
-  <button id="descarrega-btn" onclick="descarregarCanvas()">Descarregar imatge</button>
+  <button onclick="descarregarCanvas()">Descarregar imatge</button>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
   <script src="sketch.js"></script>
