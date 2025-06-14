@@ -1,5 +1,14 @@
 let cintura = 0;
 let cadera = 0;
+let tipusPatro = "";
+let dadesPatro = {};
+
+function setup() {
+  const canvas = createCanvas(400, 600);
+  canvas.parent("canvas-container");
+  background(255);
+  noLoop(); // No fem loop automàtic, dibuixarem a demanda
+}
 
 function anarAFase2() {
   cintura = parseFloat(document.getElementById("cintura").value);
@@ -15,55 +24,53 @@ function anarAFase2() {
 }
 
 function mostrarFormulariEspecific() {
-  const tipus = document.getElementById("tipusPatro").value;
+  tipusPatro = document.getElementById("tipusPatro").value;
 
   document.getElementById("formulariCamisa").style.display = "none";
   document.getElementById("formulariFaldilla").style.display = "none";
 
-  if (tipus === "camisa") {
+  if (tipusPatro === "camisa") {
     document.getElementById("formulariCamisa").style.display = "block";
-  } else if (tipus === "faldilla") {
+  } else if (tipusPatro === "faldilla") {
     document.getElementById("formulariFaldilla").style.display = "block";
   }
 }
 
 function generarPatro() {
-  clear();
-  background(255);
-
-  const tipus = document.getElementById("tipusPatro").value;
-  if (!tipus) {
+  tipusPatro = document.getElementById("tipusPatro").value;
+  if (!tipusPatro) {
     alert("Selecciona un patró.");
     return;
   }
 
-  if (tipus === "camisa") {
+  if (tipusPatro === "camisa") {
     const espatlles = parseFloat(document.getElementById("espatlles").value);
     const llarg = parseFloat(document.getElementById("llargadaCamisa").value);
     if (isNaN(espatlles) || isNaN(llarg)) {
       alert("Introdueix valors per espatlles i llargada.");
       return;
     }
-    dibuixaCamisa(espatlles, llarg);
-  } else if (tipus === "faldilla") {
+    dadesPatro = { espatlles, llargada: llarg };
+  } else if (tipusPatro === "faldilla") {
     const llarg = parseFloat(document.getElementById("llargadaFaldilla").value);
     if (isNaN(llarg)) {
       alert("Introdueix valor per llargada.");
       return;
     }
-    dibuixaFaldilla(cintura, cadera, llarg);
+    dadesPatro = { cintura, cadera, llargada: llarg };
   }
+
+  redraw(); // cridem dibuixar el patró
 }
 
-function descarregarPatro() {
-  saveCanvas('patro', 'png');
-}
-
-function setup() {
-  const canvas = createCanvas(400, 600);
-  canvas.parent("canvas-container");
+function draw() {
   background(255);
-  noLoop();
+
+  if (tipusPatro === "camisa" && dadesPatro.espatlles) {
+    dibuixaCamisa(dadesPatro.espatlles, dadesPatro.llargada);
+  } else if (tipusPatro === "faldilla" && dadesPatro.llargada) {
+    dibuixaFaldilla(dadesPatro.cintura, dadesPatro.cadera, dadesPatro.llargada);
+  }
 }
 
 function dibuixaCamisa(espatlles, llargada) {
@@ -79,4 +86,8 @@ function dibuixaFaldilla(cintura, cadera, llargada) {
   vertex(100 + cadera, 100 + llargada);
   vertex(100, 100 + llargada);
   endShape(CLOSE);
+}
+
+function descarregarPatro() {
+  saveCanvas('patro', 'png');
 }
