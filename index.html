@@ -1,27 +1,31 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Generador de Patrons</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
-    <script src="sketch.js"></script>
-    <style>
-      body {
-        font-family: sans-serif;
-        padding: 20px;
-      }
-      input {
-        margin: 5px;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Generador de Patrons de Roba</h1>
-    <label>Cintura: <input id="cintura" type="number" value="60"></label><br>
-    <label>Maluc: <input id="maluc" type="number" value="90"></label><br>
-    <label>Llargada: <input id="llargada" type="number" value="100"></label><br>
-    <button onclick="actualitza()">Generar</button>
-    <button onclick="saveCanvas('patro', 'png')">Descarregar</button>
-    <div id="canvas-container"></div>
-  </body>
-</html>
+<!-- Fase 1: mides bàsiques -->
+<div id="fase1">
+  <h2>Mides bàsiques</h2>
+  Cintura: <input id="cintura" type="number" /><br>
+  Cadera: <input id="cadera" type="number" /><br>
+  <button onclick="anarAFase2()">Següent</button>
+</div>
+
+<!-- Fase 2: selector de patró -->
+<div id="fase2" style="display:none;">
+  <h2>Tria el patró</h2>
+  <select id="tipusPatro" onchange="mostrarFormulariEspecific()">
+    <option value="">-- selecciona --</option>
+    <option value="camisa">Camisa</option>
+    <option value="faldilla">Faldilla</option>
+  </select>
+
+  <!-- Mides específiques per cada peça -->
+  <div id="formulariCamisa" style="display:none;">
+    Espatlles: <input id="espatlles" type="number" /><br>
+    Llargada: <input id="llargadaCamisa" type="number" /><br>
+  </div>
+
+  <div id="formulariFaldilla" style="display:none;">
+    Llargada: <input id="llargadaFaldilla" type="number" /><br>
+  </div>
+
+  <button onclick="generarPatro()">Generar patró</button>
+  <div id="canvas-container"></div>
+</div>
+
