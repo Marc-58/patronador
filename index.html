@@ -4,6 +4,16 @@
   <meta charset="UTF-8" />
   <title>Generador de Patrons</title>
   <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+    }
+
+    .formulari, #triar-peca {
+      display: none;
+      margin-top: 20px;
+    }
+
     .opcions-peces img {
       width: 150px;
       margin: 10px;
@@ -15,30 +25,49 @@
       border-color: #333;
     }
 
-    .formulari {
-      display: none;
-      margin-top: 20px;
-    }
-
     #canvas-container {
       margin-top: 20px;
       text-align: center;
     }
+
+    button {
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+
+    input {
+      margin: 5px;
+    }
   </style>
 </head>
 <body>
-  <h1>Escull la peça de roba</h1>
-  <div class="opcions-peces">
-    <img src="faldilla.png" alt="Faldilla" onclick="seleccionar('faldilla')">
-    <img src="camisa.png" alt="Camisa" onclick="seleccionar('camisa')">
-  </div>
+  <h1>Generador de Patrons</h1>
 
-  <!-- Formularis -->
-  <div id="faldilla-form" class="formulari">
-    <h2>Faldilla</h2>
+  <!-- PAS 1 -->
+  <div id="mides-basiques">
+    <h2>Pas 1: Mides bàsiques</h2>
     Cintura: <input id="cintura" type="number"><br>
     Cadera: <input id="cadera" type="number"><br>
-    Llarg: <input id="llarg" type="number"><br>
+    <button onclick="mostrarOpcions()">Continuar</button>
+  </div>
+
+  <!-- PAS 2 -->
+  <div id="triar-peca">
+    <h2>Pas 2: Tria una peça</h2>
+    <div class="opcions-peces">
+      <img src="faldilla.png" alt="Faldilla" onclick="seleccionar('faldilla')">
+      <img src="camisa.png" alt="Camisa" onclick="seleccionar('camisa')">
+    </div>
+  </div>
+
+  <!-- PAS 3 -->
+  <div id="faldilla-form" class="formulari">
+    <h2>Faldilla</h2>
+    Llarg: <input id="llargFaldilla" type="number"><br>
     <button onclick="generarPatro('faldilla')">Generar patró</button>
   </div>
 
@@ -50,7 +79,9 @@
     <button onclick="generarPatro('camisa')">Generar patró</button>
   </div>
 
+  <!-- CANVAS -->
   <div id="canvas-container"></div>
+  <button onclick="descarregarCanvas()">Descarregar imatge</button>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.js"></script>
   <script src="sketch.js"></script>
