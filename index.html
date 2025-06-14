@@ -19,6 +19,7 @@
       margin: 10px;
       cursor: pointer;
       border: 2px solid transparent;
+      border-radius: 8px;
     }
 
     .opcions-peces img:hover {
@@ -37,6 +38,7 @@
       color: white;
       border: none;
       border-radius: 5px;
+      cursor: pointer;
     }
 
     input {
@@ -55,18 +57,17 @@
     <button onclick="mostrarOpcions()">Continuar</button>
   </div>
 
-<div id="triar-peca" style="display:none;">
-  <h2>Pas 2: Tria la peça</h2>
-  <div class="opcions-peces" style="display:flex; gap:20px; justify-content:center;">
-    <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" 
-         alt="Faldilla" style="width:150px; cursor:pointer; border-radius:8px;" 
-         onclick="seleccionar('faldilla')">
-    <img src="https://i.pinimg.com/736x/fe/6b/87/fe6b87de0418757dbfbaf99b6ca5c782.jpg" 
-         alt="Camisa" style="width:150px; cursor:pointer; border-radius:8px;" 
-         onclick="seleccionar('camisa')">
+  <div id="triar-peca">
+    <h2>Pas 2: Tria la peça</h2>
+    <div class="opcions-peces" style="display:flex; gap:20px; justify-content:center;">
+      <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" 
+           alt="Faldilla" style="cursor:pointer;" 
+           onclick="seleccionar('faldilla')">
+      <img src="https://i.pinimg.com/736x/fe/6b/87/fe6b87de0418757dbfbaf99b6ca5c782.jpg" 
+           alt="Camisa" style="cursor:pointer;" 
+           onclick="seleccionar('camisa')">
+    </div>
   </div>
-</div>
-
 
   <!-- Formulari de faldilla -->
   <div id="faldilla-form" class="formulari">
