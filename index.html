@@ -9,17 +9,20 @@
       display: none;
       margin-top: 20px;
     }
-    .opcions-peces img {
-      width: 150px;
-      margin: 10px;
+    #selector-peca {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    #selector-peca img {
+      width: 200px;
       cursor: pointer;
       border: 2px solid transparent;
     }
-    .opcions-peces img:hover {
+    #selector-peca img:hover {
       border-color: #333;
     }
     button {
-      margin-top: 10px;
       padding: 10px;
       background-color: #333;
       color: white;
@@ -40,12 +43,13 @@
     <button onclick="mostrarOpcions()">Continuar</button>
   </div>
 
-  <!-- Pas 2: Tria peça -->
+  <!-- Pas 2: Selector de peça -->
   <div id="triar-peca">
     <h2>Pas 2: Tria la peça</h2>
-    <div class="opcions-peces">
-      <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" alt="Faldilla" onclick="seleccionar('faldilla')">
-      <img src="https://via.placeholder.com/150?text=Camisa" alt="Camisa" onclick="seleccionar('camisa')">
+    <div id="selector-peca">
+      <button onclick="canviarPeca(-1)">Anterior</button>
+      <img id="imatge-peca" src="" alt="Peça" onclick="seleccionarPeca()">
+      <button onclick="canviarPeca(1)">Següent</button>
     </div>
   </div>
 
