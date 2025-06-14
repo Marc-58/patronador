@@ -4,16 +4,19 @@ let mides = {};
 function mostrarOpcions() {
   mides.cintura = parseInt(document.getElementById("cintura").value);
   mides.cadera = parseInt(document.getElementById("cadera").value);
-  document.getElementById("mides-basiques").style.display = "none";
+
+  // Mostrar pas 2
   document.getElementById("triar-peca").style.display = "block";
 }
 
 function seleccionar(peça) {
   tipus = peça;
 
+  // Amagar tots els formularis
   document.getElementById("faldilla-form").style.display = "none";
   document.getElementById("camisa-form").style.display = "none";
 
+  // Mostrar el formulari correcte
   if (peça === "faldilla") {
     document.getElementById("faldilla-form").style.display = "block";
   } else if (peça === "camisa") {
@@ -40,14 +43,15 @@ function dibuixaPatro(p) {
     p.createCanvas(500, 500);
     p.background(255);
     p.stroke(0);
+    p.fill(200);
 
     if (tipus === "faldilla") {
-      // Patró simple faldilla
+      // Patró simple de faldilla
       p.rect(150, 100, mides.cadera, mides.llarg);
     } else if (tipus === "camisa") {
-      // Patró simple camisa
+      // Patró simple de camisa
       p.rect(150, 100, mides.pit, mides.llarg);
-      p.line(150, 100, 150 + mides.espatlles, 100); // espatlles
+      p.line(150, 100, 150 + mides.espatlles, 100); // línia d'espatlles
     }
   };
 }
