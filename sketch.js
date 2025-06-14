@@ -15,36 +15,40 @@ function mostrarFormulariEspecific() {
 }
 
 function generarPatro() {
-  const tipus = document.getElementById("tipusPatro").value;
   clear();
   background(255);
 
+  const tipus = document.getElementById("tipusPatro").value;
+
   if (tipus === "camisa") {
     const espatlles = parseFloat(document.getElementById("espatlles").value);
-    const llarg = parseFloat(document.getElementById("llargadaCamisa").value);
-    dibuixaCamisa(espatlles, llarg);
-  } else if (tipus === "faldilla") {
-    const llarg = parseFloat(document.getElementById("llargadaFaldilla").value);
-    dibuixaFaldilla(cintura, cadera, llarg);
+    const llargada = parseFloat(document.getElementById("llargadaCamisa").value);
+    dibuixaCamisa(espatlles, llargada);
+  }
+
+  if (tipus === "faldilla") {
+    const llargada = parseFloat(document.getElementById("llargadaFaldilla").value);
+    dibuixaFaldilla(cintura, cadera, llargada);
   }
 }
 
 function setup() {
   let canvas = createCanvas(400, 600);
   canvas.parent("canvas-container");
+  background(255);
   noLoop();
 }
 
-function dibuixaCamisa(espatlles, llarg) {
+function dibuixaCamisa(espatlles, llargada) {
   fill(200);
-  rect(100, 100, espatlles, llarg);
+  rect(100, 100, espatlles, llargada);
 }
 
-function dibuixaFaldilla(cintura, cadera, llarg) {
+function dibuixaFaldilla(cintura, cadera, llargada) {
   beginShape();
   vertex(100, 100);
   vertex(100 + cintura, 100);
-  vertex(100 + cadera, 100 + llarg);
-  vertex(100, 100 + llarg);
+  vertex(100 + cadera, 100 + llargada);
+  vertex(100, 100 + llargada);
   endShape(CLOSE);
 }
