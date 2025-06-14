@@ -1,31 +1,42 @@
-<!-- Fase 1: mides bàsiques -->
-<div id="fase1">
-  <h2>Mides bàsiques</h2>
-  Cintura: <input id="cintura" type="number" /><br>
-  Cadera: <input id="cadera" type="number" /><br>
-  <button onclick="anarAFase2()">Següent</button>
-</div>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Generador de patrons</title>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.2/lib/p5.min.js"></script>
+    <script src="sketch.js" defer></script>
+  </head>
+  <body>
+    <h1>Generador de patrons</h1>
 
-<!-- Fase 2: selector de patró -->
-<div id="fase2" style="display:none;">
-  <h2>Tria el patró</h2>
-  <select id="tipusPatro" onchange="mostrarFormulariEspecific()">
-    <option value="">-- selecciona --</option>
-    <option value="camisa">Camisa</option>
-    <option value="faldilla">Faldilla</option>
-  </select>
+    <!-- Fase 1 -->
+    <div id="fase1">
+      <h2>Mides bàsiques</h2>
+      Cintura: <input id="cintura" type="number"><br>
+      Cadera: <input id="cadera" type="number"><br>
+      <button onclick="anarAFase2()">Següent</button>
+    </div>
 
-  <!-- Mides específiques per cada peça -->
-  <div id="formulariCamisa" style="display:none;">
-    Espatlles: <input id="espatlles" type="number" /><br>
-    Llargada: <input id="llargadaCamisa" type="number" /><br>
-  </div>
+    <!-- Fase 2 -->
+    <div id="fase2" style="display:none;">
+      <h2>Selecciona el patró</h2>
+      <select id="tipusPatro" onchange="mostrarFormulariEspecific()">
+        <option value="">-- selecciona --</option>
+        <option value="camisa">Camisa</option>
+        <option value="faldilla">Faldilla</option>
+      </select>
 
-  <div id="formulariFaldilla" style="display:none;">
-    Llargada: <input id="llargadaFaldilla" type="number" /><br>
-  </div>
+      <div id="formulariCamisa" style="display:none;">
+        Espatlles: <input id="espatlles" type="number"><br>
+        Llargada: <input id="llargadaCamisa" type="number"><br>
+      </div>
 
-  <button onclick="generarPatro()">Generar patró</button>
-  <div id="canvas-container"></div>
-</div>
+      <div id="formulariFaldilla" style="display:none;">
+        Llargada: <input id="llargadaFaldilla" type="number"><br>
+      </div>
 
+      <button onclick="generarPatro()">Generar patró</button>
+    </div>
+
+    <div id="canvas-container"></div>
+  </body>
+</html>
