@@ -47,30 +47,31 @@
 <body>
   <h1>Generador de Patrons</h1>
 
-  <!-- PAS 1 -->
+  <!-- PAS 1: Mides bàsiques -->
   <div id="mides-basiques">
-    <h2>Pas 1: Mides bàsiques</h2>
+    <h2>Pas 1: Introdueix mides bàsiques</h2>
     Cintura: <input id="cintura" type="number"><br>
     Cadera: <input id="cadera" type="number"><br>
     <button onclick="mostrarOpcions()">Continuar</button>
   </div>
 
-  <!-- PAS 2 -->
+  <!-- PAS 2: Tria de peça -->
   <div id="triar-peca">
-    <h2>Pas 2: Tria una peça</h2>
+    <h2>Pas 2: Tria la peça</h2>
     <div class="opcions-peces">
       <img src="faldilla.png" alt="Faldilla" onclick="seleccionar('faldilla')">
       <img src="camisa.png" alt="Camisa" onclick="seleccionar('camisa')">
     </div>
   </div>
 
-  <!-- PAS 3 -->
+  <!-- Formulari de faldilla -->
   <div id="faldilla-form" class="formulari">
     <h2>Faldilla</h2>
     Llarg: <input id="llargFaldilla" type="number"><br>
     <button onclick="generarPatro('faldilla')">Generar patró</button>
   </div>
 
+  <!-- Formulari de camisa -->
   <div id="camisa-form" class="formulari">
     <h2>Camisa</h2>
     Espatlles: <input id="espatlles" type="number"><br>
@@ -79,11 +80,11 @@
     <button onclick="generarPatro('camisa')">Generar patró</button>
   </div>
 
-  <!-- CANVAS -->
+  <!-- Canvas i botó de descàrrega -->
   <div id="canvas-container"></div>
   <button onclick="descarregarCanvas()">Descarregar imatge</button>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
   <script src="sketch.js"></script>
 </body>
 </html>
