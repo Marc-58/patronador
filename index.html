@@ -8,7 +8,6 @@
 <body>
   <h1>Generador de patrons</h1>
 
-  <!-- FASE 1: Mides bàsiques -->
   <div id="fase1">
     <h2>Mides bàsiques</h2>
     Cintura: <input id="cintura" type="number" min="0"><br>
@@ -16,7 +15,6 @@
     <button onclick="anarAFase2()">Següent</button>
   </div>
 
-  <!-- FASE 2: Tria patró i mides específiques -->
   <div id="fase2" style="display:none;">
     <h2>Selecciona el patró</h2>
     <select id="tipusPatro" onchange="mostrarFormulariEspecific()">
@@ -25,9 +23,21 @@
       <option value="faldilla">Faldilla</option>
     </select>
 
-    <!-- Formulari per camisa -->
     <div id="formulariCamisa" style="display:none; margin-top: 15px;">
       <h3>Mesures Camisa</h3>
       Espatlles: <input id="espatlles" type="number" min="0"><br>
       Llargada: <input id="llargadaCamisa" type="number" min="0"><br>
+    </div>
 
+    <div id="formulariFaldilla" style="display:none; margin-top: 15px;">
+      <h3>Mesures Faldilla</h3>
+      Llargada: <input id="llargadaFaldilla" type="number" min="0"><br>
+    </div>
+
+    <button onclick="generarPatro()" style="margin-top: 15px;">Generar patró</button>
+    <button onclick="descarregarPatro()" style="margin-left: 10px;">Descarregar patró</button>
+  </div>
+
+  <div id="canvas-container" style="margin-top: 20px;"></div>
+</body>
+</html>
