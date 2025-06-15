@@ -75,10 +75,10 @@ function dibuixaPatro(p) {
       p.line(pinçaX + 3 * escala, 10, pinçaX + 1.5 * escala, 10 + 10 * escala);
 
       p.line(20+cadera, 10, 20+cadera, llarg);
-      p.line(20+cadera, llarg+10, 20+cadera + cadera / 4 + 1*escala, llarg+10);
-      p.line(20+cadera, 10, cadera+20 + cintura / 4 + 1*escala + 3 * escala, 10);
-      p.line(20+cadera + cintura / 4 + 1*escala + 3 * escala, 10, 20+cadera + cadera / 4 + escala, 10+18 * escala);
-      p.line(20+cadera + cadera / 4 + escala, 10+18 * escala, 20+cadera + cadera / 4 + escala,10+ llarg);
+      p.line(20+cadera, llarg+10, 20+cadera + cadera / 4 - 1*escala, llarg+10);
+      p.line(20+cadera, 10, cadera+20 + cintura / 4 - 1*escala + 3 * escala, 10);
+      p.line(20+cadera + cintura / 4 - 1*escala + 3 * escala, 10, 20+cadera + cadera / 4 - escala, 10+18 * escala);
+      p.line(20+cadera + cadera / 4 - escala, 10+18 * escala, 20+cadera + cadera / 4 - escala,10+ llarg);
 
       // Pinces
       const pinçay = 20+cadera + cintura / 8;
