@@ -70,9 +70,9 @@ function dibuixaPatro(p) {
       p.line(10 + cadera / 4 + escala, 18 * escala, 10 + cadera / 4 + escala, llarg);
 
       // Pinces
-      const pinçaX = 10 + cintura / 8;
-      p.line(pinçaX, 10, pinçaX + 15, 20);
-      p.line(pinçaX + 3 * escala, 10, pinçaX + 1.5 * escala, 20 );
+      
+      p.line(cintura/8 +10, 10, cintura/8 +10+(3/2)*escala, 20);
+      p.line(cintura/8 +10+(3/2)*escala, 20, 10+cintura/8 + (3/2) * escala, 10 );
     }
 
     else if (tipus === "camisa") {
