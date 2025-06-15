@@ -5,24 +5,20 @@ function mostrarOpcions() {
   mides.cintura = parseInt(document.getElementById("cintura").value);
   mides.cadera = parseInt(document.getElementById("cadera").value);
 
-  // Evitar NaN si els camps són buits
   if (isNaN(mides.cintura) || isNaN(mides.cadera)) {
     alert("Si us plau, introdueix valors vàlids per a cintura i cadera.");
     return;
   }
 
-  // Mostrar pas 2
   document.getElementById("triar-peca").style.display = "block";
 }
 
 function seleccionar(peça) {
   tipus = peça;
 
-  // Amagar tots els formularis
   document.getElementById("faldilla-form").style.display = "none";
   document.getElementById("camisa-form").style.display = "none";
 
-  // Mostrar el formulari correcte
   if (peça === "faldilla") {
     document.getElementById("faldilla-form").style.display = "block";
   } else if (peça === "camisa") {
@@ -48,38 +44,41 @@ function generarPatro(peça) {
     }
   }
 
-  let container = document.getElementById("canvas-container");
-  container.innerHTML = ''; // esborra canvas anterior
+  const container = document.getElementById("canvas-container");
+  container.innerHTML = ''; // Esborra el canvas anterior
   new p5(dibuixaPatro, container);
 }
 
 function dibuixaPatro(p) {
   p.setup = function () {
-    p.createCanvas(500, 500);
+    const escala = 10;
+    p.createCanvas(600, 600);
     p.background(255);
     p.stroke(0);
     p.noFill();
 
     if (tipus === "faldilla") {
-      const cintura = mides.cintura;
-      const cadera = mides.cadera;
-      const llarg = mides.llarg;
+      const cintura = mides.cintura * escala;
+      const cadera = mides.cadera * escala;
+      const llarg = mides.llarg * escala;
 
-      p.line(10, 10, 10, llarg*10);
-      p.line(10, llarg*10, 10 + cadera*10 / 4 + 1*10, llarg*10);
-      p.line(10, 10, 10 + cintura*10 / 4 + 1*10 + 3*10, 10);
-      p.line(10 + cintura*10 / 4 + 1*10 + 3*10, 10, 10 + cadera*10 / 4 + 1*10, 18*10);
-      p.line(10 + cadera*10 / 4 + 1*10, 18*10, 10 + cadera*10 / 4 + 1*10, llarg*10);
+      // Dibuix del patró de faldilla
+      p.line(10, 10, 10, llarg);
+      p.line(10, llarg, 10 + cadera / 4 + escala, llarg);
+      p.line(10, 10, 10 + cintura / 4 + escala + 3 * escala, 10);
+      p.line(10 + cintura / 4 + escala + 3 * escala, 10, 10 + cadera / 4 + escala, 18 * escala);
+      p.line(10 + cadera / 4 + escala, 18 * escala, 10 + cadera / 4 + escala, llarg);
 
       // Pinces
-      p.line(10 + cintura*10 / 8, 10, 10 + cintura*10 / 8 + 1.5*10, 10*10+10*10);
-      p.line(10 + cintura*10 / 8 + 3*10, 10, 10 + cintura*10 / 8 + 1.5*10, 20*10);
+      const pinçaX = 10 + cintura / 8;
+      p.line(pinçaX, 10, pinçaX + 1.5 * escala, 10 + escala);
+      p.line(pinçaX + 3 * escala, 10, pinçaX + 1.5 * escala, 20 * escala);
     }
 
     else if (tipus === "camisa") {
-      const pit = mides.pit;
-      const llarg = mides.llarg;
-      const espatlles = mides.espatlles;
+      const pit = mides.pit * escala;
+      const llarg = mides.llarg * escala;
+      const espatlles = mides.espatlles * escala;
 
       p.rect(150, 100, pit, llarg);
       p.line(150, 100, 150 + espatlles, 100);
@@ -88,13 +87,12 @@ function dibuixaPatro(p) {
 }
 
 function descarregarCanvas() {
-  let canvases = document.getElementsByTagName("canvas");
+  const canvases = document.getElementsByTagName("canvas");
   if (canvases.length > 0) {
-    let canvas = canvases[0];
-    let link = document.createElement('a');
+    const canvas = canvases[0];
+    const link = document.createElement('a');
     link.download = tipus + '_patro.png';
     link.href = canvas.toDataURL();
     link.click();
   }
 }
-
