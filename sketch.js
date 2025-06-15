@@ -66,20 +66,16 @@ function dibuixaPatro(p) {
       // Dibuix del patró de faldilla
       // Variables ja definides abans: marge, escala, cintura, cadera, llarg
 
-p.line(marge, marge, marge, marge + llarg);  // lateral esquerre vertical
-p.line(marge, marge + llarg, marge + (cadera / 4) + escala, marge + llarg); // línia inferior
-p.line(marge, marge, marge + (cintura / 4) + 3 * escala + escala, marge); // línia superior
-p.line(marge + (cintura / 4) + escala + 3 * escala, marge, marge + (cadera / 4) + escala, marge + 18 * escala); // lateral dret inclinat
+      p.line(marge, marge, marge, llarg+marge);
+      p.line(marge, marge,cintura+marge+30+10,marge);
+      p.line(marge, marge+llarg, marge + cadera + 10 , marge+180);
+      p.line(cintura+marge+30+10,marge, marge+ cadera +10 , 180+marge);
+      p.line(marge+ cadera +10 , 180+marge, marge + cadera + 10 , marge+180);
 
-// Aquesta línia tenia error, corregim-la (probablement volies fer lateral dret vertical)
-p.line(marge + (cadera / 4) + escala, marge + 18 * escala, marge + (cadera / 4) + escala, marge + llarg); 
-
-// Pinces
-const pinçaX = marge + cintura / 8;
-
-p.line(pinçaX, marge, pinçaX + 1.5 * escala, marge + 10 * escala); // lateral esquerra pinça
-p.line(pinçaX + 1.5 * escala, marge + 10 * escala, pinçaX + 3 * escala, marge); // lateral dreta pinça inclinada
-
+      // Pinces
+      
+      p.line(cintura/8 +10, 10, cintura/8 +10+(3/2)*escala, 10+(10*escala));
+      p.line(cintura/8 +10+(3/2)*escala, 10+(10 *escala), 10+cintura/8 + 3 * escala, 10 );
     }
 
     else if (tipus === "camisa") {
