@@ -71,7 +71,7 @@ function dibuixaPatro(p) {
 
       // Pinces
       const pinçaX = 10 + cintura / 8;
-      p.line(pinçaX, 10, pinçaX + 1.5 * escala, 10 + escala);
+      p.line(pinçaX, 10, pinçaX + 1.5 * escala, 10+10);
       p.line(pinçaX + 3 * escala, 10, pinçaX + 1.5 * escala, 20 * escala);
     }
 
