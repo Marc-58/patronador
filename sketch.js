@@ -52,6 +52,7 @@ function generarPatro(peça) {
 function dibuixaPatro(p) {
   p.setup = function () {
     const escala = 10;
+    const marge = 10;
     p.createCanvas(1000, 5000);
     p.background(255);
     p.stroke(0);
@@ -63,11 +64,11 @@ function dibuixaPatro(p) {
       const llarg = mides.llarg * escala;
 
       // Dibuix del patró de faldilla
-      p.line(10, 10, 10, llarg);
-      p.line(10, llarg, 10 + cadera / 4 + escala, llarg);
-      p.line(10, 10, 10 + cintura / 4 + escala + 3 * escala, 10);
-      p.line(10 + cintura / 4 + escala + 3 * escala, 10, 10 + cadera / 4 + escala, 18 * escala);
-      p.line(10 + cadera / 4 + escala, 18 * escala, 10 + cadera / 4 + escala, llarg);
+      p.line(marge, marge, marge, llarg);
+      p.line(marge, llarg, marge + (cadera / 4) + escala, llarg);
+      p.line(marge, marge, marge + (cintura / 4) + 3 * escala+ 1*escala, marge);
+      p.line(marge + (cintura / 4) +1*escala+ 3 * escala, marge, marge+ (cadera / 4)+1*escala , marge+18 * escala);
+      p.line(marge, marge+ (cadera / 4)+1*escala , mmarge + (cadera / 4) + escala, llarg);
 
       // Pinces
       
