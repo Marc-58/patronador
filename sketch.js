@@ -52,7 +52,7 @@ function generarPatro(peça) {
 function dibuixaPatro(p) {
   p.setup = function () {
     const escala = 10;
-    p.createCanvas(1000,1000);
+    p.createCanvas(1000,1300);
     p.background(255);
     p.stroke(0);
     p.noFill();
@@ -77,7 +77,7 @@ function dibuixaPatro(p) {
       p.line(20+cadera, 10, 20+cadera, llarg);
       p.line(20+cadera, llarg+10, 20+cadera + cadera / 4 + 1*escala, llarg+10);
       p.line(20+cadera, 10, cadera+20 + cintura / 4 + 1*escala + 3 * escala, 10);
-      p.line(20+cadera + cintura / 4 + 1*escala + 3 * escala, 20+cadera, 10 + cadera / 4 + escala, 10+18 * escala);
+      p.line(20+cadera + cintura / 4 + 1*escala + 3 * escala, 10, 20+cadera + cadera / 4 + escala, 10+18 * escala);
       p.line(20+cadera + cadera / 4 + escala, 10+18 * escala, 20+cadera + cadera / 4 + escala,10+ llarg);
 
       // Pinces
