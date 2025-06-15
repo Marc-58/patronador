@@ -69,7 +69,7 @@ function dibuixaPatro(p) {
       p.line(marge, marge,cintura+marge+30+10,marge);
       p.line(marge, marge+llarg, marge + cadera + 10 , marge+180);
       p.line(cintura+marge+30+10,marge, marge+ cadera +10 , 180+marge);
-      p.line(marge+ cadera +10 , 180+marge, marge + cadera + 10 , marge+180);
+      p.line(marge+ cadera +10 , 180+marge, marge + cadera + 10 , marge+llarg);
 
       // Pinces
       
