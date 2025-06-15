@@ -43,15 +43,32 @@ function dibuixaPatro(p) {
     p.createCanvas(500, 500);
     p.background(255);
     p.stroke(0);
-    p.fill(200);
+    p.noFill();
 
     if (tipus === "faldilla") {
-      // Patró simple de faldilla
-      p.rect(150, 100, mides.cadera, mides.llarg);
-    } else if (tipus === "camisa") {
-      // Patró simple de camisa
-      p.rect(150, 100, mides.pit, mides.llarg);
-      p.line(150, 100, 150 + mides.espatlles, 100); // línia d'espatlles
+      const cintura = mides.cintura;
+      const cadera = mides.cadera;
+      const llarg = mides.llarg;
+
+      // Línies que defineixen el patró de la faldilla
+      p.line(10, 10, 10, llarg); // línia lateral esquerra
+      p.line(10, llarg, 10 + cadera / 4 + 1, llarg); // línia inferior
+      p.line(10, 10, 10 + cintura / 4 + 1 + 3, 10); // línia superior
+      p.line(10 + cintura / 4 + 1 + 3, 10, 10 + cadera / 4 + 1, 18 + 10); // lateral dret inclinat
+      p.line(10 + cadera / 4 + 1, 18 + 10, 10 + cadera / 4 + 1, llarg); // lateral dret vertical
+
+      // Pinces de la cintura
+      p.line(10 + cintura / 8, 10, 10 + cintura / 8 + 3 / 2, 10 + 10); // lateral esquerra de la pinça
+      p.line(10 + cintura / 8 + 3, 10, 10 + cintura / 8 + 3 / 2, 10 + 10); // lateral dreta de la pinça
+    }
+
+    else if (tipus === "camisa") {
+      const pit = mides.pit;
+      const llarg = mides.llarg;
+      const espatlles = mides.espatlles;
+
+      p.rect(150, 100, pit, llarg); // cos de la camisa
+      p.line(150, 100, 150 + espatlles, 100); // línia d'espatlles
     }
   };
 }
