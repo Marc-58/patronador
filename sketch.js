@@ -51,7 +51,6 @@ function generarPatro(peça) {
 
 function dibuixaPatro(p) {
   p.setup = function () {
-    const escala = 10;
     const marge = 10;
     p.createCanvas(1000, 5000);
     p.background(255);
@@ -59,9 +58,9 @@ function dibuixaPatro(p) {
     p.noFill();
 
     if (tipus === "faldilla") {
-      const cintura = (mides.cintura/4) * escala;
-      const cadera = (mides.cadera/4) * escala;
-      const llarg = mides.llarg * escala;
+      const cintura = (mides.cintura/4) * 10;
+      const cadera = (mides.cadera/4) * 10;
+      const llarg = mides.llarg * 10;
 
       // Dibuix del patró de faldilla
       // Variables ja definides abans: marge, escala, cintura, cadera, llarg
@@ -74,8 +73,8 @@ function dibuixaPatro(p) {
 
       // Pinces
       
-      p.line(cintura/8 +10, 10, cintura/8 +10+(3/2)*escala, 10+(10*escala));
-      p.line(cintura/8 +10+(3/2)*escala, 10+(10 *escala), 10+cintura/8 + 3 * escala, 10 );
+      p.line(cintura/2 +marge, 10, cintura/2 +marge+15, 110);
+      p.line(cintura/2 +marge+15, 110, marge+cintura/8 + 30, 10 );
     }
 
     else if (tipus === "camisa") {
