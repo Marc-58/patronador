@@ -5,6 +5,12 @@ function mostrarOpcions() {
   mides.cintura = parseInt(document.getElementById("cintura").value);
   mides.cadera = parseInt(document.getElementById("cadera").value);
 
+  // Evitar NaN si els camps són buits
+  if (isNaN(mides.cintura) || isNaN(mides.cadera)) {
+    alert("Si us plau, introdueix valors vàlids per a cintura i cadera.");
+    return;
+  }
+
   // Mostrar pas 2
   document.getElementById("triar-peca").style.display = "block";
 }
@@ -27,10 +33,19 @@ function seleccionar(peça) {
 function generarPatro(peça) {
   if (peça === "faldilla") {
     mides.llarg = parseInt(document.getElementById("llargFaldilla").value);
+    if (isNaN(mides.llarg)) {
+      alert("Introdueix un valor vàlid per al llarg de la faldilla.");
+      return;
+    }
   } else if (peça === "camisa") {
     mides.espatlles = parseInt(document.getElementById("espatlles").value);
     mides.pit = parseInt(document.getElementById("pit").value);
     mides.llarg = parseInt(document.getElementById("llargCamisa").value);
+
+    if (isNaN(mides.espatlles) || isNaN(mides.pit) || isNaN(mides.llarg)) {
+      alert("Introdueix valors vàlids per a la camisa.");
+      return;
+    }
   }
 
   let container = document.getElementById("canvas-container");
@@ -50,16 +65,15 @@ function dibuixaPatro(p) {
       const cadera = mides.cadera;
       const llarg = mides.llarg;
 
-      // Línies que defineixen el patró de la faldilla
-      p.line(10, 10, 10, llarg); // línia lateral esquerra
-      p.line(10, llarg, 10 + cadera / 4 + 1, llarg); // línia inferior
-      p.line(10, 10, 10 + cintura / 4 + 1 + 3, 10); // línia superior
-      p.line(10 + cintura / 4 + 1 + 3, 10, 10 + cadera / 4 + 1, 18 + 10); // lateral dret inclinat
-      p.line(10 + cadera / 4 + 1, 18 + 10, 10 + cadera / 4 + 1, llarg); // lateral dret vertical
+      p.line(10, 10, 10, llarg);
+      p.line(10, llarg, 10 + cadera / 4 + 1, llarg);
+      p.line(10, 10, 10 + cintura / 4 + 1 + 3, 10);
+      p.line(10 + cintura / 4 + 1 + 3, 10, 10 + cadera / 4 + 1, 28);
+      p.line(10 + cadera / 4 + 1, 28, 10 + cadera / 4 + 1, llarg);
 
-      // Pinces de la cintura
-      p.line(10 + cintura / 8, 10, 10 + cintura / 8 + 3 / 2, 10 + 10); // lateral esquerra de la pinça
-      p.line(10 + cintura / 8 + 3, 10, 10 + cintura / 8 + 3 / 2, 10 + 10); // lateral dreta de la pinça
+      // Pinces
+      p.line(10 + cintura / 8, 10, 10 + cintura / 8 + 1.5, 20);
+      p.line(10 + cintura / 8 + 3, 10, 10 + cintura / 8 + 1.5, 20);
     }
 
     else if (tipus === "camisa") {
@@ -67,8 +81,8 @@ function dibuixaPatro(p) {
       const llarg = mides.llarg;
       const espatlles = mides.espatlles;
 
-      p.rect(150, 100, pit, llarg); // cos de la camisa
-      p.line(150, 100, 150 + espatlles, 100); // línia d'espatlles
+      p.rect(150, 100, pit, llarg);
+      p.line(150, 100, 150 + espatlles, 100);
     }
   };
 }
@@ -83,3 +97,4 @@ function descarregarCanvas() {
     link.click();
   }
 }
+
