@@ -52,7 +52,7 @@ function generarPatro(peça) {
 function dibuixaPatro(p) {
   p.setup = function () {
     const escala = 10;
-    p.createCanvas(600, 600);
+    p.createCanvas(mides.cintura, llarg+20);
     p.background(255);
     p.stroke(0);
     p.noFill();
