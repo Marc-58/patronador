@@ -64,10 +64,10 @@ function dibuixaPatro(p) {
 
       // Dibuix del patró de faldilla
       p.line(10, 10, 10, llarg);
-      p.line(10, llarg, 10 + cadera / 4 + escala, llarg);
-      p.line(10, 10, 10 + cintura / 4 + escala + 3 * escala, 10);
-      p.line(10 + cintura / 4 + escala + 3 * escala, 10, 10 + cadera / 4 + escala, 10+18 * escala);
-      p.line(10 + cadera / 4 + escala, 10+18 * escala, 10 + cadera / 4 + escala, llarg);
+      p.line(10, llarg+10, 10 + cadera / 4 + 1*escala, llarg+10);
+      p.line(10, 10, 10 + cintura / 4 + 1*escala + 3 * escala, 10);
+      p.line(10 + cintura / 4 + 1*escala + 3 * escala, 10, 10 + cadera / 4 + escala, 10+18 * escala);
+      p.line(10 + cadera / 4 + escala, 10+18 * escala, 10 + cadera / 4 + escala,10+ llarg);
 
       // Pinces
       const pinçaX = 10 + cintura / 8;
