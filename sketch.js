@@ -62,29 +62,36 @@ function dibuixaPatro(p) {
       const cadera = mides.cadera * escala;
       const llarg = mides.llarg * escala;
 
-      // Dibuix del patró de faldilla
-      p.line(10, 10, 10, llarg);
-      p.line(10, llarg+10, 10 + cadera / 4 + 1*escala, llarg+10);
-      p.line(10, 10, 10 + cintura / 4 + 1*escala + 3 * escala, 10);
-      p.line(10 + cintura / 4 + 1*escala + 3 * escala, 10, 10 + cadera / 4 + escala, 10+18 * escala);
-      p.line(10 + cadera / 4 + escala, 10+18 * escala, 10 + cadera / 4 + escala,10+ llarg);
+   // Paràmetres comuns
+const marge = 10;
 
-      // Pinces
-      const pinçaX = 10 + cintura / 8;
-      p.line(pinçaX, 10, pinçaX + 1.5 * escala, 10 + 10 * escala);
-      p.line(pinçaX + 3 * escala, 10, pinçaX + 1.5 * escala, 10 + 10 * escala);
+// Peca frontal
+p.line(marge, marge, marge, marge + llarg); // lateral esquerre
+p.line(marge, marge + llarg, marge + cadera / 4 + escala, marge + llarg); // base
+p.line(marge, marge, marge + cintura / 4 + 4 * escala, marge); // cintura
+p.line(marge + cintura / 4 + 4 * escala, marge, marge + cadera / 4 + escala, marge + 18 * escala); // lateral corbat
+p.line(marge + cadera / 4 + escala, marge + 18 * escala, marge + cadera / 4 + escala, marge + llarg); // lateral dret
 
-      p.line(20+cadera/4, 10, 20+cadera/4, llarg);
-      p.line(20+cadera/4, llarg+10, 20+cadera/4 + cadera / 4 - 1*escala, llarg+10);
-      p.line(20+cadera/4, 10, 20+cadera/4 + cintura / 4 - 1*escala + 3 * escala, 10);
-      p.line(20+cadera/4 + cintura / 4 - 1*escala + 3 * escala, 10, 20+cadera/4 + cadera / 4 - escala, 10+18 * escala);
-      p.line(20+cadera/4 + cadera / 4 - escala, 10+18 * escala, 20+cadera/4 + cadera / 4 - escala,10+ llarg);
+// Pinça davantera
+const pinçaX1 = marge + cintura / 8;
+p.line(pinçaX1, marge, pinçaX1 + 1.5 * escala, marge + 10 * escala);
+p.line(pinçaX1 + 3 * escala, marge, pinçaX1 + 1.5 * escala, marge + 10 * escala);
 
-      // Pinces
-      const pinçay = 20+cadera/4 + cintura / 8;
-      p.line(pinçay, 10, pinçay + 1.5 * escala, 10 + 10 * escala);
-      p.line(pinçay + 3 * escala, 10, pinçay + 1.5 * escala, 10 + 10 * escala);
-    }
+// Patró traser (just al costat, separat per 20 px)
+const sep = 20;
+const marge2 = marge + cadera / 4 + escala + sep;
+
+p.line(marge2, marge, marge2, marge + llarg); // lateral esquerre traser
+p.line(marge2, marge + llarg, marge2 + cadera / 4 + escala, marge + llarg); // base trasera
+p.line(marge2, marge, marge2 + cintura / 4 + 2 * escala, marge); // cintura trasera
+p.line(marge2 + cintura / 4 + 2 * escala, marge, marge2 + cadera / 4 + escala, marge + 18 * escala); // lateral corbat
+p.line(marge2 + cadera / 4 + escala, marge + 18 * escala, marge2 + cadera / 4 + escala, marge + llarg); // lateral dret traser
+
+// Pinça trasera
+const pinçaX2 = marge2 + cintura / 8;
+p.line(pinçaX2, marge, pinçaX2 + 1.5 * escala, marge + 10 * escala);
+p.line(pinçaX2 + 3 * escala, marge, pinçaX2 + 1.5 * escala, marge + 10 * escala);
+
 
     else if (tipus === "camisa") {
       const pit = mides.pit * escala;
