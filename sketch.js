@@ -87,11 +87,12 @@ p.line(marge2, marge, marge2 + cintura / 4 + 2 * escala, marge); // cintura tras
 p.line(marge2 + cintura / 4 + 2 * escala, marge, marge2 + cadera / 4 + escala, marge + 18 * escala); // lateral corbat
 p.line(marge2 + cadera / 4 + escala, marge + 18 * escala, marge2 + cadera / 4 + escala, marge + llarg); // lateral dret traser
 
-// Pinça trasera
-const pinçaX2 = marge2 + cintura / 8;
+// Pinça trasera (únic canvi: ajust per quadrar amb corba)
+const pinçaX2 = marge2 + cintura / 8 + escala;
 p.line(pinçaX2, marge, pinçaX2 + 1.5 * escala, marge + 10 * escala);
 p.line(pinçaX2 + 3 * escala, marge, pinçaX2 + 1.5 * escala, marge + 10 * escala);
 
+    }
 
     else if (tipus === "camisa") {
       const pit = mides.pit * escala;
