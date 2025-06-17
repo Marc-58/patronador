@@ -79,7 +79,7 @@ p.line(pinçaX1 + 3 * escala, marge, pinçaX1 + 1.5 * escala, marge + 10 * escal
 
 // Patró traser (just al costat, separat per 20 px)
 const sep = 20;
-const marge2 = marge + cadera / 4 + escala + sep;
+const marge2 = marge + cadera / 4 + sep;
 
 p.line(marge2, marge, marge2, marge + llarg); // lateral esquerre traser
 p.line(marge2, marge + llarg, marge2 + cadera / 4 + escala, marge + llarg); // base trasera
