@@ -94,16 +94,20 @@ p.line(pinçaX2 + 3 * escala, marge, pinçaX2 + 1.5 * escala, marge + 10 * escal
 
     }
 
-    else if (tipus === "camisa") {
-const talleEspatlles = mides.talleEspatlles * escala;
-const pit = mides.pit * escala;
-const torax = mides.torax * escala;
-const altDePit = mides.altDePit * escala;
-const coll = mides.coll * escala;
-const sisa = mides.sisa * escala;
-const caiguda = mides.caiguda * escala;
-const espatlles = mides.espatllesTotal * escala;
-const talleDavanter = mides.talleDavanter * escala;
+    else if (tipus === "brusa") {
+const escala = 1; // ajusta si cal
+
+const pit = Number(document.getElementById("pit").value) * escala;
+const llarg = Number(document.getElementById("llargCamisa").value) * escala;
+const espatlles = Number(document.getElementById("espatllesTotal").value) * escala;
+
+const talleEspatlles = Number(document.getElementById("talleEspatlles").value) * escala;
+const torax = Number(document.getElementById("torax").value) * escala;
+const altDePit = Number(document.getElementById("altDePit").value) * escala;
+const coll = Number(document.getElementById("coll").value) * escala;
+const sisa = Number(document.getElementById("sisa").value) * escala;
+const caiguda = Number(document.getElementById("caiguda").value) * escala;
+const talleDavanter = Number(document.getElementById("talleDavanter").value) * escala;
       p.rect(10, 10, espatlles/2, talleEspatlles);
       p.line(10+coll/6, 10, 10+espatlles/2, 10+(talleEspatlles-caiguda));
     }
