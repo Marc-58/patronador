@@ -110,15 +110,15 @@
       document.getElementById("triar-peca").style.display = "block";
     }
 
-    function seleccionar(peca) {
-      peçaSeleccionada = peca;
-      document.getElementById("triar-peca").style.display = "none";
-      if (peca === 'faldilla') {
-        document.getElementById("faldilla-form").style.display = "block";
-      } else {
-        document.getElementById("brusa-form").style.display = "block";
-      }
-    }
+function seleccionar(peca) {
+  peçaSeleccionada = peca;
+  document.getElementById("triar-peca").style.display = "none";
+  if (peca === 'faldilla') {
+    document.getElementById("faldilla-form").style.display = "block";
+  } else {
+    document.getElementById("brusa-form").style.display = "block"; // <- aquest és el que cal!
+  }
+}
 
     function generarPatro(peca) {
       const escala = 1;
