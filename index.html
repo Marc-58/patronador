@@ -4,20 +4,46 @@
   <meta charset="UTF-8" />
   <title>Generador de Patrons</title>
   <style>
-    body { font-family: sans-serif; padding: 20px; }
-    .formulari, #triar-peca { display: none; margin-top: 20px; }
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+    }
+
+    .formulari, #triar-peca {
+      display: none;
+      margin-top: 20px;
+    }
+
     .opcions-peces img {
-      width: 150px; margin: 10px; cursor: pointer;
-      border: 2px solid transparent; border-radius: 8px;
+      width: 150px;
+      margin: 10px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      border-radius: 8px;
     }
-    .opcions-peces img:hover { border-color: #333; }
-    #canvas-container { margin-top: 20px; text-align: center; }
+
+    .opcions-peces img:hover {
+      border-color: #333;
+    }
+
+    #canvas-container {
+      margin-top: 20px;
+      text-align: center;
+    }
+
     button {
-      margin-top: 10px; padding: 10px;
-      background-color: #333; color: white;
-      border: none; border-radius: 5px; cursor: pointer;
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
     }
-    input { margin: 5px; }
+
+    input {
+      margin: 5px;
+    }
   </style>
 </head>
 <body>
@@ -35,8 +61,10 @@
   <div id="triar-peca">
     <h2>Pas 2: Tria la peça</h2>
     <div class="opcions-peces" style="display:flex; gap:20px; justify-content:center;">
-      <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" alt="Faldilla" onclick="seleccionar('faldilla')">
-      <img src="https://i.pinimg.com/736x/fe/6b/87/fe6b87de0418757dbfbaf99b6ca5c782.jpg" alt="Brusa" onclick="seleccionar('brusa')">
+      <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" 
+           alt="Faldilla" onclick="seleccionar('faldilla')">
+      <img src="https://i.pinimg.com/736x/fe/6b/87/fe6b87de0418757dbfbaf99b6ca5c782.jpg" 
+           alt="Brusa" onclick="seleccionar('brusa')">
     </div>
   </div>
 
@@ -71,3 +99,4 @@
   <script src="sketch.js"></script>
 </body>
 </html>
+
