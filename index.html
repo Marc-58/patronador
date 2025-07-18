@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="ca">
 <head>
   <meta charset="UTF-8" />
@@ -49,7 +49,6 @@
 <body>
   <h1>Generador de Patrons</h1>
 
-  <!-- PAS 1: Mides bàsiques -->
   <div id="mides-basiques">
     <h2>Pas 1: Introdueix mides bàsiques</h2>
     Cintura: <input id="cintura" type="number"><br>
@@ -57,27 +56,20 @@
     <button onclick="mostrarOpcions()">Continuar</button>
   </div>
 
-  <!-- PAS 2: Tria la peça -->
   <div id="triar-peca">
     <h2>Pas 2: Tria la peça</h2>
     <div class="opcions-peces" style="display:flex; gap:20px; justify-content:center;">
-      <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" 
-           alt="Faldilla" style="cursor:pointer;" 
-           onclick="seleccionar('faldilla')">
-      <img src="https://drive.google.com/uc?export=view&id=1Tl7yCasA0C56UREleebcdq3lXerEKSID" 
-           alt="Brusa" style="cursor:pointer;" 
-           onclick="seleccionar('brusa')">
+      <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" alt="Faldilla" style="cursor:pointer;" onclick="seleccionar('faldilla')">
+      <img src="https://drive.google.com/uc?export=view&id=1Tl7yCasA0C56UREleebcdq3lXerEKSID" alt="Brusa" style="cursor:pointer;" onclick="seleccionar('brusa')">
     </div>
   </div>
 
-  <!-- Formulari de faldilla -->
   <div id="faldilla-form" class="formulari">
     <h2>Faldilla</h2>
     Llarg: <input id="llargFaldilla" type="number"><br>
     <button onclick="generarPatro('faldilla')">Generar patró</button>
   </div>
 
-  <!-- Formulari de brusa -->
   <div id="brusa-form" class="formulari">
     <h2>Brusa</h2>
     Talle Espatlles: <input id="talleEspatlles" type="number"><br>
@@ -92,84 +84,107 @@
     <button onclick="generarPatro('brusa')">Generar patró</button>
   </div>
 
-  <!-- Canvas i botó de descàrrega -->
-  <div id="canvas-container">
-    <div id="defaultCanvas0"></div>
-  </div>
+  <div id="canvas-container"></div>
   <button onclick="descarregarCanvas()">Descarregar imatge</button>
 
-  <!-- P5.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
 
   <script>
     let mides = {};
     let peçaSeleccionada = "";
+    let sketch;
 
     function mostrarOpcions() {
+      const cinturaVal = Number(document.getElementById("cintura").value);
+      const caderaVal = Number(document.getElementById("cadera").value);
+      if (isNaN(cinturaVal) || isNaN(caderaVal) || cinturaVal <= 0 || caderaVal <= 0) {
+        alert("Introdueix valors vàlids per a cintura i cadera.");
+        return;
+      }
       document.getElementById("mides-basiques").style.display = "none";
       document.getElementById("triar-peca").style.display = "block";
     }
 
-function seleccionar(peca) {
-  peçaSeleccionada = peca;
-  document.getElementById("triar-peca").style.display = "none";
-  if (peca === 'faldilla') {
-    document.getElementById("faldilla-form").style.display = "block";
-  } else {
-    document.getElementById("brusa-form").style.display = "block"; // <- aquest és el que cal!
-  }
-}
+    function seleccionar(peca) {
+      peçaSeleccionada = peca;
+      document.getElementById("triar-peca").style.display = "none";
+      document.getElementById("faldilla-form").style.display = "none";
+      document.getElementById("brusa-form").style.display = "none";
+
+      if (peca === 'faldilla') {
+        document.getElementById("faldilla-form").style.display = "block";
+      } else if (peca === 'brusa') {
+        document.getElementById("brusa-form").style.display = "block";
+      }
+    }
 
     function generarPatro(peca) {
       const escala = 1;
 
-      // Mides bàsiques
       mides.cintura = Number(document.getElementById("cintura").value) * escala;
       mides.cadera = Number(document.getElementById("cadera").value) * escala;
 
       if (peca === 'faldilla') {
-        mides.llarg = Number(document.getElementById("llargFaldilla").value) * escala;
+        const llargVal = Number(document.getElementById("llargFaldilla").value);
+        if (isNaN(llargVal) || llargVal <= 0) {
+          alert("Introdueix un valor vàlid per al llarg de la faldilla.");
+          return;
+        }
+        mides.llarg = llargVal * escala;
       } else if (peca === 'brusa') {
-        mides.talleEspatlles = Number(document.getElementById("talleEspatlles").value) * escala;
-        mides.pit = Number(document.getElementById("pit").value) * escala;
-        mides.torax = Number(document.getElementById("torax").value) * escala;
-        mides.altDePit = Number(document.getElementById("altDePit").value) * escala;
-        mides.coll = Number(document.getElementById("coll").value) * escala;
-        mides.sisa = Number(document.getElementById("sisa").value) * escala;
-        mides.caiguda = Number(document.getElementById("caiguda").value) * escala;
-        mides.espatlles = Number(document.getElementById("espatllesTotal").value) * escala;
-        mides.talleDavanter = Number(document.getElementById("talleDavanter").value) * escala;
+        const camps = ["talleEspatlles", "pit", "torax", "altDePit", "coll", "sisa", "caiguda", "espatllesTotal", "talleDavanter"];
+        for (const camp of camps) {
+          const val = Number(document.getElementById(camp).value);
+          if (isNaN(val) || val <= 0) {
+            alert(`Introdueix un valor vàlid per a ${camp}.`);
+            return;
+          }
+          mides[camp] = val * escala;
+        }
       }
 
-      redraw(); // dibuixa amb p5.js
+      if (sketch) sketch.remove();  // elimina sketch anterior
+      sketch = new p5(dibuixaPatro, 'canvas-container');
     }
 
     function descarregarCanvas() {
-      saveCanvas('patro', 'png');
-    }
-
-    function setup() {
-      let canvas = createCanvas(500, 500);
-      canvas.parent("canvas-container");
-      noLoop(); // només dibuixar quan es generi
-    }
-
-    function draw() {
-      clear();
-      background(255);
-      stroke(0);
-      fill(220);
-
-      if (peçaSeleccionada === "faldilla") {
-        rect(100, 100, mides.cintura || 50, mides.llarg || 150);
-      }
-
-      if (peçaSeleccionada === "brusa") {
-        rect(150, 100, mides.pit || 100, mides.talleDavanter || 200);
-        line(150, 100, 150 + (mides.espatlles || 100), 100); // línia espatlles
+      if (sketch) {
+        sketch.saveCanvas('patro', 'png');
       }
     }
+
+    const dibuixaPatro = (p) => {
+      p.setup = () => {
+        p.createCanvas(500, 500);
+        p.noLoop();
+      };
+
+      p.draw = () => {
+        p.background(255);
+        p.stroke(0);
+        p.noFill();
+
+        if (peçaSeleccionada === "faldilla") {
+          const x = 50;
+          const y = 50;
+          const cinturaPx = mides.cintura * 2;
+          const llargPx = mides.llarg * 2;
+
+          p.rect(x, y, cinturaPx, llargPx);
+          p.line(x + cinturaPx / 3, y, x + cinturaPx / 3, y + llargPx / 3);
+        } else if (peçaSeleccionada === "brusa") {
+          const x = 50;
+          const y = 50;
+          const pitPx = mides.pit * 2;
+          const llargPx = mides.talleDavanter * 2;
+          const espatllesPx = mides.espatllesTotal * 2;
+
+          p.rect(x, y, pitPx, llargPx);
+          p.line(x, y, x + espatllesPx, y);
+          p.line(x + pitPx / 2, y, x + pitPx / 2, y + mides.coll * 2);
+        }
+      };
+    };
   </script>
 </body>
 </html>
-
