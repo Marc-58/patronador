@@ -57,21 +57,18 @@
     <button onclick="mostrarOpcions()">Continuar</button>
   </div>
 
- <div id="triar-peca">
-  <h2>Pas 2: Tria la peça</h2>
-  <div class="opcions-peces" style="display:flex; gap:20px; justify-content:center;">
-    <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" 
-         alt="Faldilla" style="cursor:pointer; width:150px;" 
-         onclick="seleccionar('faldilla')">
-    <img src="https://drive.google.com/uc?export=view&id=1Tl7yCasA0C56UREleebcdq3lXerEKSID" 
-         alt="Brusa" style="cursor:pointer; width:150px;" 
-         onclick="seleccionar('brusa')">
+  <!-- PAS 2: Tria la peça -->
+  <div id="triar-peca">
+    <h2>Pas 2: Tria la peça</h2>
+    <div class="opcions-peces" style="display:flex; gap:20px; justify-content:center;">
+      <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" 
+           alt="Faldilla" style="cursor:pointer;" 
+           onclick="seleccionar('faldilla')">
+      <img src="https://drive.google.com/uc?export=view&id=1Tl7yCasA0C56UREleebcdq3lXerEKSID" 
+           alt="Brusa" style="cursor:pointer;" 
+           onclick="seleccionar('brusa')">
+    </div>
   </div>
-</div>
-
-
-
-
 
   <!-- Formulari de faldilla -->
   <div id="faldilla-form" class="formulari">
@@ -80,9 +77,9 @@
     <button onclick="generarPatro('faldilla')">Generar patró</button>
   </div>
 
-  <!-- Formulari de camisa -->
-  <div id="camisa-form" class="formulari">
-    <h2>Camisa</h2>
+  <!-- Formulari de brusa -->
+  <div id="brusa-form" class="formulari">
+    <h2>Brusa</h2>
     Talle Espatlles: <input id="talleEspatlles" type="number"><br>
     Pit: <input id="pit" type="number"><br>
     Torax: <input id="torax" type="number"><br>
@@ -92,15 +89,87 @@
     Caiguda: <input id="caiguda" type="number"><br>
     Espatlles: <input id="espatllesTotal" type="number"><br>
     Talle davanter: <input id="talleDavanter" type="number"><br>
-
-    <button onclick="generarPatro('camisa')">Generar patró</button>
+    <button onclick="generarPatro('brusa')">Generar patró</button>
   </div>
 
   <!-- Canvas i botó de descàrrega -->
-  <div id="canvas-container"></div>
+  <div id="canvas-container">
+    <div id="defaultCanvas0"></div>
+  </div>
   <button onclick="descarregarCanvas()">Descarregar imatge</button>
 
+  <!-- P5.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
-  <script src="sketch.js"></script>
+
+  <script>
+    let mides = {};
+    let peçaSeleccionada = "";
+
+    function mostrarOpcions() {
+      document.getElementById("mides-basiques").style.display = "none";
+      document.getElementById("triar-peca").style.display = "block";
+    }
+
+    function seleccionar(peca) {
+      peçaSeleccionada = peca;
+      document.getElementById("triar-peca").style.display = "none";
+      if (peca === 'faldilla') {
+        document.getElementById("faldilla-form").style.display = "block";
+      } else {
+        document.getElementById("brusa-form").style.display = "block";
+      }
+    }
+
+    function generarPatro(peca) {
+      const escala = 1;
+
+      // Mides bàsiques
+      mides.cintura = Number(document.getElementById("cintura").value) * escala;
+      mides.cadera = Number(document.getElementById("cadera").value) * escala;
+
+      if (peca === 'faldilla') {
+        mides.llarg = Number(document.getElementById("llargFaldilla").value) * escala;
+      } else if (peca === 'brusa') {
+        mides.talleEspatlles = Number(document.getElementById("talleEspatlles").value) * escala;
+        mides.pit = Number(document.getElementById("pit").value) * escala;
+        mides.torax = Number(document.getElementById("torax").value) * escala;
+        mides.altDePit = Number(document.getElementById("altDePit").value) * escala;
+        mides.coll = Number(document.getElementById("coll").value) * escala;
+        mides.sisa = Number(document.getElementById("sisa").value) * escala;
+        mides.caiguda = Number(document.getElementById("caiguda").value) * escala;
+        mides.espatlles = Number(document.getElementById("espatllesTotal").value) * escala;
+        mides.talleDavanter = Number(document.getElementById("talleDavanter").value) * escala;
+      }
+
+      redraw(); // dibuixa amb p5.js
+    }
+
+    function descarregarCanvas() {
+      saveCanvas('patro', 'png');
+    }
+
+    function setup() {
+      let canvas = createCanvas(500, 500);
+      canvas.parent("canvas-container");
+      noLoop(); // només dibuixar quan es generi
+    }
+
+    function draw() {
+      clear();
+      background(255);
+      stroke(0);
+      fill(220);
+
+      if (peçaSeleccionada === "faldilla") {
+        rect(100, 100, mides.cintura || 50, mides.llarg || 150);
+      }
+
+      if (peçaSeleccionada === "brusa") {
+        rect(150, 100, mides.pit || 100, mides.talleDavanter || 200);
+        line(150, 100, 150 + (mides.espatlles || 100), 100); // línia espatlles
+      }
+    }
+  </script>
 </body>
 </html>
+
