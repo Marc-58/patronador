@@ -17,12 +17,12 @@ function seleccionar(peça) {
   tipus = peça;
 
   document.getElementById("faldilla-form").style.display = "none";
-  document.getElementById("camisa-form").style.display = "none";
+  document.getElementById("brusa-form").style.display = "none";
 
   if (peça === "faldilla") {
     document.getElementById("faldilla-form").style.display = "block";
-  } else if (peça === "camisa") {
-    document.getElementById("camisa-form").style.display = "block";
+  } else if (peça === "brusa") {
+    document.getElementById("brusa-form").style.display = "block";
   }
 }
 
@@ -33,13 +33,20 @@ function generarPatro(peça) {
       alert("Introdueix un valor vàlid per al llarg de la faldilla.");
       return;
     }
-  } else if (peça === "camisa") {
-    mides.espatlles = parseInt(document.getElementById("espatlles").value);
+  } else if (peça === "brusa") {
+    mides.talleEspatlles = parseInt(document.getElementById("talleEspatlles").value);
     mides.pit = parseInt(document.getElementById("pit").value);
     mides.llarg = parseInt(document.getElementById("llargCamisa").value);
+    mides.torax = parseInt(document.getElementById("torax").value);
+    mides.altDePit = parseInt(document.getElementById("altDePit").value);
+    mides.coll = parseInt(document.getElementById("coll").value);
+    mides.sisa = parseInt(document.getElementById("sisa").value);
+    mides.caiguda = parseInt(document.getElementById("caiguda").value);
+    mides.espatllesTotal = parseInt(document.getElementById("espatllesTotal").value);
+    mides.talleDavanter = parseInt(document.getElementById("talleDavanter").value);
 
-    if (isNaN(mides.espatlles) || isNaN(mides.pit) || isNaN(mides.llarg)) {
-      alert("Introdueix valors vàlids per a la camisa.");
+    if (Object.values(mides).some(v => isNaN(v))) {
+      alert("Revisa que totes les mides de la brusa estiguin introduïdes correctament.");
       return;
     }
   }
@@ -52,7 +59,7 @@ function generarPatro(peça) {
 function dibuixaPatro(p) {
   p.setup = function () {
     const escala = 10;
-    p.createCanvas(1300,1300);
+    p.createCanvas(1300, 1300);
     p.background(255);
     p.stroke(0);
     p.noFill();
@@ -62,54 +69,53 @@ function dibuixaPatro(p) {
       const cadera = mides.cadera * escala;
       const llarg = mides.llarg * escala;
 
-   // Paràmetres comuns
-const marge = 10;
+      const marge = 10;
 
-// Peca frontal
-p.line(marge, marge, marge, marge + llarg); // lateral esquerre
-p.line(marge, marge + llarg, marge + cadera / 4 + escala, marge + llarg); // base
-p.line(marge, marge, marge + cintura / 4 + 4 * escala, marge); // cintura
-p.line(marge + cintura / 4 + 4 * escala, marge, marge + cadera / 4 + escala, marge + 18 * escala); // lateral corbat
-p.line(marge + cadera / 4 + escala, marge + 18 * escala, marge + cadera / 4 + escala, marge + llarg); // lateral dret
+      // Frontal
+      p.line(marge, marge, marge, marge + llarg);
+      p.line(marge, marge + llarg, marge + cadera / 4 + escala, marge + llarg);
+      p.line(marge, marge, marge + cintura / 4 + 4 * escala, marge);
+      p.line(marge + cintura / 4 + 4 * escala, marge, marge + cadera / 4 + escala, marge + 18 * escala);
+      p.line(marge + cadera / 4 + escala, marge + 18 * escala, marge + cadera / 4 + escala, marge + llarg);
 
-// Pinça davantera
-const pinçaX1 = marge + cintura / 8;
-p.line(pinçaX1, marge, pinçaX1 + 1.5 * escala, marge + 10 * escala);
-p.line(pinçaX1 + 3 * escala, marge, pinçaX1 + 1.5 * escala, marge + 10 * escala);
+      const pinçaX1 = marge + cintura / 8;
+      p.line(pinçaX1, marge, pinçaX1 + 1.5 * escala, marge + 10 * escala);
+      p.line(pinçaX1 + 3 * escala, marge, pinçaX1 + 1.5 * escala, marge + 10 * escala);
 
-// Patró traser (just al costat, separat per 20 px)
-const sep = 150;
-const marge2 = marge + cadera / 4 + sep;
+      // Darrere
+      const sep = 150;
+      const marge2 = marge + cadera / 4 + sep;
 
-p.line(marge2, marge, marge2, marge + llarg); // lateral esquerre traser
-p.line(marge2, marge + llarg, marge2 + cadera / 4 + escala, marge + llarg); // base trasera
-p.line(marge2, marge, marge2 + cintura / 4 + 2 * escala, marge); // cintura trasera
-p.line(marge2 + cintura / 4 + 2 * escala, marge, marge2 + cadera / 4 + escala, marge + 18 * escala); // lateral corbat
-p.line(marge2 + cadera / 4 + escala, marge + 18 * escala, marge2 + cadera / 4 + escala, marge + llarg); // lateral dret traser
+      p.line(marge2, marge, marge2, marge + llarg);
+      p.line(marge2, marge + llarg, marge2 + cadera / 4 + escala, marge + llarg);
+      p.line(marge2, marge, marge2 + cintura / 4 + 2 * escala, marge);
+      p.line(marge2 + cintura / 4 + 2 * escala, marge, marge2 + cadera / 4 + escala, marge + 18 * escala);
+      p.line(marge2 + cadera / 4 + escala, marge + 18 * escala, marge2 + cadera / 4 + escala, marge + llarg);
 
-// Pinça trasera (únic canvi: ajust per quadrar amb corba)
-const pinçaX2 = marge2 + cintura / 8 + escala;
-p.line(pinçaX2, marge, pinçaX2 + 1.5 * escala, marge + 10 * escala);
-p.line(pinçaX2 + 3 * escala, marge, pinçaX2 + 1.5 * escala, marge + 10 * escala);
-
+      const pinçaX2 = marge2 + cintura / 8 + escala;
+      p.line(pinçaX2, marge, pinçaX2 + 1.5 * escala, marge + 10 * escala);
+      p.line(pinçaX2 + 3 * escala, marge, pinçaX2 + 1.5 * escala, marge + 10 * escala);
     }
 
     else if (tipus === "brusa") {
-const escala = 1; // ajusta si cal
+      const escala = 5; // pots ajustar l’escala si queda massa petit o gran
 
-const pit = Number(document.getElementById("pit").value) * escala;
-const llarg = Number(document.getElementById("llargCamisa").value) * escala;
-const espatlles = Number(document.getElementById("espatllesTotal").value) * escala;
+      const pit = mides.pit * escala;
+      const llarg = mides.llarg * escala;
+      const espatlles = mides.espatllesTotal * escala;
+      const talleEspatlles = mides.talleEspatlles * escala;
+      const torax = mides.torax * escala;
+      const altDePit = mides.altDePit * escala;
+      const coll = mides.coll * escala;
+      const sisa = mides.sisa * escala;
+      const caiguda = mides.caiguda * escala;
+      const talleDavanter = mides.talleDavanter * escala;
 
-const talleEspatlles = Number(document.getElementById("talleEspatlles").value) * escala;
-const torax = Number(document.getElementById("torax").value) * escala;
-const altDePit = Number(document.getElementById("altDePit").value) * escala;
-const coll = Number(document.getElementById("coll").value) * escala;
-const sisa = Number(document.getElementById("sisa").value) * escala;
-const caiguda = Number(document.getElementById("caiguda").value) * escala;
-const talleDavanter = Number(document.getElementById("talleDavanter").value) * escala;
-      p.rect(10, 10, espatlles/2, talleEspatlles);
-      p.line(10+coll/6, 10, 10+espatlles/2, 10+(talleEspatlles-caiguda));
+      // Dibuix base de la brusa
+      p.rect(10, 10, espatlles / 2, talleEspatlles);
+      p.line(10 + coll / 6, 10, 10 + espatlles / 2, 10 + (talleEspatlles - caiguda));
+
+      // Pots afegir més línies segons les teves preferències de detall
     }
   };
 }
@@ -124,3 +130,4 @@ function descarregarCanvas() {
     link.click();
   }
 }
+
