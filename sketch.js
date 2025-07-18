@@ -10,12 +10,14 @@ function mostrarOpcions() {
     return;
   }
 
+  document.getElementById("mides-basiques").style.display = "none";
   document.getElementById("triar-peca").style.display = "block";
 }
 
 function seleccionar(peça) {
   tipus = peça;
 
+  document.getElementById("triar-peca").style.display = "none";
   document.getElementById("faldilla-form").style.display = "none";
   document.getElementById("brusa-form").style.display = "none";
 
@@ -34,16 +36,13 @@ function generarPatro(peça) {
       return;
     }
   } else if (peça === "brusa") {
-    mides.talleEspatlles = parseInt(document.getElementById("talleEspatlles").value);
-    mides.pit = parseInt(document.getElementById("pit").value);
-    mides.llarg = parseInt(document.getElementById("llargCamisa").value);
-    mides.torax = parseInt(document.getElementById("torax").value);
-    mides.altDePit = parseInt(document.getElementById("altDePit").value);
-    mides.coll = parseInt(document.getElementById("coll").value);
-    mides.sisa = parseInt(document.getElementById("sisa").value);
-    mides.caiguda = parseInt(document.getElementById("caiguda").value);
-    mides.espatllesTotal = parseInt(document.getElementById("espatllesTotal").value);
-    mides.talleDavanter = parseInt(document.getElementById("talleDavanter").value);
+    const camps = [
+      "talleEspatlles", "pit", "torax", "altDePit", "coll",
+      "sisa", "caiguda", "espatllesTotal", "talleDavanter", "llargCamisa"
+    ];
+    for (const camp of camps) {
+      mides[camp] = parseInt(document.getElementById(camp).value);
+    }
 
     if (Object.values(mides).some(v => isNaN(v))) {
       alert("Revisa que totes les mides de la brusa estiguin introduïdes correctament.");
@@ -52,7 +51,7 @@ function generarPatro(peça) {
   }
 
   const container = document.getElementById("canvas-container");
-  container.innerHTML = ''; // Esborra el canvas anterior
+  container.innerHTML = '';
   new p5(dibuixaPatro, container);
 }
 
@@ -68,7 +67,6 @@ function dibuixaPatro(p) {
       const cintura = mides.cintura * escala;
       const cadera = mides.cadera * escala;
       const llarg = mides.llarg * escala;
-
       const marge = 10;
 
       // Frontal
@@ -98,24 +96,16 @@ function dibuixaPatro(p) {
     }
 
     else if (tipus === "brusa") {
-      const escala = 5; // pots ajustar l’escala si queda massa petit o gran
+      const escala = 5;
+      const { pit, llarg, espatllesTotal, talleEspatlles, torax, altDePit, coll, sisa, caiguda, talleDavanter } = mides;
 
-      const pit = mides.pit * escala;
-      const llarg = mides.llarg * escala;
-      const espatlles = mides.espatllesTotal * escala;
-      const talleEspatlles = mides.talleEspatlles * escala;
-      const torax = mides.torax * escala;
-      const altDePit = mides.altDePit * escala;
-      const coll = mides.coll * escala;
-      const sisa = mides.sisa * escala;
-      const caiguda = mides.caiguda * escala;
-      const talleDavanter = mides.talleDavanter * escala;
+      const baseX = 10, baseY = 10;
 
-      // Dibuix base de la brusa
-      p.rect(10, 10, espatlles / 2, talleEspatlles);
-      p.line(10 + coll / 6, 10, 10 + espatlles / 2, 10 + (talleEspatlles - caiguda));
+      // Cos bàsic frontal de la brusa
+      p.rect(baseX, baseY, espatllesTotal * escala / 2, talleEspatlles * escala);
+      p.line(baseX + coll * escala / 6, baseY, baseX + espatllesTotal * escala / 2, baseY + (talleEspatlles - caiguda) * escala);
 
-      // Pots afegir més línies segons les teves preferències de detall
+      // Aquí pots afegir més detalls (sisa, pit, etc.)
     }
   };
 }
@@ -130,4 +120,3 @@ function descarregarCanvas() {
     link.click();
   }
 }
-
