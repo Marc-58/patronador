@@ -14,35 +14,32 @@ function mostrarOpcions() {
   document.getElementById("triar-peca").style.display = "block";
 }
 
-function seleccionar(peça) {
-  tipus = peça;
+function seleccionar(peca) {
+  tipus = peca;
 
   document.getElementById("triar-peca").style.display = "none";
-  document.getElementById("faldilla-form").style.display = "none";
-  document.getElementById("brusa-form").style.display = "none";
-
-  if (peça === "faldilla") {
-    document.getElementById("faldilla-form").style.display = "block";
-  } else if (peça === "brusa") {
-    document.getElementById("brusa-form").style.display = "block";
-  }
+  document.querySelectorAll('.formulari').forEach(f => f.style.display = 'none');
+  document.getElementById(`${peca}-form`).style.display = 'block';
 }
 
-function generarPatro(peça) {
-  if (peça === "faldilla") {
+function generarPatro(peca) {
+  if (peca === "faldilla") {
     mides.llarg = parseInt(document.getElementById("llargFaldilla").value);
     if (isNaN(mides.llarg)) {
       alert("Introdueix un valor vàlid per al llarg de la faldilla.");
       return;
     }
-  } else if (peça === "brusa") {
-    const camps = [
-      "talleEspatlles", "pit", "torax", "altDePit", "coll",
-      "sisa", "caiguda", "espatllesTotal", "talleDavanter", "llargCamisa"
-    ];
-    for (const camp of camps) {
-      mides[camp] = parseInt(document.getElementById(camp).value);
-    }
+  } else if (peca === "brusa") {
+    mides.talleEspatlles = parseInt(document.getElementById("talleEspatlles").value);
+    mides.pit = parseInt(document.getElementById("pit").value);
+    mides.llarg = parseInt(document.getElementById("llargCamisa").value);
+    mides.torax = parseInt(document.getElementById("torax").value);
+    mides.altDePit = parseInt(document.getElementById("altDePit").value);
+    mides.coll = parseInt(document.getElementById("coll").value);
+    mides.sisa = parseInt(document.getElementById("sisa").value);
+    mides.caiguda = parseInt(document.getElementById("caiguda").value);
+    mides.espatllesTotal = parseInt(document.getElementById("espatllesTotal").value);
+    mides.talleDavanter = parseInt(document.getElementById("talleDavanter").value);
 
     if (Object.values(mides).some(v => isNaN(v))) {
       alert("Revisa que totes les mides de la brusa estiguin introduïdes correctament.");
@@ -51,7 +48,7 @@ function generarPatro(peça) {
   }
 
   const container = document.getElementById("canvas-container");
-  container.innerHTML = '';
+  container.innerHTML = ''; // Neteja canvas anterior
   new p5(dibuixaPatro, container);
 }
 
@@ -97,15 +94,23 @@ function dibuixaPatro(p) {
 
     else if (tipus === "brusa") {
       const escala = 5;
-      const { pit, llarg, espatllesTotal, talleEspatlles, torax, altDePit, coll, sisa, caiguda, talleDavanter } = mides;
 
-      const baseX = 10, baseY = 10;
+      const pit = mides.pit * escala;
+      const llarg = mides.llarg * escala;
+      const espatlles = mides.espatllesTotal * escala;
+      const talleEspatlles = mides.talleEspatlles * escala;
+      const torax = mides.torax * escala;
+      const altDePit = mides.altDePit * escala;
+      const coll = mides.coll * escala;
+      const sisa = mides.sisa * escala;
+      const caiguda = mides.caiguda * escala;
+      const talleDavanter = mides.talleDavanter * escala;
 
-      // Cos bàsic frontal de la brusa
-      p.rect(baseX, baseY, espatllesTotal * escala / 2, talleEspatlles * escala);
-      p.line(baseX + coll * escala / 6, baseY, baseX + espatllesTotal * escala / 2, baseY + (talleEspatlles - caiguda) * escala);
+      // Dibuix base de la brusa (simple)
+      p.rect(10, 10, espatlles / 2, talleEspatlles);
+      p.line(10 + coll / 6, 10, 10 + espatlles / 2, 10 + (talleEspatlles - caiguda));
 
-      // Aquí pots afegir més detalls (sisa, pit, etc.)
+      // Afegir més detalls si cal
     }
   };
 }
