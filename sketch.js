@@ -95,12 +95,17 @@ p.line(pinçaX2 + 3 * escala, marge, pinçaX2 + 1.5 * escala, marge + 10 * escal
     }
 
     else if (tipus === "camisa") {
-      const pit = mides.pit * escala;
-      const llarg = mides.llarg * escala;
-      const espatlles = mides.espatlles * escala;
-
-      p.rect(150, 100, pit, llarg);
-      p.line(150, 100, 150 + espatlles, 100);
+const talleEspatlles = mides.talleEspatlles * escala;
+const pit = mides.pit * escala;
+const torax = mides.torax * escala;
+const altDePit = mides.altDePit * escala;
+const coll = mides.coll * escala;
+const sisa = mides.sisa * escala;
+const caiguda = mides.caiguda * escala;
+const espatlles = mides.espatllesTotal * escala;
+const talleDavanter = mides.talleDavanter * escala;
+      p.rect(10, 10, espatlles/2, talleEspatlles);
+      p.line(10+coll/6, 10, 10+espatlles/2, 10+(talleEspatlles-caiguda));
     }
   };
 }
