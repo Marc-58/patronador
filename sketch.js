@@ -92,7 +92,7 @@ function dibuixaPatro(p) {
     }
 
     else if (tipus === "brusa") {
-      const escala = 5;
+      const escala = 10;
       const espatlles = mides.espatllesTotal * escala;
       const talleEspatlles = mides.talleEspatlles * escala;
       const coll = mides.coll * escala;
@@ -102,11 +102,11 @@ function dibuixaPatro(p) {
       const caiguda = mides.caiguda * escala;
 
       p.rect(10, 10, espatlles / 2, talleEspatlles);
-      p.line(10 + coll / 6, 10, 10 + espatlles / 2, 10 + (talleEspatlles - caiguda));
-      p.line(10 + torax / 4, talleEspatlles - caiguda + sisa + 10, 10 + 2 * escala + cintura / 4 , 10 + talleEspatlles);
-      p.line(10 + cintura / 8 + 1.5 * escala, talleEspatlles - caiguda + sisa + 10, 10 + cintura / 8, 10 + talleEspatlles);
-      p.line(10 + cintura / 8 + 1.5 * escala, talleEspatlles - caiguda + sisa + 10, 10 + cintura / 8 + 3*escala, 10 + talleEspatlles);
-      p.line(10, 10 + talleEspatlles, 10 + espatlles / 2 + 2 * escala, 10 + talleEspatlles);
+      p.line(10 + coll / 6, 10, 10 + espatlles / 2, 10 + (talleEspatlles - caiguda));//hombro
+      p.line(10 + torax / 4, talleEspatlles - caiguda + sisa + 10, 10 + 2*escala + cintura / 4 , 10 + talleEspatlles);//igual
+      p.line(10 + cintura / 8 + 1.5 * escala, talleEspatlles - caiguda + sisa + 10, 10 + cintura / 8, 10 + talleEspatlles);//pinca
+      p.line(10 + cintura / 8 + 1.5 * escala, talleEspatlles - caiguda + sisa + 10, 10 + cintura / 8 + 3*escala, 10 + talleEspatlles);//pinca
+      p.line(10, 10 + talleEspatlles, 10 + (cintura / 4) + 2 * escala, 10 + talleEspatlles);//cintura
     }
   };
 }
