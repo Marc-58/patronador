@@ -112,8 +112,8 @@ p.line(10, 10 + talleEspatlles, 10 + (cintura / 4) + 2 * escala, 10 + talleEspat
 // Corba realista de la sisa
 p.bezier(
   10 + espatlles / 2, 10 + (talleEspatlles - caiguda),      // Punt inicial (final espatlla)
-  10 + espatlles / 2 + 5 * escala, 10 + (talleEspatlles - caiguda) + 5 * escala,  // Control 1
-  10 + torax / 4 - 5 * escala, 10 + talleEspatlles - 5 * escala,                // Control 2
+  10 + espatlles / 2 - 5 * escala, 10 + (talleEspatlles - caiguda) + 5 * escala,  // Control 1
+  10 + torax / 4 - 5 * escala, 10 + talleEspatlles - 10 * escala,                // Control 2
   10 + torax / 4, talleEspatlles - caiguda + sisa + 10       // Punt final (inici lateral)
 );
 
