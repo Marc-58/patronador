@@ -101,14 +101,24 @@ function dibuixaPatro(p) {
       const cintura = mides.cintura * escala;
       const caiguda = mides.caiguda * escala;
 
-      p.rect(10, 10, espatlles / 2, talleEspatlles);
-      p.line(10 + coll / 6, 10, 10 + espatlles / 2, 10 + (talleEspatlles - caiguda));//hombro
-p.line(10 + torax / 4, talleEspatlles - caiguda + sisa + 10, 10 + cintura / 4 + 2 * escala, 10 + talleEspatlles); //igual CORREGIDA
-      p.line(10 + cintura / 8 + 1.5 * escala, talleEspatlles - caiguda + sisa + 10, 10 + (cintura / 8), 10 + talleEspatlles);//pinca
-      p.line(10 + cintura / 8 + 1.5 * escala, talleEspatlles - caiguda + sisa + 10, 10 + (cintura / 8) + 3*escala, 10 + talleEspatlles);//pinca
-      p.line(10, 10 + talleEspatlles, 10 + (cintura / 4) + 2 * escala, 10 + talleEspatlles);//cintura
-      bezier(10 + espatlles / 2, 10 + (talleEspatlles - caiguda), 10+espatlles/2, 10+13, 10+espatlles/2+3, 10+17,talleEspatlles - caiguda + sisa + 10, 10 + (cintura / 8), 10 + talleEspatlles);//sisa
-      bezier(10 , 10 + 1*escala,10+coll/8 ,10+1*escala , 10+2*escala,10+1*escala , 10+coll/6,10 );//sisa
+    p.rect(10, 10, espatlles / 2, talleEspatlles);
+p.line(10 + coll / 6, 10, 10 + espatlles / 2, 10 + (talleEspatlles - caiguda)); // hombro
+p.line(10 + torax / 4, talleEspatlles - caiguda + sisa + 10, 10 + cintura / 4 + 2 * escala, 10 + talleEspatlles); // igual
+p.line(10 + cintura / 8 + 1.5 * escala, talleEspatlles - caiguda + sisa + 10, 10 + (cintura / 8), 10 + talleEspatlles); // pinça
+p.line(10 + cintura / 8 + 1.5 * escala, talleEspatlles - caiguda + sisa + 10, 10 + (cintura / 8) + 3 * escala, 10 + talleEspatlles); // pinça
+p.line(10, 10 + talleEspatlles, 10 + (cintura / 4) + 2 * escala, 10 + talleEspatlles); // cintura
+
+// Bezier corregit: 8 arguments
+p.bezier(10 + espatlles / 2, 10 + (talleEspatlles - caiguda),
+         10 + espatlles / 2, 10 + 13,
+         10 + espatlles / 2 + 3, 10 + 17,
+         10 + cintura / 8, 10 + talleEspatlles); // sisa
+
+p.bezier(10, 10 + 1 * escala,
+         10 + coll / 8, 10 + 1 * escala,
+         10 + 2 * escala, 10 + 1 * escala,
+         10 + coll / 6, 10); // sisa
+
 
     }  
   };
