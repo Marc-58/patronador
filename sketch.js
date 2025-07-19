@@ -112,7 +112,7 @@ p.line(10, 10 + talleEspatlles, 10 + (cintura / 4) + 2 * escala, 10 + talleEspat
 p.bezier(10 + espatlles / 2, 10 + (talleEspatlles - caiguda),
          10 + espatlles / 2, 10 + 13,
          10 + espatlles / 2 + 3, 10 + 17,
-         10 + cintura / 8, 10 + talleEspatlles); // sisa
+         10 + torax / 4, talleEspatlles - caiguda + sisa + 10); // sisa
 
 p.bezier(10, 10 + 1 * escala,
          10 + coll / 8, 10 + 1 * escala,
