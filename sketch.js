@@ -100,6 +100,8 @@ function dibuixaPatro(p) {
       const sisa = mides.sisa * escala;
       const cintura = mides.cintura * escala;
       const caiguda = mides.caiguda * escala;
+      const marge = espatlles/2+20*escala +10;
+      const talleDavanter=mides.talleDavanter*escala
 
     p.rect(10, 10, espatlles / 2, talleEspatlles);
 p.line(10 + coll / 6, 10, 10 + espatlles / 2, 10 + (talleEspatlles - caiguda)); // hombro
@@ -120,6 +122,9 @@ p.bezier(10, 10 + 1 * escala,
          10 + coll / 8, 10 + 1 * escala,
          10 + 2 * escala, 10 + 1 * escala,
          10 + coll / 6, 10); // sisa
+
+    p.rect(marge, 10, torax / 4, talleDavanter);
+
     }  
   };
 }
