@@ -107,7 +107,9 @@ p.line(10 + torax / 4, talleEspatlles - caiguda + sisa + 10, 10 + cintura / 4 + 
       p.line(10 + cintura / 8 + 1.5 * escala, talleEspatlles - caiguda + sisa + 10, 10 + (cintura / 8), 10 + talleEspatlles);//pinca
       p.line(10 + cintura / 8 + 1.5 * escala, talleEspatlles - caiguda + sisa + 10, 10 + (cintura / 8) + 3*escala, 10 + talleEspatlles);//pinca
       p.line(10, 10 + talleEspatlles, 10 + (cintura / 4) + 2 * escala, 10 + talleEspatlles);//cintura
-    }
+      bezier(10 + espatlles / 2, 10 + (talleEspatlles - caiguda), 10+espatlles/2, 10+13, 10+espatlles/2+3, 10+17,talleEspatlles - caiguda + sisa + 10, 10 + (cintura / 8), 10 + talleEspatlles);//sisa
+
+    }  
   };
 }
 
