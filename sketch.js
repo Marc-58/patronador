@@ -94,7 +94,14 @@ function dibuixaPatro(p) {
 
     else if (tipus === "brusa") {
       const escala = 5;
-
+  const espatlles = mides.espatllesTotal * escala;
+  const talleEspatlles = mides.talleEspatlles * escala;
+  const coll = mides.coll * escala;
+  const torax = mides.torax * escala;
+  const sisa = mides.sisa * escala;
+  const cintura = mides.cintura * escala;
+  const caiguda = mides.caiguda * escala;
+      
       // Dibuix base de la brusa (simple)
       p.rect(10, 10, espatlles / 2, talleEspatlles);
       p.line(10 + coll / 6, 10, 10 + espatlles / 2, 10 + (talleEspatlles - caiguda));//COLL
