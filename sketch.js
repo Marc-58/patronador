@@ -126,11 +126,46 @@ p.bezier(10, 10 + 1 * escala,
          10 + coll / 6, 10); // sisa
 //davant
     p.rect(marge, 10, torax / 4, talleDavanter);
-    p.line(marge +coll/6, 10 , marge+torax/4-(torax/4-espatlles/2), 10 +(talleEspatlles-caiguda ); // hombro
-    p.line(marge +torax/4, 10 +altDePit, marge+torax/4-(pit/2), 10 +altDePit; // hombro
-    p.line(marge +torax/4, 10 +talleDavanter, marge+torax/4-(cintura/4 +4*escala), 10 +talleDavanter; // hombro
-    p.line(marge +torax/4-cintura/8, 10 +talleDavanter,marge +torax/4-cintura/8-1.5*escala , 10 +altDePit; // hombro
-    p.line(marge +torax/4-cintura/8 -3*escala, 10 +talleDavanter,marge +torax/4-cintura/8-1.5*escala , 10 +altDePit; // hombro
+
+// línia espatlla
+p.line(
+  marge + coll / 6,
+  10,
+  marge + torax / 4 - (torax / 4 - espatlles / 2),
+  10 + (talleEspatlles - caiguda)
+);
+
+// línia alt de pit
+p.line(
+  marge + torax / 4,
+  10 + altDePit,
+  marge + torax / 4 - (pit / 2),
+  10 + altDePit
+);
+
+// línia cintura
+p.line(
+  marge + torax / 4,
+  10 + talleDavanter,
+  marge + torax / 4 - (cintura / 4 + 4 * escala),
+  10 + talleDavanter
+);
+
+// pinça davanter - costat esquerre
+p.line(
+  marge + torax / 4 - cintura / 8,
+  10 + talleDavanter,
+  marge + torax / 4 - cintura / 8 - 1.5 * escala,
+  10 + altDePit
+);
+
+// pinça davanter - costat dret
+p.line(
+  marge + torax / 4 - cintura / 8 - 3 * escala,
+  10 + talleDavanter,
+  marge + torax / 4 - cintura / 8 - 1.5 * escala,
+  10 + altDePit
+);
 
     }  
   };
