@@ -32,7 +32,6 @@ function generarPatro(peca) {
   } else if (peca === "brusa") {
     mides.talleEspatlles = parseInt(document.getElementById("talleEspatlles").value);
     mides.pit = parseInt(document.getElementById("pit").value);
-    mides.llarg = parseInt(document.getElementById("llargCamisa").value);
     mides.torax = parseInt(document.getElementById("torax").value);
     mides.altDePit = parseInt(document.getElementById("altDePit").value);
     mides.coll = parseInt(document.getElementById("coll").value);
