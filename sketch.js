@@ -93,27 +93,24 @@ function dibuixaPatro(p) {
 
     else if (tipus === "brusa") {
       const escala = 5;
-  const espatlles = mides.espatllesTotal * escala;
-  const talleEspatlles = mides.talleEspatlles * escala;
-  const coll = mides.coll * escala;
-  const torax = mides.torax * escala;
-  const sisa = mides.sisa * escala;
-  const cintura = mides.cintura * escala;
-  const caiguda = mides.caiguda * escala;
-      
-      // Dibuix base de la brusa (simple)
+      const espatlles = mides.espatllesTotal * escala;
+      const talleEspatlles = mides.talleEspatlles * escala;
+      const coll = mides.coll * escala;
+      const torax = mides.torax * escala;
+      const sisa = mides.sisa * escala;
+      const cintura = mides.cintura * escala;
+      const caiguda = mides.caiguda * escala;
+
       p.rect(10, 10, espatlles / 2, talleEspatlles);
-      p.line(10 + coll / 6, 10, 10 + espatlles / 2, 10 + (talleEspatlles - caiguda));//COLL
-      p.line(10+torax/4, talleEspatlles-caiguda+sisa+10, 10 + 3*escala+cintura/8 -1*escala,10+talleEspatlles);//PIT igual davant
-      p.line(10 + cintura/8+1.5*escala, talleEspatlles-caiguda+sisa+10,10+cintura/8, 10+talleEspatlles);//pinca 1
-      p.line(10 + cintura/8+1.5*escala, talleEspatlles-caiguda+sisa+10,10+cintura/8 +3, 10+talleEspatlles);//pinca2
-      p.line(10, 10+talleEspatlles, 10 + espatlles / 2 +2*escala, 10 + talleEspatlles );//COLL
-
-
-      // Afegir més detalls si cal
+      p.line(10 + coll / 6, 10, 10 + espatlles / 2, 10 + (talleEspatlles - caiguda));
+      p.line(10 + torax / 4, talleEspatlles - caiguda + sisa + 10, 10 + 2 * escala + cintura / 4 , 10 + talleEspatlles);
+      p.line(10 + cintura / 8 + 1.5 * escala, talleEspatlles - caiguda + sisa + 10, 10 + cintura / 8, 10 + talleEspatlles);
+      p.line(10 + cintura / 8 + 1.5 * escala, talleEspatlles - caiguda + sisa + 10, 10 + cintura / 8 + 3*escala, 10 + talleEspatlles);
+      p.line(10, 10 + talleEspatlles, 10 + espatlles / 2 + 2 * escala, 10 + talleEspatlles);
     }
   };
 }
+
 
 function descarregarCanvas() {
   const canvases = document.getElementsByTagName("canvas");
