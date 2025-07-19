@@ -109,10 +109,14 @@ p.line(10 + cintura / 8 + 1.5 * escala, talleEspatlles - caiguda + sisa + 10, 10
 p.line(10, 10 + talleEspatlles, 10 + (cintura / 4) + 2 * escala, 10 + talleEspatlles); // cintura
 
 // Bezier corregit: 8 arguments
-p.bezier(10 + espatlles / 2, 10 + (talleEspatlles - caiguda),
-         10 + espatlles / 2, 10 + 13,
-         10 + espatlles / 2 + 3, 10 + 17,
-         10 + torax / 4, talleEspatlles - caiguda + sisa + 10); // sisa
+// Corba realista de la sisa
+p.bezier(
+  10 + espatlles / 2, 10 + (talleEspatlles - caiguda),      // Punt inicial (final espatlla)
+  10 + espatlles / 2 + 5 * escala, 10 + (talleEspatlles - caiguda) + 5 * escala,  // Control 1
+  10 + torax / 4 - 5 * escala, 10 + talleEspatlles - 5 * escala,                // Control 2
+  10 + torax / 4, talleEspatlles - caiguda + sisa + 10       // Punt final (inici lateral)
+);
+
 
 p.bezier(10, 10 + 1 * escala,
          10 + coll / 8, 10 + 1 * escala,
