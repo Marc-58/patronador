@@ -155,7 +155,7 @@ if (tipus === "faldilla") {
   p.stroke(255, 0, 0);
   p.line(xA, yA, xFinal, yFinal);
 
-  const xSisa = marge + torax / 4 - (torax / 4 - espatlles / 2);
+const xSisa = marge + espatlles / 2; // Aquí ajustem per agafar el costat dret de l'espatlla (marge + espatlles/2)
       const ySisaInici = 10 + (talleEspatlles - caiguda);
       const ySisaFinal = ySisaInici + sisa;
 
