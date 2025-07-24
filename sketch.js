@@ -120,52 +120,50 @@ p.bezier(
   10 + torax / 4 - 5 * escala, 10 + sisa ,                // Control 2
   10 + torax / 4, talleEspatlles - caiguda + sisa + 10       // Punt final (inici lateral)
 );
-p.bezier(10, 10 + 1 * escala,
-         10 + coll / 8, 10 + 1 * escala,
-         10 + 2 * escala, 10 + 1 * escala,
-         10 + coll / 6, 10); // sisa
+p.bezier(10, 10 + 1 * escala,10 + coll / 8, 10 + 1 * escala,10 + 2 * escala, 10 + 1 * escala,10 + coll / 6, 10); // sisa
 //davant
     p.rect(marge, 10, torax / 4, talleDavanter);
-
 // línia espatlla
-p.line(
-  marge + coll / 6,
-  10,
-  marge + torax / 4 - (torax / 4 - espatlles / 2),
-  10 + (talleEspatlles - caiguda)
-);
-
+p.line(marge + coll / 6,10,marge + torax / 4 - (torax / 4 - espatlles / 2),10 + (talleEspatlles - caiguda));
 // línia alt de pit
-p.line(
-  marge + torax / 4,
-  10 + altDePit,
-  marge + torax / 4 - (pit / 2),
-  10 + altDePit
-);
-
+p.line(marge + torax / 4,10 + altDePit,marge + torax / 4 - (pit / 2),10 + altDePit);
 // línia cintura
-p.line(
-  marge + torax / 4,
-  10 + talleDavanter,
-  marge + torax / 4 - (cintura / 4 + 4 * escala),
-  10 + talleDavanter
-);
-
+p.line(marge + torax / 4,10 + talleDavanter,marge + torax / 4 - (cintura / 4 + 4 * escala),10 + talleDavanter);
 // pinça davanter - costat esquerre
-p.line(
-  marge + torax / 4 - cintura / 8,
-  10 + talleDavanter,
-  marge + torax / 4 - cintura / 8 - 1.5 * escala,
-  10 + altDePit
-);
-
+p.line(marge + torax / 4 - cintura / 8,10 + talleDavanter,marge + torax / 4 - cintura / 8 - 1.5 * escala,10 + altDePit);     
 // pinça davanter - costat dret
-p.line(
-  marge + torax / 4 - cintura / 8 - 3 * escala,
-  10 + talleDavanter,
-  marge + torax / 4 - cintura / 8 - 1.5 * escala,
-  10 + altDePit
-);
+p.line(marge + torax / 4 - cintura / 8 - 3 * escala,10 + talleDavanter,marge + torax / 4 - cintura / 8 - 1.5 * escala,10 + altDePit);
+
+
+
+      
+  // Punt central per on ha de passar la línia
+  const x = marge + torax / 4 - pit / 2;
+  const y = 10 + altDePit;
+
+  // Extrems de la línia horitzontal centrada en (x, y)
+  const x1 = x - llargada / 2;
+  const x2 = x + llargada / 2;
+
+  // Dibuix amb canvas
+  const canvas = document.getElementById("canvas");
+  const ctx = canvas.getContext("2d");
+
+  // Dibuix de la línia
+  ctx.beginPath();
+  ctx.moveTo(x1, y);
+  ctx.lineTo(x2, y);
+  ctx.strokeStyle = "blue";
+  ctx.lineWidth = 2;
+  ctx.stroke();
+
+  // Dibuixa un punt al centre per referència
+  ctx.beginPath();
+  ctx.arc(x, y, 3, 0, 2 * Math.PI);
+  ctx.fillStyle = "red";
+  ctx.fill();
+</script>
+
 
     }  
   };
