@@ -136,21 +136,6 @@ p.line(marge + torax / 4 - cintura / 8 - 3 * escala,10 + talleDavanter,marge + t
 
 
 
-      
-const x = marge + torax / 4 - pit / 2;
-const y = 10 + altDePit;
-
-const x1 = x - llargada / 2;
-const x2 = x + llargada / 2;
-
-// Dibuixa la línia amb p5
-p.stroke("blue");
-p.line(x1, y, x2, y);
-
-// Punt central
-p.fill("red");
-p.noStroke();
-p.circle(x, y, 6); // Radi 3 com abans
 
     }  
   };
