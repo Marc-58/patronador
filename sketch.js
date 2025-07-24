@@ -154,6 +154,13 @@ if (tipus === "faldilla") {
   const yFinal = yA + uy * llarg;
   p.stroke(255, 0, 0);
   p.line(xA, yA, xFinal, yFinal);
+
+  const xSisa = marge + torax / 4 - (torax / 4 - espatlles / 2);
+      const ySisaInici = 10 + (talleEspatlles - caiguda);
+      const ySisaFinal = ySisaInici + sisa;
+
+      p.stroke('blue'); // línia en blau perquè es vegi bé
+      p.line(xSisa, ySisaInici, xSisa, ySisaFinal);
 }
 ```
 
