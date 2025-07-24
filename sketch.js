@@ -137,33 +137,20 @@ p.line(marge + torax / 4 - cintura / 8 - 3 * escala,10 + talleDavanter,marge + t
 
 
       
-  // Punt central per on ha de passar la línia
-  const x = marge + torax / 4 - pit / 2;
-  const y = 10 + altDePit;
+const x = marge + torax / 4 - pit / 2;
+const y = 10 + altDePit;
 
-  // Extrems de la línia horitzontal centrada en (x, y)
-  const x1 = x - llargada / 2;
-  const x2 = x + llargada / 2;
+const x1 = x - llargada / 2;
+const x2 = x + llargada / 2;
 
-  // Dibuix amb canvas
-  const canvas = document.getElementById("canvas");
-  const ctx = canvas.getContext("2d");
+// Dibuixa la línia amb p5
+p.stroke("blue");
+p.line(x1, y, x2, y);
 
-  // Dibuix de la línia
-  ctx.beginPath();
-  ctx.moveTo(x1, y);
-  ctx.lineTo(x2, y);
-  ctx.strokeStyle = "blue";
-  ctx.lineWidth = 2;
-  ctx.stroke();
-
-  // Dibuixa un punt al centre per referència
-  ctx.beginPath();
-  ctx.arc(x, y, 3, 0, 2 * Math.PI);
-  ctx.fillStyle = "red";
-  ctx.fill();
-</script>
-
+// Punt central
+p.fill("red");
+p.noStroke();
+p.circle(x, y, 6); // Radi 3 com abans
 
     }  
   };
