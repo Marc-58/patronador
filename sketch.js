@@ -130,7 +130,7 @@ function dibuixaPatro(p) {
       // Part dreta - davanter
       p.rect(marge, 10, torax / 4, talleDavanter);
       p.line(marge + coll / 6, 10, marge + torax / 4 - (torax / 4 - espatlles / 2), 10 + (talleEspatlles - caiguda)); // línia espatlla
-      p.line(marge + torax / 4, 10 + altDePit, marge + torax / 4 - (pit / 2), 10 + altDePit); // línia alt de pit
+      p.line(marge , 10 + altDePit, marge + (pit / 2), 10 + altDePit); // línia alt de pit
       p.line(marge , 10 + talleDavanter, marge + (cintura / 4 + 4 * escala), 10 + talleDavanter); // línia cintura
       p.line(marge + torax / 4 - cintura / 8, 10 + talleDavanter, marge + torax / 4 - cintura / 8 - 1.5 * escala, 10 + altDePit); // pinça esquerra
       p.line(marge + torax / 4 - cintura / 8 - 3 * escala, 10 + talleDavanter, marge + torax / 4 - cintura / 8 - 1.5 * escala, 10 + altDePit); // pinça dreta
