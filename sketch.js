@@ -2,8 +2,8 @@ let tipus = "";
 let mides = {};
 
 function mostrarOpcions() {
-  mides.cintura = parseInt(document.getElementById("cintura").value);
-  mides.cadera = parseInt(document.getElementById("cadera").value);
+  mides.cintura = parseInt(document.getElementById("cintura").value, 10);
+  mides.cadera = parseInt(document.getElementById("cadera").value, 10);
 
   if (isNaN(mides.cintura) || isNaN(mides.cadera)) {
     alert("Si us plau, introdueix valors vàlids per a cintura i cadera.");
@@ -24,21 +24,21 @@ function seleccionar(peca) {
 
 function generarPatro(peca) {
   if (peca === "faldilla") {
-    mides.llarg = parseInt(document.getElementById("llargFaldilla").value);
+    mides.llarg = parseInt(document.getElementById("llargFaldilla").value, 10);
     if (isNaN(mides.llarg)) {
       alert("Introdueix un valor vàlid per al llarg de la faldilla.");
       return;
     }
   } else if (peca === "brusa") {
-    mides.talleEspatlles = parseInt(document.getElementById("talleEspatlles").value);
-    mides.pit = parseInt(document.getElementById("pit").value);
-    mides.torax = parseInt(document.getElementById("torax").value);
-    mides.altDePit = parseInt(document.getElementById("altDePit").value);
-    mides.coll = parseInt(document.getElementById("coll").value);
-    mides.sisa = parseInt(document.getElementById("sisa").value);
-    mides.caiguda = parseInt(document.getElementById("caiguda").value);
-    mides.espatllesTotal = parseInt(document.getElementById("espatllesTotal").value);
-    mides.talleDavanter = parseInt(document.getElementById("talleDavanter").value);
+    mides.talleEspatlles = parseInt(document.getElementById("talleEspatlles").value, 10);
+    mides.pit = parseInt(document.getElementById("pit").value, 10);
+    mides.torax = parseInt(document.getElementById("torax").value, 10);
+    mides.altDePit = parseInt(document.getElementById("altDePit").value, 10);
+    mides.coll = parseInt(document.getElementById("coll").value, 10);
+    mides.sisa = parseInt(document.getElementById("sisa").value, 10);
+    mides.caiguda = parseInt(document.getElementById("caiguda").value, 10);
+    mides.espatllesTotal = parseInt(document.getElementById("espatllesTotal").value, 10);
+    mides.talleDavanter = parseInt(document.getElementById("talleDavanter").value, 10);
 
     if (Object.values(mides).some(v => isNaN(v))) {
       alert("Revisa que totes les mides de la brusa estiguin introduïdes correctament.");
@@ -92,7 +92,6 @@ function dibuixaPatro(p) {
     }
 
     else if (tipus === "brusa") {
-      const escala = 10;
       const espatlles = mides.espatllesTotal * escala;
       const talleEspatlles = mides.talleEspatlles * escala;
       const coll = mides.coll * escala;
@@ -100,44 +99,42 @@ function dibuixaPatro(p) {
       const sisa = mides.sisa * escala;
       const cintura = mides.cintura * escala;
       const caiguda = mides.caiguda * escala;
-      const marge = espatlles/2+20*escala +10;
-      const talleDavanter=mides.talleDavanter*escala;
+      const marge = espatlles / 2 + 20 * escala + 10;
+      const talleDavanter = mides.talleDavanter * escala;
       const altDePit = mides.altDePit * escala;
       const pit = mides.pit * escala;
 
-    p.rect(10, 10, espatlles / 2, talleEspatlles);
-p.line(10 + coll / 6, 10, 10 + espatlles / 2, 10 + (talleEspatlles - caiguda)); // hombro
-p.line(10 + torax / 4, talleEspatlles - caiguda + sisa + 10, 10 + cintura / 4 + 2 * escala, 10 + talleEspatlles); // igual
-p.line(10 + cintura / 8 + 1.5 * escala, talleEspatlles - caiguda + sisa + 10, 10 + (cintura / 8), 10 + talleEspatlles); // pinça
-p.line(10 + cintura / 8 + 1.5 * escala, talleEspatlles - caiguda + sisa + 10, 10 + (cintura / 8) + 3 * escala, 10 + talleEspatlles); // pinça
-p.line(10, 10 + talleEspatlles, 10 + (cintura / 4) + 2 * escala, 10 + talleEspatlles); // cintura
+      // Part esquerra - esquena
+      p.rect(10, 10, espatlles / 2, talleEspatlles);
+      p.line(10 + coll / 6, 10, 10 + espatlles / 2, 10 + (talleEspatlles - caiguda)); // espatlla
+      p.line(10 + torax / 4, talleEspatlles - caiguda + sisa + 10, 10 + cintura / 4 + 2 * escala, 10 + talleEspatlles); // cintura
+      p.line(10 + cintura / 8 + 1.5 * escala, talleEspatlles - caiguda + sisa + 10, 10 + (cintura / 8), 10 + talleEspatlles); // pinça esquerra
+      p.line(10 + cintura / 8 + 1.5 * escala, talleEspatlles - caiguda + sisa + 10, 10 + (cintura / 8) + 3 * escala, 10 + talleEspatlles); // pinça dreta
+      p.line(10, 10 + talleEspatlles, 10 + (cintura / 4) + 2 * escala, 10 + talleEspatlles); // línia cintura
 
-// Bezier corregit: 8 arguments
-// Corba realista de la sisa
-p.bezier(
-  10 + espatlles / 2, 10 + (talleEspatlles - caiguda),      // Punt inicial (final espatlla)
-  10 + espatlles / 2 - 2 * escala, 10 + (talleEspatlles - caiguda) + 5 * escala,  // Control 1
-  10 + torax / 4 - 5 * escala, 10 + sisa ,                // Control 2
-  10 + torax / 4, talleEspatlles - caiguda + sisa + 10       // Punt final (inici lateral)
-);
-p.bezier(10, 10 + 1 * escala,10 + coll / 8, 10 + 1 * escala,10 + 2 * escala, 10 + 1 * escala,10 + coll / 6, 10); // sisa
-//davant
-    p.rect(marge, 10, torax / 4, talleDavanter);
-// línia espatlla
-p.line(marge + coll / 6,10,marge + torax / 4 - (torax / 4 - espatlles / 2),10 + (talleEspatlles - caiguda));
-// línia alt de pit
-p.line(marge + torax / 4,10 + altDePit,marge + torax / 4 - (pit / 2),10 + altDePit);
-// línia cintura
-p.line(marge + torax / 4,10 + talleDavanter,marge + torax / 4 - (cintura / 4 + 4 * escala),10 + talleDavanter);
-// pinça davanter - costat esquerre
-p.line(marge + torax / 4 - cintura / 8,10 + talleDavanter,marge + torax / 4 - cintura / 8 - 1.5 * escala,10 + altDePit);     
-// pinça davanter - costat dret
-p.line(marge + torax / 4 - cintura / 8 - 3 * escala,10 + talleDavanter,marge + torax / 4 - cintura / 8 - 1.5 * escala,10 + altDePit);
+      // Corba realista de la sisa (Bezier)
+      p.bezier(
+        10 + espatlles / 2, 10 + (talleEspatlles - caiguda),
+        10 + espatlles / 2 - 2 * escala, 10 + (talleEspatlles - caiguda) + 5 * escala,
+        10 + torax / 4 - 5 * escala, 10 + sisa,
+        10 + torax / 4, talleEspatlles - caiguda + sisa + 10
+      );
 
+      p.bezier(
+        10, 10 + 1 * escala,
+        10 + coll / 8, 10 + 1 * escala,
+        10 + 2 * escala, 10 + 1 * escala,
+        10 + coll / 6, 10
+      );
 
-
-
-    }  
+      // Part dreta - davanter
+      p.rect(marge, 10, torax / 4, talleDavanter);
+      p.line(marge + coll / 6, 10, marge + torax / 4 - (torax / 4 - espatlles / 2), 10 + (talleEspatlles - caiguda)); // línia espatlla
+      p.line(marge + torax / 4, 10 + altDePit, marge + torax / 4 - (pit / 2), 10 + altDePit); // línia alt de pit
+      p.line(marge + torax / 4, 10 + talleDavanter, marge + torax / 4 - (cintura / 4 + 4 * escala), 10 + talleDavanter); // línia cintura
+      p.line(marge + torax / 4 - cintura / 8, 10 + talleDavanter, marge + torax / 4 - cintura / 8 - 1.5 * escala, 10 + altDePit); // pinça esquerra
+      p.line(marge + torax / 4 - cintura / 8 - 3 * escala, 10 + talleDavanter, marge + torax / 4 - cintura / 8 - 1.5 * escala, 10 + altDePit); // pinça dreta
+    }
   };
 }
 
