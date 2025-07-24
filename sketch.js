@@ -170,11 +170,12 @@ p.line(x1, y1, x2, y2);
 
 
 const xSisa = 10 + espatlles / 2;
-const ySisaInici = 10;
+const ySisaInici = 10 + (talleEspatlles - caiguda);
 const ySisaFinal = ySisaInici + sisa;
 
-p.stroke(0, 0, 255); // blau per destacar
+p.stroke('blue');
 p.line(xSisa, ySisaInici, xSisa, ySisaFinal);
+
     }
   };
 }
