@@ -135,46 +135,34 @@ function dibuixaPatro(p) {
       p.line(marge + torax / 4 - cintura / 8, 10 + talleDavanter, marge + torax / 4 - cintura / 8 - 1.5 * escala, 10 + altDePit); // pinça esquerra
       p.line(marge + torax / 4 - cintura / 8 - 3 * escala, 10 + talleDavanter, marge + torax / 4 - cintura / 8 - 1.5 * escala, 10 + altDePit); // pinça dreta
 
-      const x1 = 10 + torax / 4;
-const y1 = talleEspatlles - caiguda + sisa + 10;
-const x2 = 10 + cintura / 4 + 2 * escala;
-const y2 = 10 + talleEspatlles;
+     // 1r segment: calcular llarg
+const xL1 = 10 + torax / 4;
+const yL1 = talleEspatlles - caiguda + sisa + 10;
+const xL2 = 10 + cintura / 4 + 2 * escala;
+const yL2 = 10 + talleEspatlles;
 
-const llarg = Math.sqrt((x2 - x1)**2 + (y2 - y1)**2);
-const x1 = marge + (cintura / 4 + 4 * escala);
-const y1 = 10 + talleDavanter;
+const llarg = Math.sqrt((xL2 - xL1)**2 + (yL2 - yL1)**2);
 
-const xp = marge + (pit / 2);
-const yp = 10 + altDePit;
+// 2n segment: línia en nova direcció amb el mateix llarg
+const xA = marge + (cintura / 4 + 4 * escala);
+const yA = 10 + talleDavanter;
 
-// Direcció del vector
-const dx = xp - x1;
-const dy = yp - y1;
+const xB = marge + (pit / 2);
+const yB = 10 + altDePit;
 
-// Mòdul del vector
+const dx = xB - xA;
+const dy = yB - yA;
 const modul = Math.sqrt(dx * dx + dy * dy);
 
-// Normalitzem per obtenir el vector unitari
 const ux = dx / modul;
 const uy = dy / modul;
 
-// Calculem el segon punt per tenir una línia del mateix llarg
-const x2 = x1 + ux * llarg;
-const y2 = y1 + uy * llarg;
+const xFinal = xA + ux * llarg;
+const yFinal = yA + uy * llarg;
 
-// Dibuixa la línia
-p.stroke(255, 0, 0); // vermella perquè es vegi
-p.line(x1, y1, x2, y2);
+p.stroke(255, 0, 0); // vermell
+p.line(xA, yA, xFinal, yFinal);
 
-
-
-
-const xSisa = 10 + espatlles / 2;
-const ySisaInici = 10 + (talleEspatlles - caiguda);
-const ySisaFinal = ySisaInici + sisa;
-
-p.stroke('blue');
-p.line(xSisa, ySisaInici, xSisa, ySisaFinal);
 
     }
   };
