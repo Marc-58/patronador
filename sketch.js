@@ -166,6 +166,15 @@ const y2 = y1 + uy * llarg;
 p.stroke(255, 0, 0); // vermella perquè es vegi
 p.line(x1, y1, x2, y2);
 
+
+
+
+const xSisa = 10 + espatlles / 2;
+const ySisaInici = 10;
+const ySisaFinal = ySisaInici + sisa;
+
+p.stroke(0, 0, 255); // blau per destacar
+p.line(xSisa, ySisaInici, xSisa, ySisaFinal);
     }
   };
 }
