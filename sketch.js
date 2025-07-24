@@ -141,6 +141,30 @@ const x2 = 10 + cintura / 4 + 2 * escala;
 const y2 = 10 + talleEspatlles;
 
 const llarg = Math.sqrt((x2 - x1)**2 + (y2 - y1)**2);
+const x1 = marge + (cintura / 4 + 4 * escala);
+const y1 = 10 + talleDavanter;
+
+const xp = marge + (pit / 2);
+const yp = 10 + altDePit;
+
+// Direcció del vector
+const dx = xp - x1;
+const dy = yp - y1;
+
+// Mòdul del vector
+const modul = Math.sqrt(dx * dx + dy * dy);
+
+// Normalitzem per obtenir el vector unitari
+const ux = dx / modul;
+const uy = dy / modul;
+
+// Calculem el segon punt per tenir una línia del mateix llarg
+const x2 = x1 + ux * llarg;
+const y2 = y1 + uy * llarg;
+
+// Dibuixa la línia
+p.stroke(255, 0, 0); // vermella perquè es vegi
+p.line(x1, y1, x2, y2);
 
     }
   };
