@@ -154,15 +154,13 @@ if (tipus === "faldilla") {
   const yFinal = yA + uy * llarg;
   p.stroke(255, 0, 0);
   p.line(xA, yA, xFinal, yFinal);
+  
+const sisaVertical = √(((sisa)*(sisa))-((torax/4- espatlles/2)*(torax/4- espatlles/2)))
+  p.line(marge + torax / 4 - cintura / 8, 10 + talleDavanter, marge + torax / 4 , 10 + (talleEspatlles - caiguda)+sisaVertical);
 
-const xSisa = marge + espatlles / 2; // Aquí ajustem per agafar el costat dret de l'espatlla (marge + espatlles/2)
-      const ySisaInici = 10 + (talleEspatlles - caiguda);
-      const ySisaFinal = ySisaInici + sisa;
-
-      p.stroke('blue'); // línia en blau perquè es vegi bé
-      p.line(xSisa, ySisaInici, xSisa, ySisaFinal);
+    
 }
-```
+
 
 };
 }
