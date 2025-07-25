@@ -173,9 +173,7 @@ if (valor >= 0) {
 
   
 
-  p.stroke(0);
-  p.line(10 + cintura / 8 + 1.5 * escala, talleEspatlles - caiguda + sisa + 10, marge + torax / 4, 10 + (talleEspatlles - caiguda) + sisaVertical
-  );
+
 }}
 ```
 
