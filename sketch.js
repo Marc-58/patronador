@@ -1,4 +1,4 @@
-""let tipus = "";
+let tipus = "";
 let mides = {};
 
 function mostrarOpcions() {
@@ -49,7 +49,7 @@ if (Object.values(mides).some(v => isNaN(v))) {
 }
 
 const container = document.getElementById("canvas-container");
-container.innerHTML = ''; // Neteja canvas anterior
+container.innerHTML = '';
 new p5(dibuixaPatro, container);
 }
 
@@ -68,7 +68,6 @@ if (tipus === "faldilla") {
   const llarg = mides.llarg * escala;
   const marge = 10;
 
-  // Frontal
   p.line(marge, marge, marge, marge + llarg);
   p.line(marge, marge + llarg, marge + cadera / 4 + escala, marge + llarg);
   p.line(marge, marge, marge + cintura / 4 + 4 * escala, marge);
@@ -79,7 +78,6 @@ if (tipus === "faldilla") {
   p.line(pinçaX1, marge, pinçaX1 + 1.5 * escala, marge + 10 * escala);
   p.line(pinçaX1 + 3 * escala, marge, pinçaX1 + 1.5 * escala, marge + 10 * escala);
 
-  // Darrere
   const sep = 150;
   const marge2 = marge + cadera / 4 + sep;
 
@@ -105,7 +103,6 @@ if (tipus === "faldilla") {
   const altDePit = mides.altDePit * escala;
   const pit = mides.pit * escala;
 
-  // Part esquerra - esquena
   p.rect(10, 10, espatlles / 2, talleEspatlles);
   p.line(10 + coll / 6, 10, 10 + espatlles / 2, 10 + (talleEspatlles - caiguda));
   p.line(10 + torax / 4, talleEspatlles - caiguda + sisa + 10, 10 + cintura / 4 + 2 * escala, 10 + talleEspatlles);
@@ -127,7 +124,6 @@ if (tipus === "faldilla") {
     10 + coll / 6, 10
   );
 
-  // Part dreta - davanter
   p.rect(marge, 10, torax / 4, talleDavanter);
   p.line(marge + coll / 6, 10, marge + torax / 4 - (torax / 4 - espatlles / 2), 10 + (talleEspatlles - caiguda));
   p.line(marge, 10 + altDePit, marge + pit / 2, 10 + altDePit);
@@ -135,7 +131,6 @@ if (tipus === "faldilla") {
   p.line(marge + torax / 4 - cintura / 8, 10 + talleDavanter, marge + torax / 4 - cintura / 8 - 1.5 * escala, 10 + altDePit);
   p.line(marge + torax / 4 - cintura / 8 - 3 * escala, 10 + talleDavanter, marge + torax / 4 - cintura / 8 - 1.5 * escala, 10 + altDePit);
 
-  // línia vermella del mateix llarg en nova direcció
   const xL1 = 10 + torax / 4;
   const yL1 = talleEspatlles - caiguda + sisa + 10;
   const xL2 = 10 + cintura / 4 + 2 * escala;
@@ -148,27 +143,32 @@ if (tipus === "faldilla") {
   const dx = xB - xA;
   const dy = yB - yA;
   const modul = Math.sqrt(dx * dx + dy * dy);
-  const ux = dx / modul;
-  const uy = dy / modul;
+  let ux = 0, uy = 0;
+  if (modul !== 0) {
+    ux = dx / modul;
+    uy = dy / modul;
+  }
   const xFinal = xA + ux * llarg;
   const yFinal = yA + uy * llarg;
   p.stroke(255, 0, 0);
   p.line(xA, yA, xFinal, yFinal);
-  
-const sisaVertical = Math.sqrt(
-  (sisa * sisa) - Math.pow((torax / 4 - espatlles / 2), 2)
-);
 
-p.line(
-  marge + torax / 4 - cintura / 8,
-  10 + talleDavanter,
-  marge + torax / 4,
-  10 + (talleEspatlles - caiguda) + sisaVertical
-);
+  const diferent = (torax / 4 - espatlles / 2);
+  const valor = (sisa * sisa) - diferent * diferent;
+  let sisaVertical = 0;
+  if (valor >= 0) {
+    sisaVertical = Math.sqrt(valor);
+  }
 
-    
+  p.stroke(0);
+  p.line(
+    marge + torax / 4 - cintura / 8,
+    10 + talleDavanter,
+    marge + torax / 4,
+    10 + (talleEspatlles - caiguda) + sisaVertical
+  );
 }
-
+```
 
 };
 }
@@ -183,4 +183,3 @@ link.href = canvas.toDataURL();
 link.click();
 }
 }
-
