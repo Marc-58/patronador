@@ -155,8 +155,16 @@ if (tipus === "faldilla") {
   p.stroke(255, 0, 0);
   p.line(xA, yA, xFinal, yFinal);
   
-const sisaVertical = √(((sisa)*(sisa))-((torax/4- espatlles/2)*(torax/4- espatlles/2)))
-  p.line(marge + torax / 4 - cintura / 8, 10 + talleDavanter, marge + torax / 4 , 10 + (talleEspatlles - caiguda)+sisaVertical);
+const sisaVertical = Math.sqrt(
+  (sisa * sisa) - Math.pow((torax / 4 - espatlles / 2), 2)
+);
+
+p.line(
+  marge + torax / 4 - cintura / 8,
+  10 + talleDavanter,
+  marge + torax / 4,
+  10 + (talleEspatlles - caiguda) + sisaVertical
+);
 
     
 }
