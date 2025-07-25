@@ -153,17 +153,30 @@ if (tipus === "faldilla") {
   p.stroke(255, 0, 0);
   p.line(xA, yA, xFinal, yFinal);
 
-  const diferent = (torax / 4 - espatlles / 2);
-  const valor = (sisa * sisa) - diferent * diferent;
-  let sisaVertical = 0;
-  if (valor >= 0) {
-    sisaVertical = Math.sqrt(valor);
-  }
+ // Calcular component vertical per una línia que va de l’espatlla fins al costat del rectangle
+const xIniciSisa = 10 + espatlles / 2;
+const yIniciSisa = 10 + (talleEspatlles - caiguda);
+
+const xFinalSisa = marge + torax / 4;
+const diferent = (torax / 4 - espatlles / 2);
+const valor = (sisa * sisa) - diferent * diferent;
+let sisaVertical = 0;
+
+if (valor >= 0) {
+  sisaVertical = Math.sqrt(valor);
+  const yFinalSisa = yIniciSisa + sisaVertical;
+  p.stroke('green');
+  p.line(xIniciSisa, yIniciSisa, xFinalSisa, yFinalSisa);
+} else {
+  console.warn("Sisa massa petita o relació torax-espatlla massa gran per fer línia vertical coherent.");
+}
+
+  
 
   p.stroke(0);
   p.line(10 + cintura / 8 + 1.5 * escala, talleEspatlles - caiguda + sisa + 10, marge + torax / 4, 10 + (talleEspatlles - caiguda) + sisaVertical
   );
-}
+}}
 ```
 
 };
