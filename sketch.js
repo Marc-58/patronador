@@ -90,7 +90,7 @@ if (tipus === "faldilla") {
   const pinçaX2 = marge2 + cintura / 8 + escala;
   p.line(pinçaX2, marge, pinçaX2 + 1.5 * escala, marge + 10 * escala);
   p.line(pinçaX2 + 3 * escala, marge, pinçaX2 + 1.5 * escala, marge + 10 * escala);
-} else if (tipus === "brusa") {
+}  else if (tipus === "brusa") {
   const espatlles = mides.espatllesTotal * escala;
   const talleEspatlles = mides.talleEspatlles * escala;
   const coll = mides.coll * escala;
@@ -103,6 +103,7 @@ if (tipus === "faldilla") {
   const altDePit = mides.altDePit * escala;
   const pit = mides.pit * escala;
 
+  // Rectangles bàsics
   p.rect(10, 10, espatlles / 2, talleEspatlles);
   p.line(10 + coll / 6, 10, 10 + espatlles / 2, 10 + (talleEspatlles - caiguda));
   p.line(10 + torax / 4, talleEspatlles - caiguda + sisa + 10, 10 + cintura / 4 + 2 * escala, 10 + talleEspatlles);
@@ -110,6 +111,7 @@ if (tipus === "faldilla") {
   p.line(10 + cintura / 8 + 1.5 * escala, talleEspatlles - caiguda + sisa + 10, 10 + cintura / 8 + 3 * escala, 10 + talleEspatlles);
   p.line(10, 10 + talleEspatlles, 10 + cintura / 4 + 2 * escala, 10 + talleEspatlles);
 
+  // corba de la sisa
   p.bezier(
     10 + espatlles / 2, 10 + (talleEspatlles - caiguda),
     10 + espatlles / 2 - 2 * escala, 10 + (talleEspatlles - caiguda) + 5 * escala,
@@ -117,6 +119,7 @@ if (tipus === "faldilla") {
     10 + torax / 4, talleEspatlles - caiguda + sisa + 10
   );
 
+  // coll corb
   p.bezier(
     10, 10 + 1 * escala,
     10 + coll / 8, 10 + 1 * escala,
@@ -124,6 +127,7 @@ if (tipus === "faldilla") {
     10 + coll / 6, 10
   );
 
+  // rectangle davanter
   p.rect(marge, 10, torax / 4, talleDavanter);
   p.line(marge + coll / 6, 10, marge + torax / 4 - (torax / 4 - espatlles / 2), 10 + (talleEspatlles - caiguda));
   p.line(marge, 10 + altDePit, marge + pit / 2, 10 + altDePit);
@@ -131,6 +135,7 @@ if (tipus === "faldilla") {
   p.line(marge + torax / 4 - cintura / 8, 10 + talleDavanter, marge + torax / 4 - cintura / 8 - 1.5 * escala, 10 + altDePit);
   p.line(marge + torax / 4 - cintura / 8 - 3 * escala, 10 + talleDavanter, marge + torax / 4 - cintura / 8 - 1.5 * escala, 10 + altDePit);
 
+  // Línia projectada vermella
   const xL1 = 10 + torax / 4;
   const yL1 = talleEspatlles - caiguda + sisa + 10;
   const xL2 = 10 + cintura / 4 + 2 * escala;
@@ -153,22 +158,21 @@ if (tipus === "faldilla") {
   p.stroke(255, 0, 0);
   p.line(xA, yA, xFinal, yFinal);
 
- // Calcular component vertical per una línia que va de l’espatlla fins al costat del rectangle
-const xIniciSisa = 10 + espatlles / 2;
-const yIniciSisa = 10 + (talleEspatlles - caiguda);
-
-const xFinalSisa = marge + torax / 4;
-const diferent = (torax / 4 - espatlles / 2);
-const valor = (sisa * sisa) - diferent * diferent;
-let sisaVertical = 0;
-
-if (valor >= 0) {
-  sisaVertical = Math.sqrt(valor);
-  const yFinalSisa = yIniciSisa + sisaVertical;
-  p.stroke('green');
-  p.line(xIniciSisa, yIniciSisa, xFinalSisa, yFinalSisa);
-} else {
-  console.warn("Sisa massa petita o relació torax-espatlla massa gran per fer línia vertical coherent.");
+  // Línia vertical des de l’espatlla fins al lateral del rectangle amb hipotenusa = sisa
+  const xIniciSisa = 10 + espatlles / 2;
+  const yIniciSisa = 10 + (talleEspatlles - caiguda);
+  const xFinalSisa = marge + torax / 4;
+  const diferent = (torax / 4 - espatlles / 2);
+  const valor = (sisa * sisa) - diferent * diferent;
+  let sisaVertical = 0;
+  if (valor >= 0) {
+    sisaVertical = Math.sqrt(valor);
+    const yFinalSisa = yIniciSisa + sisaVertical;
+    p.stroke('green');
+    p.line(xIniciSisa, yIniciSisa, xFinalSisa, yFinalSisa);
+  } else {
+    console.warn("⚠️ Sisa massa curta per aquesta configuració.");
+  }
 }
 
   
