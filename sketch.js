@@ -2,14 +2,12 @@ let tipus = "";
 let mides = {};
 
 function mostrarOpcions() {
-  mides.cintura = parseInt(document.getElementById("cintura").value);
-  mides.cadera = parseInt(document.getElementById("cadera").value);
-
+  mides.cintura = parseInt(document.getElementById("cintura").value, 10);
+  mides.cadera = parseInt(document.getElementById("cadera").value, 10);
   if (isNaN(mides.cintura) || isNaN(mides.cadera)) {
-    alert("Falten mides bàsiques");
+    alert("Si us plau, introdueix valors vàlids per a cintura i cadera.");
     return;
   }
-
   document.getElementById("mides-basiques").style.display = "none";
   document.getElementById("triar-peca").style.display = "block";
 }
@@ -17,24 +15,24 @@ function mostrarOpcions() {
 function seleccionar(peca) {
   tipus = peca;
   document.getElementById("triar-peca").style.display = "none";
-  document.querySelectorAll(".formulari").forEach(f => f.style.display = "none");
-  document.getElementById(`${peca}-form`).style.display = "block";
+  document.querySelectorAll('.formulari').forEach(f => f.style.display = 'none');
+  document.getElementById(`${peca}-form`).style.display = 'block';
 }
 
 function generarPatro(peca) {
   if (peca === "faldilla") {
-    mides.llarg = parseInt(document.getElementById("llargFaldilla").value);
+    mides.llarg = parseInt(document.getElementById("llargFaldilla").value, 10);
     if (isNaN(mides.llarg)) {
-      alert("Introdueix un llarg vàlid");
+      alert("Introdueix un valor vàlid per al llarg de la faldilla.");
       return;
     }
   } else if (peca === "brusa") {
-    const camps = ["coll", "talleEspatlles", "talleDavanter", "altDePit", "espatllesTotal", "caiguda", "sisa", "torax", "pit"];
+    const camps = ["talleEspatlles", "pit", "torax", "altDePit", "coll", "sisa", "caiguda", "espatllesTotal", "talleDavanter"];
     for (const camp of camps) {
-      mides[camp] = parseInt(document.getElementById(camp).value);
+      mides[camp] = parseInt(document.getElementById(camp).value, 10);
     }
     if (Object.values(mides).some(v => isNaN(v))) {
-      alert("Comprova totes les mides de la brusa");
+      alert("Revisa que totes les mides de la brusa estiguin introduïdes correctament.");
       return;
     }
   }
@@ -46,100 +44,55 @@ function generarPatro(peca) {
 
 function dibuixaPatro(p) {
   p.setup = function () {
-    p.createCanvas(800, 800);
+    const escala = 10;
+    p.createCanvas(1300, 1300);
     p.background(255);
     p.stroke(0);
-    const escala = 10;
-    const marge = 10;
+    p.noFill();
 
     if (tipus === "faldilla") {
       const cintura = mides.cintura * escala;
       const cadera = mides.cadera * escala;
       const llarg = mides.llarg * escala;
-
+      const marge = 10;
       p.line(marge, marge, marge, marge + llarg);
       p.line(marge, marge + llarg, marge + cadera / 4 + escala, marge + llarg);
-      p.line(marge, marge, marge + cintura / 4 + 4 * escala, marge);
-      p.line(marge + cintura / 4 + 4 * escala, marge, marge + cadera / 4 + escala, marge + 18 * escala);
-      p.line(marge + cadera / 4 + escala, marge + 18 * escala, marge + cadera / 4 + escala, marge + llarg);
-    }
+    } else if (tipus === "brusa") {
+      const cintura = mides.cintura * escala;
+      const espatlles = mides.espatllesTotal * escala;
+      const caiguda = mides.caiguda * escala;
+      const talleEspatlles = mides.talleEspatlles * escala;
+      const coll = mides.coll * escala;
+      const torax = mides.torax * escala;
+      const altDePit = mides.altDePit * escala;
+      const sisa = mides.sisa * escala;
+      const marge = 10;
 
-    if (tipus === "brusa") {
-      const { coll, talleEspatlles, talleDavanter, altDePit, espatllesTotal, caiguda, sisa, torax, pit, cintura } = mides;
-      const escala = 10;
+      // Recte principal
+      p.rect(marge, marge, espatlles / 2, talleEspatlles);
 
-      // Quadrat base
-      const ample = torax / 4 * escala;
-      const alt = talleDavanter * escala;
-      p.rect(marge, 10, ample, alt);
+      // Linia diagonal
+      p.line(marge + coll / 6, marge, marge + espatlles / 2, marge + (talleEspatlles - caiguda));
 
-      // Línia espatlla
-      p.line(
-        marge + coll / 6 * escala,
-        10,
-        marge + espatllesTotal / 2 * escala,
-        10 + (talleEspatlles - caiguda) * escala
-      );
-
-      // Línia cintura
-      const x1 = marge + torax / 4 * escala;
-      const y1 = talleEspatlles * escala - caiguda * escala + sisa * escala + 10;
-      const x2 = marge + cintura / 4 * escala + 2 * escala;
-      const y2 = 10 + talleEspatlles * escala;
-
-      p.stroke('black');
-      p.line(x1, y1, x2, y2);
-
-      // Càlcul de llarg de la línia anterior
-      const llarg = Math.sqrt((x2 - x1)**2 + (y2 - y1)**2);
-
-      // Línia que comença a la cintura i passa pel pit, amb la mateixa llargada
-      const xStart = marge + (cintura / 4 + 4) * escala;
-      const yStart = 10 + talleDavanter * escala;
-      const xp = marge + (pit / 2) * escala;
-      const yp = 10 + altDePit * escala;
-
-      const dx = xp - xStart;
-      const dy = yp - yStart;
-      const modul = Math.sqrt(dx*dx + dy*dy);
-      const ux = dx / modul;
-      const uy = dy / modul;
-      const xEnd = xStart + ux * llarg;
-      const yEnd = yStart + uy * llarg;
-
-      p.stroke('red');
-      p.line(xStart, yStart, xEnd, yEnd);
-
-      // Línia vertical des del final espatlla amb longitud sisa
-      const xSisa = marge + espatllesTotal / 2 * escala;
-      const ySisaInici = 10 + (talleEspatlles - caiguda) * escala;
-      const ySisaFinal = ySisaInici + sisa * escala;
-
-      p.stroke('blue');
-      p.line(xSisa, ySisaInici, xSisa, ySisaFinal);
-
-      // Càlcul de sisaVertical amb √
-      const base = torax / 4 - espatllesTotal / 2;
-      const sisaVertical = Math.sqrt((sisa ** 2) - (base ** 2)) * escala;
-
-      p.stroke('green');
-      p.line(
-        marge + torax / 4 * escala - cintura / 8 * escala,
-        10 + talleDavanter * escala,
-        marge + torax / 4 * escala,
-        10 + (talleEspatlles - caiguda) * escala + sisaVertical
-      );
+      // Linia sisa vertical (amb càlcul)
+      const diferent = (torax / 4 - espatlles / 2);
+      const valor = (sisa * sisa) - diferent * diferent;
+      let sisaVertical = 0;
+      if (valor >= 0) {
+        sisaVertical = Math.sqrt(valor);
+      }
+      p.line(marge + torax / 4 - cintura / 8, marge + mides.talleDavanter * escala, marge + torax / 4, marge + (talleEspatlles - caiguda) + sisaVertical);
     }
   };
 }
 
 function descarregarCanvas() {
-  const canvas = document.querySelector("canvas");
-  if (!canvas) return;
-
-  const link = document.createElement("a");
-  link.download = tipus + "_patro.png";
-  link.href = canvas.toDataURL();
-  link.click();
+  const canvases = document.getElementsByTagName("canvas");
+  if (canvases.length > 0) {
+    const canvas = canvases[0];
+    const link = document.createElement('a');
+    link.download = tipus + '_patro.png';
+    link.href = canvas.toDataURL();
+    link.click();
+  }
 }
-
