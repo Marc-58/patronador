@@ -111,25 +111,35 @@ function dibuixaPatro(p) {
       );
 
       p.rect(marge, 10, torax / 4, talleDavanter);
-      p.line(marge + coll / 6, 10, marge + torax / 4 - (torax / 4 - espatlles / 2), 10 + (talleEspatlles - caiguda));
-      p.line(marge, 10 + altDePit, marge + pit / 2, 10 + altDePit);
-      p.line(marge, 10 + talleDavanter, marge + cintura / 4 + 4 * escala, 10 + talleDavanter);
-      p.line(marge + torax / 4 - cintura / 8, 10 + talleDavanter, marge + torax / 4 - cintura / 8 - 1.5 * escala, 10 + altDePit);
-      p.line(marge + torax / 4 - cintura / 8 - 3 * escala, 10 + talleDavanter, marge + torax / 4 - cintura / 8 - 1.5 * escala, 10 + altDePit);
+  p.line(marge + coll / 6, 10, marge + torax / 4 - (torax / 4 - espatlles / 2), 10 + (talleEspatlles - caiguda));
+  p.line(marge, 10 + altDePit, marge + pit / 2, 10 + altDePit);
+  p.line(marge, 10 + talleDavanter, marge + cintura / 4 + 4 * escala, 10 + talleDavanter);
+  p.line(marge + torax / 4 - cintura / 8, 10 + talleDavanter, marge + torax / 4 - cintura / 8 - 1.5 * escala, 10 + altDePit);
+  p.line(marge + torax / 4 - cintura / 8 - 3 * escala, 10 + talleDavanter, marge + torax / 4 - cintura / 8 - 1.5 * escala, 10 + altDePit);
 
-      const diferent = (torax / 4 - espatlles / 2);
-      const valor = (sisa * sisa) - diferent * diferent;
-      let sisaVertical = 0;
-      if (valor >= 0) {
-        sisaVertical = Math.sqrt(valor);
-      }
+  // Línia projectada vermella
+  const xL1 = 10 + torax / 4;
+  const yL1 = talleEspatlles - caiguda + sisa + 10;
+  const xL2 = 10 + cintura / 4 + 2 * escala;
+  const yL2 = 10 + talleEspatlles;
+  const llarg = Math.sqrt((xL2 - xL1)**2 + (yL2 - yL1)**2);
+  const xA = marge + (cintura / 4 + 4 * escala);
+  const yA = 10 + talleDavanter;
+  const xB = marge + (pit / 2);
+  const yB = 10 + altDePit;
+  const dx = xB - xA;
+  const dy = yB - yA;
+  const modul = Math.sqrt(dx * dx + dy * dy);
+  let ux = 0, uy = 0;
+  if (modul !== 0) {
+    ux = dx / modul;
+    uy = dy / modul;
+  }
+  const xFinal = xA + ux * llarg;
+  const yFinal = yA + uy * llarg;
+  p.stroke(255, 0, 0);
+  p.line(xA, yA, xFinal, yFinal);
 
-      p.stroke(0);
-      p.line(
-        marge + torax / 4 - cintura / 8,
-        10 + talleDavanter,
-        marge + torax / 4,
-        10 + (talleEspatlles - caiguda) + sisaVertical
       );
     }
   };
