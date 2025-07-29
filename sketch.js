@@ -18,7 +18,7 @@ function seleccionar(peca) {
   tipus = peca;
   document.getElementById("triar-peca").style.display = "none";
   document.querySelectorAll('.formulari').forEach(f => f.style.display = 'none');
-  document.getElementById(`${peca}-form`).style.display = 'block';
+  document.getElementById(${peca}-form).style.display = 'block';
 }
 
 function generarPatro(peca) {
@@ -140,7 +140,7 @@ function dibuixaPatro(p) {
   p.stroke(255, 0, 0);
   p.line(xA, yA, xFinal, yFinal);
 
-      );
+      
     }
   };
 }
