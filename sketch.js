@@ -145,15 +145,7 @@ function dibuixaPatro(p) {
       p.stroke(255, 0, 0); // vermell
       p.line(xA, yA, xFinal, yFinal);
 
-      // **Línia vertical nova des del final de l'espatlla davantera cap avall amb llargada sisa**
-      const xSisa = marge + espatlles / 2; // Aquí ajustem per agafar el costat dret de l'espatlla (marge + espatlles/2)
-      const ySisaInici = 10 + (talleEspatlles - caiguda);
-      const ySisaFinal = ySisaInici + sisa;
-
-      console.log("Dibuixant línia vertical: ", xSisa, ySisaInici, ySisaFinal);
-
-      p.stroke('blue'); // línia en blau per fer-la visible
-      p.line(xSisa, ySisaInici, xSisa, ySisaFinal);
+     
     }
   };
 }
