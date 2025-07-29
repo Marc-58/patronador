@@ -8,10 +8,12 @@
       font-family: sans-serif;
       padding: 20px;
     }
+
     .formulari, #triar-peca {
       display: none;
       margin-top: 20px;
     }
+
     .opcions-peces img {
       width: 150px;
       margin: 10px;
@@ -19,13 +21,16 @@
       border: 2px solid transparent;
       border-radius: 8px;
     }
+
     .opcions-peces img:hover {
       border-color: #333;
     }
+
     #canvas-container {
       margin-top: 20px;
       text-align: center;
     }
+
     button {
       margin-top: 10px;
       padding: 10px;
@@ -35,6 +40,7 @@
       border-radius: 5px;
       cursor: pointer;
     }
+
     input {
       margin: 5px;
     }
@@ -43,6 +49,7 @@
 <body>
   <h1>Generador de Patrons</h1>
 
+  <!-- PAS 1: Mides bàsiques -->
   <div id="mides-basiques">
     <h2>Pas 1: Introdueix mides bàsiques</h2>
     Cintura: <input id="cintura" type="number"><br>
@@ -50,6 +57,7 @@
     <button onclick="mostrarOpcions()">Continuar</button>
   </div>
 
+  <!-- PAS 2: Tria la peça -->
   <div id="triar-peca">
     <h2>Pas 2: Tria la peça</h2>
     <div class="opcions-peces" style="display:flex; gap:20px; justify-content:center;">
@@ -60,12 +68,14 @@
     </div>
   </div>
 
+  <!-- Formulari de faldilla -->
   <div id="faldilla-form" class="formulari">
     <h2>Faldilla</h2>
     Llarg: <input id="llargFaldilla" type="number"><br>
     <button onclick="generarPatro('faldilla')">Generar patró</button>
   </div>
 
+  <!-- Formulari de brusa -->
   <div id="brusa-form" class="formulari">
     <h2>Brusa</h2>
     Coll: <input id="coll" type="number"><br>
@@ -79,7 +89,9 @@
     Pit: <input id="pit" type="number"><br>
     <button onclick="generarPatro('brusa')">Generar patró</button>
   </div>
+  
 
+  <!-- Canvas i botó de descàrrega -->
   <div id="canvas-container"></div>
   <button onclick="descarregarCanvas()">Descarregar imatge</button>
 
