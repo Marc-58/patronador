@@ -1,5 +1,5 @@
-let tipus = "";
 let mides = {};
+let tipus; // Declarar la variable tipus
 
 function mostrarOpcions() {
   mides.cintura = parseInt(document.getElementById("cintura").value, 10);
@@ -18,7 +18,7 @@ function seleccionar(peca) {
   tipus = peca;
   document.getElementById("triar-peca").style.display = "none";
   document.querySelectorAll('.formulari').forEach(f => f.style.display = 'none');
-  document.getElementById(${peca}-form).style.display = 'block';
+  document.getElementById(peca + '-form').style.display = 'block'; // Correcció aquí
 }
 
 function generarPatro(peca) {
@@ -59,7 +59,7 @@ function dibuixaPatro(p) {
     p.noFill();
 
     if (tipus === "faldilla") {
-const cintura = mides.cintura * escala;
+      const cintura = mides.cintura * escala;
       const cadera = mides.cadera * escala;
       const llarg = mides.llarg * escala;
       const marge = 10;
@@ -72,8 +72,8 @@ const cintura = mides.cintura * escala;
 
       const pinçaX1 = marge + cintura / 8;
       p.line(pinçaX1, marge, pinçaX1 + 1.5 * escala, marge + 10 * escala);
-      p.line(pinçaX1 + 3 * escala, marge, pinçaX1 + 1.5 * escala, marge + 10 * escala);    }
-    else if (tipus === "brusa") {
+      p.line(pinçaX1 + 3 * escala, marge, pinçaX1 + 1.5 * escala, marge + 10 * escala);
+    } else if (tipus === "brusa") {
       const espatlles = mides.espatllesTotal * escala;
       const talleEspatlles = mides.talleEspatlles * escala;
       const coll = mides.coll * escala;
@@ -112,8 +112,8 @@ const cintura = mides.cintura * escala;
       // Part dreta - davanter
       p.rect(marge, 10, torax / 4, talleDavanter);
       p.line(marge + coll / 6, 10, marge + torax / 4 - (torax / 4 - espatlles / 2), 10 + (talleEspatlles - caiguda)); // línia espatlla
-      p.line(marge , 10 + altDePit, marge + (pit / 2), 10 + altDePit); // línia alt de pit
-      p.line(marge , 10 + talleDavanter, marge + (cintura / 4 + 4 * escala), 10 + talleDavanter); // línia cintura
+      p.line(marge, 10 + altDePit, marge + (pit / 2), 10 + altDePit); // línia alt de pit
+      p.line(marge, 10 + talleDavanter, marge + (cintura / 4 + 4 * escala), 10 + talleDavanter); // línia cintura
       p.line(marge + torax / 4 - cintura / 8, 10 + talleDavanter, marge + torax / 4 - cintura / 8 - 1.5 * escala, 10 + altDePit); // pinça esquerra
       p.line(marge + torax / 4 - cintura / 8 - 3 * escala, 10 + talleDavanter, marge + torax / 4 - cintura / 8 - 1.5 * escala, 10 + altDePit); // pinça dreta
 
@@ -158,7 +158,6 @@ const cintura = mides.cintura * escala;
   };
 }
 
-
 function descarregarCanvas() {
   const canvases = document.getElementsByTagName("canvas");
   if (canvases.length > 0) {
@@ -169,3 +168,4 @@ function descarregarCanvas() {
     link.click();
   }
 }
+
