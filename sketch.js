@@ -137,7 +137,10 @@ function dibuixaPatro(p) {
       p.stroke(255, 0, 0); // vermell
       p.line(xA, yA, xFinal, yFinal);
 
-      p.line(marge +  torax / 4, 10+sisa , marge + torax / 4 - (torax / 4 - espatlles / 2), 10 + (talleEspatlles - caiguda)); // línia espatlla
+      p.line(marge +  torax / 4, 10+sisa , marge + torax / 4 - (torax / 4 - espatlles / 2), 10 + (talleEspatlles - caiguda)); // línia sisa
+      p.line(marge +  torax / 4, 10+sisa ,  marge + torax / 4 - cintura / 8 - 1.5 * escala, 10 + altDePit); // línia sisa
+       p.line (marge + torax / 4 - cintura / 8 - 1.5 * escala, 10 + altDePit, xFinal, yFinal);
+
 
      
     }
