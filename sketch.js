@@ -138,21 +138,24 @@ function dibuixaPatro(p) {
       p.line(xA, yA, xFinal, yFinal);
 
       p.line(marge +  torax / 4, 10+sisa , marge + torax / 4 - (torax / 4 - espatlles / 2), 10 + (talleEspatlles - caiguda)); // línia sisa
-      p.bezier(
-  marge + torax / 4, 10 + sisa, // punt inferior de la sisa
-  marge + torax / 4 - 4*escala, 10 + sisa /3, // primer punt de control (cap a l'interior i amunt)
-  marge + torax / 4 - 10 * escala, 10 + sisa /3 *2, // segon punt de control (cap a l'espatlla)
-  marge + torax / 4 - (torax / 4 - espatlles / 2), 10 + (talleEspatlles - caiguda) // punt superior de la sisa (cap a l'espatlla)
+ p.bezier(
+  marge + torax / 4 + escala, 10 + sisa, // Punt inferior lleugerament a l'esquerra
+  marge + torax / 4 - 4 * escala, 10 + sisa / 3, // Primer punt de control
+  marge + torax / 4 - 10 * escala, 10 + (2 * sisa / 3), // Segon punt de control
+  marge + torax / 4 - (torax / 4 - espatlles / 2) + escala, 10 + (talleEspatlles - caiguda) // Punt superior lleugerament a la dreta
+);
+
 );
       p.line(marge +  torax / 4, 10+sisa ,  marge + torax / 4 - cintura / 8 - 1.5 * escala, 10 + altDePit); // línia sisa
        p.line (marge + torax / 4 - cintura / 8 - 1.5 * escala, 10 + altDePit, xFinal, yFinal);
 
 p.bezier(
-  marge, 10 + coll / 6 + 2 * escala,                  // punt inferior (base del coll)
-  marge + coll / 12, 10 + coll / 6,                   // primer punt de control
-  marge + coll / 8, 10 + escala,                      // segon punt de control
-  marge + coll / 6, 10                                // punt superior (clatell)
+  marge, 10 + coll / 6 + 2 * escala,                      // punt inferior (base del coll)
+  marge + coll / 4, 10 + coll / 6 + escala,               // primer punt de control (més a la dreta, més suau)
+  marge + coll / 3.5, 10 + escala,                        // segon punt de control (puja abans)
+  marge + coll / 6, 10                                    // punt superior (clatell)
 );
+
 
      
     }
