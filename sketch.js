@@ -165,14 +165,10 @@ p.line(
 
 // Coll davanter (arrodonit)
 p.bezier(
-  marge,
-  10 + coll / 6 + 2 * escala,                    // Punt inferior (base del coll)
-  marge + coll / 4,
-  10 + coll / 6 + escala,                        // 1r punt de control (cap a la dreta)
-  marge + coll / 3.5,
-  10 + escala,                                   // 2n punt de control
-  marge + coll / 6,
-  10                                           // Punt superior (clatell)
+  marge, 10 + coll / 6 + 2 * escala,                  // punt inferior (base del coll)
+  marge + coll / 12, 10 + coll / 6,                   // primer punt de control
+  marge + coll / 8, 10 + escala,                      // segon punt de control
+  marge + coll / 6, 10                                // punt superior (clatell)
 );
 
 
