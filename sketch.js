@@ -139,6 +139,7 @@ function dibuixaPatro(p) {
 
       p.line(marge +  torax / 4, 10+sisa , marge + torax / 4 - (torax / 4 - espatlles / 2), 10 + (talleEspatlles - caiguda)); // línia sisa
 // Sisa davantera (corba)
+        
 p.bezier(
   marge + torax / 4 + escala, 10 + sisa,                                  // Punt inferior lleugerament a l'esquerra
   marge + torax / 4 - 4 * escala, 10 + sisa / 3,                          // Primer punt de control
@@ -163,13 +164,13 @@ p.line(
   yFinal
 );
 
-// Coll davanter (arrodonit)
 p.bezier(
   marge, 10 + coll / 6 + 2 * escala,                  // punt inferior (base del coll)
   marge + coll / 12, 10 + coll / 6,                   // primer punt de control
   marge + coll / 8, 10 + escala,                      // segon punt de control
   marge + coll / 6, 10                                // punt superior (clatell)
 );
+                     
 
 
 
