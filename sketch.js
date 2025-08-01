@@ -138,23 +138,43 @@ function dibuixaPatro(p) {
       p.line(xA, yA, xFinal, yFinal);
 
       p.line(marge +  torax / 4, 10+sisa , marge + torax / 4 - (torax / 4 - espatlles / 2), 10 + (talleEspatlles - caiguda)); // línia sisa
- p.bezier(
-  marge + torax / 4 + escala, 10 + sisa, // Punt inferior lleugerament a l'esquerra
-  marge + torax / 4 - 4 * escala, 10 + sisa / 3, // Primer punt de control
-  marge + torax / 4 - 10 * escala, 10 + (sisa / 3)*2, // Segon punt de control
-  marge + torax / 4 - (torax / 4 - espatlles / 2) + escala, 10 + (talleEspatlles - caiguda) // Punt superior lleugerament a la dreta
-);
-
-);
-      p.line(marge +  torax / 4, 10+sisa ,  marge + torax / 4 - cintura / 8 - 1.5 * escala, 10 + altDePit); // línia sisa
-       p.line (marge + torax / 4 - cintura / 8 - 1.5 * escala, 10 + altDePit, xFinal, yFinal);
-
+// Sisa davantera (corba)
 p.bezier(
-  marge, 10 + coll / 6 + 2 * escala,                      // punt inferior (base del coll)
-  marge + coll / 4, 10 + coll / 6 + escala,               // primer punt de control (més a la dreta, més suau)
-  marge + coll / 3.5, 10 + escala,                        // segon punt de control (puja abans)
-  marge + coll / 6, 10                                    // punt superior (clatell)
+  marge + torax / 4 + escala, 10 + sisa,                                  // Punt inferior lleugerament a l'esquerra
+  marge + torax / 4 - 4 * escala, 10 + sisa / 3,                          // Primer punt de control
+  marge + torax / 4 - 10 * escala, 10 + (sisa / 3) * 2,                   // Segon punt de control
+  marge + torax / 4 - (torax / 4 - espatlles / 2) + escala,              // Punt superior lleugerament a la dreta
+  10 + (talleEspatlles - caiguda)
 );
+
+// Línia vertical des de la sisa fins a l'altura de pit
+p.line(
+  marge + torax / 4,
+  10 + sisa,
+  marge + torax / 4 - cintura / 8 - 1.5 * escala,
+  10 + altDePit
+);
+
+// Línia diagonal des de l'altura de pit fins al final projectat
+p.line(
+  marge + torax / 4 - cintura / 8 - 1.5 * escala,
+  10 + altDePit,
+  xFinal,
+  yFinal
+);
+
+// Coll davanter (arrodonit)
+p.bezier(
+  marge,
+  10 + coll / 6 + 2 * escala,                    // Punt inferior (base del coll)
+  marge + coll / 4,
+  10 + coll / 6 + escala,                        // 1r punt de control (cap a la dreta)
+  marge + coll / 3.5,
+  10 + escala,                                   // 2n punt de control
+  marge + coll / 6,
+  10                                           // Punt superior (clatell)
+);
+
 
 
      
