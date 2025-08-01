@@ -147,6 +147,12 @@ function dibuixaPatro(p) {
       p.line(marge +  torax / 4, 10+sisa ,  marge + torax / 4 - cintura / 8 - 1.5 * escala, 10 + altDePit); // línia sisa
        p.line (marge + torax / 4 - cintura / 8 - 1.5 * escala, 10 + altDePit, xFinal, yFinal);
 
+p.bezier(
+  marge, 10 + coll / 6 + 2 * escala,                  // punt inferior (base del coll)
+  marge + coll / 12, 10 + coll / 6,                   // primer punt de control
+  marge + coll / 8, 10 + escala,                      // segon punt de control
+  marge + coll / 6, 10                                // punt superior (clatell)
+);
 
      
     }
