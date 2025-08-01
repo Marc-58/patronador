@@ -134,10 +134,16 @@ function dibuixaPatro(p) {
       const uy = dy / modul;
       const xFinal = xA + ux * llarg;
       const yFinal = yA + uy * llarg;
-      p.stroke(255, 0, 0); // vermell
+     
       p.line(xA, yA, xFinal, yFinal);
 
       p.line(marge +  torax / 4, 10+sisa , marge + torax / 4 - (torax / 4 - espatlles / 2), 10 + (talleEspatlles - caiguda)); // línia sisa
+      p.bezier(
+  marge + torax / 4, 10 + sisa, // punt inferior de la sisa
+  marge + torax / 4 - escala, 10 + sisa - escala, // primer punt de control (cap a l'interior i amunt)
+  marge + torax / 4 - 2 * escala, 10 + (talleEspatlles - caiguda) + escala, // segon punt de control (cap a l'espatlla)
+  marge + torax / 4 - (torax / 4 - espatlles / 2), 10 + (talleEspatlles - caiguda) // punt superior de la sisa (cap a l'espatlla)
+);
       p.line(marge +  torax / 4, 10+sisa ,  marge + torax / 4 - cintura / 8 - 1.5 * escala, 10 + altDePit); // línia sisa
        p.line (marge + torax / 4 - cintura / 8 - 1.5 * escala, 10 + altDePit, xFinal, yFinal);
 
