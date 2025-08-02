@@ -164,7 +164,14 @@ p.line(
   yFinal
 );
 
-p.arc( marge, 10, coll/6, coll/6+2*escala, 0, p.HALF_PI);
+p.arc(
+  marge + coll / 6,                         // x: mou el centre cap a la dreta
+  10 + coll / 6 + 2 * escala,               // y: mou el centre cap avall
+  coll / 3,                                 // amplada
+  coll / 3,                                 // alçada
+  p.PI + p.HALF_PI,                         // angle inici (180° + 90° = 270°)
+  0                                         // angle final (0°)
+);
 
 
 
