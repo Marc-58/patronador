@@ -141,10 +141,10 @@ function dibuixaPatro(p) {
 // Sisa davantera (corba)
         
 p.bezier(
-  marge + torax / 4 + escala, 10 + sisa,                                  // Punt inferior lleugerament a l'esquerra
-  marge + torax / 4 - 4 * escala, 10 + sisa / 3,                          // Primer punt de control
-  marge + torax / 4 - 10 * escala, 10 + (sisa / 3) * 2,                   // Segon punt de control
-  marge + torax / 4 - (torax / 4 - espatlles / 2) + escala,              // Punt superior lleugerament a la dreta
+  marge + torax / 4 , 10 + sisa,                                  // Punt inferior lleugerament a l'esquerra
+  marge + torax / 4 - 10 * escala, 10 + sisa / 3,                          // Primer punt de control
+  marge + torax / 4 - 5 * escala, 10 + (sisa / 3) * 2,                   // Segon punt de control
+  marge + torax / 4 - (torax / 4 - espatlles / 2) ,              // Punt superior lleugerament a la dreta
   10 + (talleEspatlles - caiguda)
 );
 
