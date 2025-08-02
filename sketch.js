@@ -164,13 +164,8 @@ p.line(
   yFinal
 );
 
-p.bezier(
-  marge, 10 + coll / 6 + 2 * escala,                  // punt inferior (base del coll)
-  marge + coll / 12, 10 + coll / 6,                   // primer punt de control
-  marge + coll / 8, 10 + escala,                      // segon punt de control
-  marge + coll / 6, 10                                // punt superior (clatell)
-);
-                     
+p.arc(10, 10+2*escala, coll/6, coll/6, 0, p.HALF_PI);
+      p.line(10+coll/6,10,10+coll/6,10+2*escala);   
 
 
 
