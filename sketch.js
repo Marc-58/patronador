@@ -143,8 +143,8 @@ function dibuixaPatro(p) {
 p.bezier(
   marge + torax / 4 - (torax / 4 - espatlles / 2) ,              // Punt superior lleugerament a la dreta
   10 + (talleEspatlles - caiguda),                                  // Punt inferior lleugerament a l'esquerra
-  marge + torax / 4 - 5 * escala, 10 + sisa / 3,                          // Primer punt de control
-  marge + torax / 4 - 10 * escala, 10 + (sisa / 4) * 3,                   // Segon punt de control
+  marge + torax / 4 - 2 * escala, 10 + sisa / 3,                          // Primer punt de control
+  marge + torax / 4 - 12 * escala, 10 + (sisa / 4) * 3,                   // Segon punt de control
   marge + torax / 4 , 10 + sisa
 );
 
