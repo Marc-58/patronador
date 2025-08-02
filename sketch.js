@@ -164,8 +164,7 @@ p.line(
   yFinal
 );
 
-p.arc(10, 10+2*escala, coll/6, coll/6, 0, p.HALF_PI);
-      p.line(10+coll/6,10,10+coll/6,10+2*escala);   
+p.arc( marge, 10, coll/6, coll/6+2*escala, 0, p.HALF_PI);
 
 
 
