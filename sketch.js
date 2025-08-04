@@ -53,7 +53,6 @@ function generarPatro(peca) {
 function dibuixaPatro(p) {
   p.setup = function () {
     const escala = 10;
-    const marge = 10;
 
     p.createCanvas(1300, 1300);
     p.background(255);
@@ -61,9 +60,9 @@ function dibuixaPatro(p) {
     p.noFill();
 
     if (tipus === "brusa") {
-      dibuixarPatroBrusa(p, mides, marge, escala);
+      dibuixarPatroBrusa(p, mides, escala);
     } else if (tipus === "faldilla") {
-      dibuixarPatroFaldilla(p, mides, marge, escala);
+      dibuixarPatroFaldilla(p, mides, escala);
     }
   };
 }
