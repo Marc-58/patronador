@@ -89,7 +89,7 @@ p.line(
   yFinal
 );
 
-p.arc(marge, 10, coll/6+2, coll/6 + 4*escala, 0, p.HALF_PI);
+//p.arc(marge, 10, coll/6+2, coll/6 + 4*escala, 0, p.HALF_PI);
 
 
 
