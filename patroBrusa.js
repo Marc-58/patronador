@@ -1,4 +1,4 @@
-function dibuixarPatroBrusa(p, mides, marge, escala) {
+function dibuixarPatroBrusa(p, mides, escala) {
       const espatlles = mides.espatllesTotal * escala;
       const talleEspatlles = mides.talleEspatlles * escala;
       const coll = mides.coll * escala;
