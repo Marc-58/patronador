@@ -3,7 +3,8 @@ function dibuixarPatroFaldilla(p, mides, marge, escala) {
 const cintura = mides.cintura * escala;
       const cadera = mides.cadera * escala;
       const llarg = mides.llarg * escala;
-
+      const marge=10
+      
       p.line(marge, marge, marge, marge + llarg);
       p.line(marge, marge + llarg, marge + cadera / 4 + escala, marge + llarg);
       p.line(marge, marge, marge + cintura / 4 + 4 * escala, marge);
