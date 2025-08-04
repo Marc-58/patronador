@@ -10,7 +10,7 @@
     }
 
     .formulari, #triar-peca {
-      display: none; /* Ocultar formularis fins que siguin necessaris */
+      display: none;
       margin-top: 20px;
     }
 
@@ -23,7 +23,7 @@
     }
 
     .opcions-peces img:hover {
-      border-color: #333; /* Canvi de color al passar el ratolí */
+      border-color: #333;
     }
 
     #canvas-container {
@@ -94,9 +94,11 @@
   <div id="canvas-container"></div>
   <button onclick="descarregarCanvas()">Descarregar imatge</button>
 
+  <!-- P5.js i scripts modulars -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
-  <script src="sketch.js"></script> <!-- Assegura't que 'sketch.js' conté el codi JavaScript -->
+  <script src="patroBrusa.js"></script>
+  <script src="patroFaldilla.js"></script>
+  <script src="sketch.js"></script>
 </body>
 </html>
-
 
