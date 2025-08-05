@@ -55,7 +55,7 @@ function generarPatro(peca) {
     mides.caiguda = parseInt(document.getElementById("caiguda").value, 10);
     mides.espatllesTotal = parseInt(document.getElementById("espatllesTotal").value, 10);
     mides.talleDavanter = parseInt(document.getElementById("talleDavanter").value, 10);
-    mides.altCadera = parseInt(document.getElementById("altDeCadera").value, 10); // Corregit nom
+    mides.altDeCadera = parseInt(document.getElementById("altDeCadera").value, 10); // Corregit nom
 
     if (Object.values(mides).some(v => isNaN(v))) {
       alert("Revisa que totes les mides del cos amb càdera estiguin introduïdes correctament.");
