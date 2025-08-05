@@ -1,4 +1,4 @@
-function dibuixarPatroFaldilla(p, mides, marge, escala) {
+function dibuixarPatroFaldilla(p, mides, escala) {
 
 const cintura = mides.cintura * escala;
   const cadera = mides.cadera * escala;
