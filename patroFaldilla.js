@@ -16,7 +16,7 @@ const cintura = mides.cintura * escala;
       p.line(pinçaX1 + 3 * escala, marge, pinçaX1 + 1.5 * escala, marge + 10 * escala);
 
 
-  const sep = 150;
+  const sep = 150*escala;
  
 
   //p.line(sep, marge, sep, marge + llarg);
