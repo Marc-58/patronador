@@ -18,7 +18,7 @@ function seleccionar(peca) {
   tipus = peca;
   document.getElementById("triar-peca").style.display = "none";
   document.querySelectorAll('.formulari').forEach(f => f.style.display = 'none');
-  document.getElementById(peca + '-form').style.display = 'block'; // Correcció aquí
+  document.getElementById(peca + '-form').style.display = 'block';
 }
 
 function generarPatro(peca) {
@@ -28,7 +28,8 @@ function generarPatro(peca) {
       alert("Introdueix un valor vàlid per al llarg de la faldilla.");
       return;
     }
-  } else if (peca === "cosACintura") {
+  } 
+  else if (peca === "cosACintura") {
     mides.talleEspatlles = parseInt(document.getElementById("talleEspatlles").value, 10);
     mides.pit = parseInt(document.getElementById("pit").value, 10);
     mides.torax = parseInt(document.getElementById("torax").value, 10);
@@ -43,7 +44,8 @@ function generarPatro(peca) {
       alert("Revisa que totes les mides de la brusa estiguin introduïdes correctament.");
       return;
     }
-     } else if (peca === "cosACintura") {
+  } 
+  else if (peca === "cosACadera") {
     mides.talleEspatlles = parseInt(document.getElementById("talleEspatlles").value, 10);
     mides.pit = parseInt(document.getElementById("pit").value, 10);
     mides.torax = parseInt(document.getElementById("torax").value, 10);
@@ -53,11 +55,10 @@ function generarPatro(peca) {
     mides.caiguda = parseInt(document.getElementById("caiguda").value, 10);
     mides.espatllesTotal = parseInt(document.getElementById("espatllesTotal").value, 10);
     mides.talleDavanter = parseInt(document.getElementById("talleDavanter").value, 10);
-    mides.altCadera = parseInt(document.getElementById("altCadera").value, 10);
+    mides.altCadera = parseInt(document.getElementById("altDeCadera").value, 10); // Corregit nom
 
-    
     if (Object.values(mides).some(v => isNaN(v))) {
-      alert("Revisa que totes les mides de la brusa estiguin introduïdes correctament.");
+      alert("Revisa que totes les mides del cos amb càdera estiguin introduïdes correctament.");
       return;
     }
   }
@@ -82,7 +83,6 @@ function dibuixaPatro(p) {
       dibuixarPatroFaldilla(p, mides, escala);
     } else if (tipus === "cosACadera") {
       dibuixarPatroCosACadera(p, mides, escala);
-      
     }
   };
 }
@@ -97,4 +97,5 @@ function descarregarCanvas() {
     link.click();
   }
 }
+
 
