@@ -17,7 +17,7 @@ function dibuixarPatroCosACintura(p, mides, escala) {
       p.line(10 + torax / 4, talleEspatlles - caiguda + sisa + 10, 10 + cintura / 4 + 2 * escala, 10 + talleEspatlles); // cintura
       p.line(10 + cintura / 8 + 1.5 * escala, talleEspatlles - caiguda + sisa + 10, 10 + (cintura / 8), 10 + talleEspatlles); // pinça esquerra
       p.line(10 + cintura / 8 + 1.5 * escala, talleEspatlles - caiguda + sisa + 10, 10 + (cintura / 8) + 3 * escala, 10 + talleEspatlles); // pinça dreta
-      p.line(10, 10 + talleEspatlles, 10 + (cintura / 4) + 2 * escala, 10 + talleEspatlles); // línia cintura
+      p.line(10, 10 + talleEspatlles, 10 + (cintura / 4) + 1 * escala, 10 + talleEspatlles); // línia cintura
 
       // Corba realista de la sisa (Bezier)
       p.bezier(
