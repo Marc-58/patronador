@@ -5,6 +5,8 @@ function dibuixarPatroCosACadera(p, mides, escala) {
       const torax = mides.torax * escala;
       const sisa = mides.sisa * escala;
       const cintura = mides.cintura * escala;
+      const cadera = mides.cadera * escala;
+      const altDeCadera = mides.altDeCadera * escala;
       const caiguda = mides.caiguda * escala;
       const marge = espatlles / 2 + 20 * escala + 10;
       const talleDavanter = mides.talleDavanter * escala;
@@ -18,7 +20,10 @@ function dibuixarPatroCosACadera(p, mides, escala) {
       p.line(10 + cintura / 8 + 1.5 * escala, talleEspatlles - caiguda + sisa + 10, 10 + (cintura / 8), 10 + talleEspatlles); // pinça esquerra
       p.line(10 + cintura / 8 + 1.5 * escala, talleEspatlles - caiguda + sisa + 10, 10 + (cintura / 8) + 3 * escala, 10 + talleEspatlles); // pinça dreta
       p.line(10, 10 + talleEspatlles, 10 + (cintura / 4) + 2 * escala, 10 + talleEspatlles); // línia cintura
+      p.line(10, 10 + talleEspatlles+alt cadera, 10 + (cadera / 4) -1 * escala, 10 + talleEspatlles+altCadera); // línia cadera
+      p.line(10 + (cadera / 4) -1 * escala, 10 + talleEspatlles+altCadera, 10 + cintura / 4 + 2 * escala, 10 + talleEspatlles); // cintura
 
+      
       // Corba realista de la sisa (Bezier)
       p.bezier(
         10 + espatlles / 2, 10 + (talleEspatlles - caiguda),
@@ -41,6 +46,7 @@ function dibuixarPatroCosACadera(p, mides, escala) {
       p.line(marge, 10 + talleDavanter, marge + (cintura / 4 + 4 * escala), 10 + talleDavanter); // línia cintura
       p.line(marge + torax / 4 - cintura / 8, 10 + talleDavanter, marge + torax / 4 - cintura / 8 - 1.5 * escala, 10 + altDePit); // pinça esquerra
       p.line(marge + torax / 4 - cintura / 8 - 3 * escala, 10 + talleDavanter, marge + torax / 4 - cintura / 8 - 1.5 * escala, 10 + altDePit); // pinça dreta
+      p.line(marge, 10 + talleDavanter+altCadera, marge + (cadera / 4 + 1* escala), 10 + talleDavanter+altCadera); // línia cintura
 
       // IGUAL ESQUENA
       const xL1 = 10 + torax / 4;
@@ -61,9 +67,9 @@ function dibuixarPatroCosACadera(p, mides, escala) {
       const yFinal = yA + uy * llarg;
      
       p.line(xA, yA, xFinal, yFinal);
+      p.line(xA, yA,  marge + (cadera / 4 + 1* escala), 10 + talleDavanter+altCadera);
 
       p.line(marge +  torax / 4, 10+sisa , marge + torax / 4 - (torax / 4 - espatlles / 2), 10 + (talleEspatlles - caiguda)); // línia sisa
-// Sisa davantera (corba)
         
 p.bezier(
   marge + torax / 4 - (torax / 4 - espatlles / 2) ,              // Punt superior lleugerament a la dreta
