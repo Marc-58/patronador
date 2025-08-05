@@ -43,6 +43,23 @@ function generarPatro(peca) {
       alert("Revisa que totes les mides de la brusa estiguin introduïdes correctament.");
       return;
     }
+     } else if (peca === "cosACintura") {
+    mides.talleEspatlles = parseInt(document.getElementById("talleEspatlles").value, 10);
+    mides.pit = parseInt(document.getElementById("pit").value, 10);
+    mides.torax = parseInt(document.getElementById("torax").value, 10);
+    mides.altDePit = parseInt(document.getElementById("altDePit").value, 10);
+    mides.coll = parseInt(document.getElementById("coll").value, 10);
+    mides.sisa = parseInt(document.getElementById("sisa").value, 10);
+    mides.caiguda = parseInt(document.getElementById("caiguda").value, 10);
+    mides.espatllesTotal = parseInt(document.getElementById("espatllesTotal").value, 10);
+    mides.talleDavanter = parseInt(document.getElementById("talleDavanter").value, 10);
+    mides.altCadera = parseInt(document.getElementById("altCadera").value, 10);
+
+    
+    if (Object.values(mides).some(v => isNaN(v))) {
+      alert("Revisa que totes les mides de la brusa estiguin introduïdes correctament.");
+      return;
+    }
   }
 
   const container = document.getElementById("canvas-container");
@@ -63,6 +80,9 @@ function dibuixaPatro(p) {
       dibuixarPatroCosACintura(p, mides, escala);
     } else if (tipus === "faldilla") {
       dibuixarPatroFaldilla(p, mides, escala);
+    } else if (tipus === "cosACadera") {
+      dibuixarPatroCosACadera(p, mides, escala);
+      
     }
   };
 }
