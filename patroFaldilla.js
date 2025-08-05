@@ -16,15 +16,15 @@ const cintura = mides.cintura * escala;
   p.line(pinçaX1 + 3 * escala, marge, pinçaX1 + 1.5 * escala, marge + 10 * escala);
 
   const sep = 150;
-  const marge2 = marge + cadera / 4 + sep;
+ 
 
-  p.line(marge2, marge, marge2, marge + llarg);
-  p.line(marge2, marge + llarg, marge2 + cadera / 4 + escala, marge + llarg);
-  p.line(marge2, marge, marge2 + cintura / 4 + 2 * escala, marge);
-  p.line(marge2 + cintura / 4 + 2 * escala, marge, marge2 + cadera / 4 + escala, marge + 18 * escala);
-  p.line(marge2 + cadera / 4 + escala, marge + 18 * escala, marge2 + cadera / 4 + escala, marge + llarg);
+  p.line(sep, marge, sep, marge + llarg);
+  p.line(sep, marge + llarg, sep + cadera / 4 + escala, marge + llarg);
+  p.line(sep, marge, sep + cintura / 4 + 2 * escala, marge);
+  p.line(sep + cintura / 4 + 2 * escala, marge, sep + cadera / 4 + escala, marge + 18 * escala);
+  p.line(sep + cadera / 4 + escala, marge + 18 * escala, sep + cadera / 4 + escala, marge + llarg);
 
-  const pinçaX2 = marge2 + cintura / 8 + escala;
+  const pinçaX2 = sep + cintura / 8 + escala;
   p.line(pinçaX2, marge, pinçaX2 + 1.5 * escala, marge + 10 * escala);
   p.line(pinçaX2 + 3 * escala, marge, pinçaX2 + 1.5 * escala, marge + 10 * escala);
 } 
