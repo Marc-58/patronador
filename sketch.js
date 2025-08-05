@@ -28,7 +28,7 @@ function generarPatro(peca) {
       alert("Introdueix un valor vàlid per al llarg de la faldilla.");
       return;
     }
-  } else if (peca === "brusa") {
+  } else if (peca === "cosACintura") {
     mides.talleEspatlles = parseInt(document.getElementById("talleEspatlles").value, 10);
     mides.pit = parseInt(document.getElementById("pit").value, 10);
     mides.torax = parseInt(document.getElementById("torax").value, 10);
@@ -59,8 +59,8 @@ function dibuixaPatro(p) {
     p.stroke(0);
     p.noFill();
 
-    if (tipus === "brusa") {
-      dibuixarPatroBrusa(p, mides, escala);
+    if (tipus === "cosACintura") {
+      dibuixarPatroCosACintura(p, mides, escala);
     } else if (tipus === "faldilla") {
       dibuixarPatroFaldilla(p, mides, escala);
     }
