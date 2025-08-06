@@ -13,7 +13,7 @@ function dibuixarPatroCosACadera(p, mides, escala) {
   const cadera = mides.cadera * escala;
   const altDeCadera = mides.altDeCadera * escala;
   const caiguda = mides.caiguda * escala;
-  const marge = espatlles / 2 + 20 * escala + 10;
+  const marge = 60;
   const talleDavanter = mides.talleDavanter * escala;
   const altDePit = mides.altDePit * escala;
   const pit = mides.pit * escala;
