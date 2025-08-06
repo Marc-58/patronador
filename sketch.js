@@ -30,6 +30,15 @@ function generarPatro(peca) {
     }
   } 
   else if (peca === "vestit") {
+     mides.talleEspatlles = parseInt(document.getElementById("talleEspatlles").value, 10); 
+    mides.pit = parseInt(document.getElementById("pit").value, 10);
+    mides.torax = parseInt(document.getElementById("torax").value, 10);
+    mides.altDePit = parseInt(document.getElementById("altDePit").value, 10);
+    mides.coll = parseInt(document.getElementById("coll").value, 10);
+    mides.sisa = parseInt(document.getElementById("sisa").value, 10);
+    mides.caiguda = parseInt(document.getElementById("caiguda").value, 10);
+    mides.espatllesTotal = parseInt(document.getElementById("espatllesTotal").value, 10);
+    mides.talleDavanter = parseInt(document.getElementById("talleDavanter").value, 10);
     mides.llargVestit = parseInt(document.getElementById("llargVestit").value, 10);
     if (isNaN(mides.llargVestit)) {
       alert("Introdueix un valor vàlid per al llarg del vestit.");
@@ -53,6 +62,20 @@ function generarPatro(peca) {
     }
   } 
   else if (peca === "cosACadera") {
+    mides.talleEspatlles = parseInt(document.getElementById("talleEspatlles").value, 10);
+    mides.pit = parseInt(document.getElementById("pit").value, 10);
+    mides.torax = parseInt(document.getElementById("torax").value, 10);
+    mides.altDePit = parseInt(document.getElementById("altDePit").value, 10);
+    mides.coll = parseInt(document.getElementById("coll").value, 10);
+    mides.sisa = parseInt(document.getElementById("sisa").value, 10);
+    mides.caiguda = parseInt(document.getElementById("caiguda").value, 10);
+    mides.espatllesTotal = parseInt(document.getElementById("espatllesTotal").value, 10);
+    mides.talleDavanter = parseInt(document.getElementById("talleDavanter").value, 10);
+
+    if (Object.values(mides).some(v => isNaN(v))) {
+      alert("Revisa que totes les mides del cos a cadera estiguin introduïdes correctament.");
+      return;
+    } else if (peca === "cosACadera") {
     mides.talleEspatlles = parseInt(document.getElementById("talleEspatlles").value, 10);
     mides.pit = parseInt(document.getElementById("pit").value, 10);
     mides.torax = parseInt(document.getElementById("torax").value, 10);
