@@ -57,7 +57,11 @@ function generarPatro(peca) {
     mides.talleDavanter = parseInt(document.getElementById("talleDavanter").value, 10);
     mides.altDeCadera = parseInt(document.getElementById("altDeCadera").value, 10);  
 
-    
+    // ✅ AFEGIT: Comprovació de valors vàlids
+    if (Object.values(mides).some(v => isNaN(v))) {
+      alert("Revisa que totes les mides del cos a cadera estiguin introduïdes correctament.");
+      return;
+    }
   }
 
   const container = document.getElementById("canvas-container");
@@ -94,5 +98,3 @@ function descarregarCanvas() {
     link.click();
   }
 }
-
-
