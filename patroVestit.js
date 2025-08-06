@@ -10,6 +10,9 @@ function dibuixarPatroCosACintura(p, mides, escala) {
       const talleDavanter = mides.talleDavanter * escala;
       const altDePit = mides.altDePit * escala;
       const pit = mides.pit * escala;
+       const llargVestit = mides.llargVestit * escala;
+
+
 
       // Part esquerra - esquena
       p.rect(10, 10, espatlles / 2, talleEspatlles);
