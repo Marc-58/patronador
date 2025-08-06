@@ -29,6 +29,13 @@ function generarPatro(peca) {
       return;
     }
   } 
+  else if (peca === "vestit") {
+    mides.llargVestit = parseInt(document.getElementById("llargVestit").value, 10);
+    if (isNaN(mides.llargVestit)) {
+      alert("Introdueix un valor vàlid per al llarg del vestit.");
+      return;
+    }
+  }
   else if (peca === "cosACintura") {
     mides.talleEspatlles = parseInt(document.getElementById("talleEspatlles").value, 10);
     mides.pit = parseInt(document.getElementById("pit").value, 10);
@@ -56,7 +63,6 @@ function generarPatro(peca) {
     mides.espatllesTotal = parseInt(document.getElementById("espatllesTotal").value, 10);
     mides.talleDavanter = parseInt(document.getElementById("talleDavanter").value, 10);
 
-    // ✅ AFEGIT: Comprovació de valors vàlids
     if (Object.values(mides).some(v => isNaN(v))) {
       alert("Revisa que totes les mides del cos a cadera estiguin introduïdes correctament.");
       return;
@@ -83,6 +89,8 @@ function dibuixaPatro(p) {
       dibuixarPatroFaldilla(p, mides, escala);
     } else if (tipus === "cosACadera") {
       dibuixarPatroCosACadera(p, mides, escala);
+    } else if (tipus === "vestit") {
+      dibuixarPatroVestit(p, mides, escala); // Nou patró
     }
   };
 }
@@ -97,3 +105,4 @@ function descarregarCanvas() {
     link.click();
   }
 }
+
