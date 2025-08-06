@@ -1,8 +1,5 @@
 function dibuixarPatroCosACadera(p, mides, escala) {
-  if (isNaN(mides.altDeCadera)) {
-    console.error("Falta la mida altDeCadera o no és un número vàlid.");
-    return;
-  }
+ 
 
   const espatlles = mides.espatllesTotal * escala;
   const talleEspatlles = mides.talleEspatlles * escala;
@@ -11,9 +8,8 @@ function dibuixarPatroCosACadera(p, mides, escala) {
   const sisa = mides.sisa * escala;
   const cintura = mides.cintura * escala;
   const cadera = mides.cadera * escala;
-  const altDeCadera = mides.altDeCadera * escala;
   const caiguda = mides.caiguda * escala;
-  const marge = 60;
+  const marge = espatlles / 2 + 20 * escala + 10;
   const talleDavanter = mides.talleDavanter * escala;
   const altDePit = mides.altDePit * escala;
   const pit = mides.pit * escala;
@@ -25,8 +21,8 @@ function dibuixarPatroCosACadera(p, mides, escala) {
   p.line(10 + cintura / 8 + 1.5 * escala, talleEspatlles - caiguda + sisa + 10, 10 + cintura / 8, 10 + talleEspatlles); // pinça esquerra
   p.line(10 + cintura / 8 + 1.5 * escala, talleEspatlles - caiguda + sisa + 10, 10 + cintura / 8 + 3 * escala, 10 + talleEspatlles); // pinça dreta
   p.line(10, 10 + talleEspatlles, 10 + cintura / 4 + 2 * escala, 10 + talleEspatlles); // línia cintura
-  p.line(10, 10 + talleEspatlles + altDeCadera, 10 + cadera / 4 - 1 * escala, 10 + talleEspatlles + altDeCadera); // línia cadera
-  p.line(10 + cadera / 4 - 1 * escala, 10 + talleEspatlles + altDeCadera, 10 + cintura / 4 + 2 * escala, 10 + talleEspatlles); // lateral esquena
+  p.line(10, 10 + talleEspatlles + 18, 10 + cadera / 4 - 1 * escala, 10 + talleEspatlles + 18); // línia cadera
+  p.line(10 + cadera / 4 - 1 * escala, 10 + talleEspatlles + 18, 10 + cintura / 4 + 2 * escala, 10 + talleEspatlles); // lateral esquena
 
   // Corba realista de la sisa (Bezier)
   p.bezier(
@@ -51,7 +47,7 @@ function dibuixarPatroCosACadera(p, mides, escala) {
   p.line(marge, 10 + talleDavanter, marge + cintura / 4 + 4 * escala, 10 + talleDavanter); // cintura
   p.line(marge + torax / 4 - cintura / 8, 10 + talleDavanter, marge + torax / 4 - cintura / 8 - 1.5 * escala, 10 + altDePit); // pinça esquerra
   p.line(marge + torax / 4 - cintura / 8 - 3 * escala, 10 + talleDavanter, marge + torax / 4 - cintura / 8 - 1.5 * escala, 10 + altDePit); // pinça dreta
-  p.line(marge, 10 + talleDavanter + altDeCadera, marge + cadera / 4 + 1 * escala, 10 + talleDavanter + altDeCadera); // línia cadera
+  p.line(marge, 10 + talleDavanter + 18, marge + cadera / 4 + 1 * escala, 10 + talleDavanter + 19); // línia cadera
 
   // Igualació línia diagonal del darrere amb davanter
   const xL1 = 10 + torax / 4;
@@ -72,7 +68,7 @@ function dibuixarPatroCosACadera(p, mides, escala) {
   const yFinal = yA + uy * llarg;
 
   p.line(xA, yA, xFinal, yFinal);
-  p.line(xA, yA, marge + cadera / 4 + 1 * escala, 10 + talleDavanter + altDeCadera); // lateral davanter
+  p.line(xA, yA, marge + cadera / 4 + 1 * escala, 10 + talleDavanter + 18); // lateral davanter
 
   // Sisa davantera
   p.line(
