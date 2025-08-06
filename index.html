@@ -67,6 +67,8 @@
            alt="Cos a cintura" onclick="seleccionar('cosACintura')">
       <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" 
            alt="Cos a cadera" onclick="seleccionar('cosACadera')">
+      <img src="https://i.pinimg.com/736x/e3/8a/60/e38a60f00c6328e9cfbeb1a325dca3e7.jpg" 
+           alt="Vestit" onclick="seleccionar('vestit')">
     </div>
   </div>
 
@@ -75,6 +77,13 @@
     <h2>Faldilla</h2>
     Llarg: <input id="llargFaldilla" type="number"><br>
     <button onclick="generarPatro('faldilla')">Generar patró</button>
+  </div>
+
+  <!-- Formulari de vestit -->
+  <div id="vestit-form" class="formulari">
+    <h2>Vestit</h2>
+    Llarg de vestit: <input id="llargVestit" type="number"><br>
+    <button onclick="generarPatro('vestit')">Generar patró</button>
   </div>
 
   <!-- Formulari de cos a cintura -->
@@ -104,20 +113,19 @@
     Sisa: <input id="sisa" type="number"><br>
     Torax: <input id="torax" type="number"><br>
     Pit: <input id="pit" type="number"><br>
-
     <button onclick="generarPatro('cosACadera')">Generar patró</button>
- </div>
+  </div>
   
   <!-- Canvas i botó de descàrrega -->
   <div id="canvas-container"></div>
   <button onclick="descarregarCanvas()">Descarregar imatge</button>
 
-  <!-- P5.js i scripts modulars -->
+  <!-- JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
   <script src="patroCosACintura.js"></script>
-    <script src="patroCosACadera.js"></script>
+  <script src="patroCosACadera.js"></script>
   <script src="patroFaldilla.js"></script>
+  <script src="patroVestit.js"></script>
   <script src="sketch.js"></script>
 </body>
 </html>
-
