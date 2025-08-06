@@ -1,8 +1,8 @@
 function dibuixarPatroCosACadera(p, mides, escala) {
   if (isNaN(mides.altDeCadera)) {
-  console.error("Falta la mida altDeCadera o no és un número vàlid.");
-  return;
-}
+    console.error("Falta la mida altDeCadera o no és un número vàlid.");
+    return;
+  }
 
   const espatlles = mides.espatllesTotal * escala;
   const talleEspatlles = mides.talleEspatlles * escala;
