@@ -55,7 +55,6 @@ function generarPatro(peca) {
     mides.caiguda = parseInt(document.getElementById("caiguda").value, 10);
     mides.espatllesTotal = parseInt(document.getElementById("espatllesTotal").value, 10);
     mides.talleDavanter = parseInt(document.getElementById("talleDavanter").value, 10);
-    mides.altDeCadera = parseInt(document.getElementById("altDeCadera").value, 10);  
 
     // ✅ AFEGIT: Comprovació de valors vàlids
     if (Object.values(mides).some(v => isNaN(v))) {
