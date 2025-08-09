@@ -61,23 +61,7 @@ function generarPatro(peca) {
       return;
     }
   } 
-  else if (peca === "cosACadera") {
-    mides.talleEspatlles = parseInt(document.getElementById("talleEspatlles").value, 10);
-    mides.pit = parseInt(document.getElementById("pit").value, 10);
-    mides.torax = parseInt(document.getElementById("torax").value, 10);
-    mides.altDePit = parseInt(document.getElementById("altDePit").value, 10);
-    mides.coll = parseInt(document.getElementById("coll").value, 10);
-    mides.sisa = parseInt(document.getElementById("sisa").value, 10);
-    mides.caiguda = parseInt(document.getElementById("caiguda").value, 10);
-    mides.espatllesTotal = parseInt(document.getElementById("espatllesTotal").value, 10);
-    mides.talleDavanter = parseInt(document.getElementById("talleDavanter").value, 10);
-
-    if (Object.values(mides).some(v => isNaN(v))) {
-      alert("Revisa que totes les mides del cos a cadera estiguin introduïdes correctament.");
-      return;
-    }
-  } 
-  // SEGON BLOC REPETIT — EL MANTINC
+ 
   else if (peca === "cosACadera") {
     mides.talleEspatlles = parseInt(document.getElementById("talleEspatlles").value, 10);
     mides.pit = parseInt(document.getElementById("pit").value, 10);
