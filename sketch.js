@@ -40,8 +40,8 @@ function generarPatro(peca) {
     mides.espatllesTotal = parseInt(document.getElementById("espatllesTotal").value, 10);
     mides.talleDavanter = parseInt(document.getElementById("talleDavanter").value, 10);
     mides.llargVestit = parseInt(document.getElementById("llargVestit").value, 10);
-    if (isNaN(mides.llargVestit)) {
-      alert("Introdueix un valor vàlid per al llarg del vestit.");
+   if (Object.values(mides).some(v => isNaN(v))) {
+      alert("Revisa que totes les mides del vestit estiguin introduïdes correctament.");
       return;
     }
   }
