@@ -11,6 +11,7 @@ function dibuixarPatroCosACintura(p, mides, escala) {
       const altDePit = mides.altDePit * escala;
       const pit = mides.pit * escala;
        const llargVestit = mides.llargVestit * escala;
+       const cadera = mides.cadera * escala;
 
 
 
@@ -94,6 +95,10 @@ p.line(
 
 //p.arc(marge, 10, coll/6+2, coll/6 + 4*escala, 0, p.HALF_PI);
 
+
+      rect(10, 10, cadera / 2, llargVestit);
+
+      
 
 
 
