@@ -96,7 +96,7 @@ p.line(
 //p.arc(marge, 10, coll/6+2, coll/6 + 4*escala, 0, p.HALF_PI);
 
 
-      rect(10, 10, cadera / 2, llargVestit);
+     P. rect(10, 10, cadera / 2, llargVestit);
 
       
 
