@@ -197,7 +197,9 @@ function dibuixaPatro(p) {
       dibuixarPatroColls(p, mides, escala);
     } else if (tipus === "maniga") {
       dibuixarPatroManiga(p, mides, escala);
-    } else if (tipus === "faldillaGodets") {
+    } else if (tipus === "faldillaMitjaCapa") {
+      dibuixarPatroFaldillaGodets(p, mides, escala);
+    }else if (tipus === "faldillaCapaSencera") {
       dibuixarPatroFaldillaGodets(p, mides, escala);
     }
   };
