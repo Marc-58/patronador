@@ -49,7 +49,6 @@
 <body>
   <h1>Generador de Patrons</h1>
 
-  <!-- PAS 1: Mides bàsiques -->
   <div id="mides-basiques">
     <h2>Pas 1: Introdueix mides bàsiques</h2>
     Cintura: <input id="cintura" type="number"><br>
@@ -57,19 +56,15 @@
     <button onclick="mostrarOpcions()">Continuar</button>
   </div>
 
-  <!-- PAS 2: Tria la peça -->
   <div id="triar-peca">
     <h2>Pas 2: Tria la peça</h2>
     <div class="opcions-peces" style="display:flex; flex-wrap:wrap; gap:20px; justify-content:center;">
       <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" 
-           alt="Faldilla" onclick="seleccionar('faldilla')">
-      <img src="https://i.pinimg.com/736x/fe/6b/87/fe6b87de0418757dbfbaf99b6ca5c782.jpg" 
            alt="Cos a cintura" onclick="seleccionar('cosACintura')">
       <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" 
            alt="Cos a cadera" onclick="seleccionar('cosACadera')">
       <img src="L1_dress_sleeveless.jpg" 
            alt="Vestit" title="Vestit tipus recte" onclick="seleccionar('vestit')">
-      <!-- NOVES OPCIONS -->
       <img src="https://cdn-icons-png.flaticon.com/512/743/743007.png" 
            alt="Falda pantaló" onclick="seleccionar('faldaPantalon')">
       <img src="https://cdn-icons-png.flaticon.com/512/1258/1258475.png" 
@@ -79,20 +74,18 @@
       <img src="https://cdn-icons-png.flaticon.com/512/1256/1256692.png" 
            alt="Màniga" onclick="seleccionar('maniga')">
       <img src="https://cdn-icons-png.flaticon.com/512/1258/1258473.png" 
-           alt="Faldilla mitja capa" onclick="seleccionar('faldillaGodets')">
-       <img src="https://cdn-icons-png.flaticon.com/512/1258/1258473.png" 
-           alt="Faldilla capa entera" onclick="seleccionar('faldillaGodets')">
+           alt="Faldilla mitja capa" onclick="seleccionar('faldillaMitjaCapa')">
+      <img src="https://cdn-icons-png.flaticon.com/512/1258/1258473.png" 
+           alt="Faldilla capa sencera" onclick="seleccionar('faldillaCapaSencera')">
     </div>
   </div>
 
-  <!-- Formulari de faldilla -->
   <div id="faldilla-form" class="formulari">
     <h2>Faldilla</h2>
     Llarg: <input id="llargFaldilla" type="number"><br>
     <button onclick="generarPatro('faldilla')">Generar patró</button>
   </div>
 
-  <!-- Formulari de vestit -->
   <div id="vestit-form" class="formulari">
     <h2>Vestit</h2>
     Coll: <input id="coll" type="number"><br>
@@ -108,7 +101,6 @@
     <button onclick="generarPatro('vestit')">Generar patró</button>
   </div>
 
-  <!-- Formulari de cos a cintura -->
   <div id="cosACintura-form" class="formulari">
     <h2>Cos a cintura</h2>
     Coll: <input id="coll" type="number"><br>
@@ -123,7 +115,6 @@
     <button onclick="generarPatro('cosACintura')">Generar patró</button>
   </div>
 
-  <!-- Formulari de cos a cadera -->
   <div id="cosACadera-form" class="formulari">
     <h2>Cos a cadera</h2>
     Coll: <input id="coll" type="number"><br>
@@ -138,7 +129,6 @@
     <button onclick="generarPatro('cosACadera')">Generar patró</button>
   </div>
 
-  <!-- NOVES FORMULARIS (buits per omplir després) -->
   <div id="faldaPantalon-form" class="formulari">
     <h2>Falda pantaló</h2>
     Llarg: <input id="llarg" type="number"><br>
@@ -146,11 +136,11 @@
     <button onclick="generarPatro('faldaPantalon')">Generar patró</button>
   </div>
 
-  
   <div id="pantalon-form" class="formulari">
     <h2>Pantaló</h2>
     Llarg: <input id="llarg" type="number"><br>
     Tiro: <input id="tiro" type="number"><br>
+    Genoll: <input id="genoll" type="number"><br>
     <button onclick="generarPatro('pantalon')">Generar patró</button>
   </div>
 
@@ -171,23 +161,20 @@
   </div>
 
   <div id="faldillaMitjaCapa-form" class="formulari">
-    <h2>Faldilla Godets</h2>
+    <h2>Faldilla Mitja Capa</h2>
     Llarg: <input id="llargFaldilla" type="number"><br>
-    <button onclick="generarPatro('faldillaGodets')">Generar patró</button>
+    <button onclick="generarPatro('faldillaMitjaCapa')">Generar patró</button>
   </div>
 
-   <div id="faldillaCapaSencera-form" class="formulari">
-    <h2>Faldilla Godets</h2>
+  <div id="faldillaCapaSencera-form" class="formulari">
+    <h2>Faldilla Capa Sencera</h2>
     Llarg: <input id="llargFaldilla" type="number"><br>
-    <button onclick="generarPatro('faldillaGodets')">Generar patró</button>
+    <button onclick="generarPatro('faldillaCapaSencera')">Generar patró</button>
   </div>
 
-  
-  <!-- Canvas i botó de descàrrega -->
   <div id="canvas-container"></div>
   <button onclick="descarregarCanvas()">Descarregar imatge</button>
 
-  <!-- JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
   <script src="patroCosACintura.js"></script>
   <script src="patroCosACadera.js"></script>
@@ -196,10 +183,7 @@
   <script src="patroFaldillaPantalo.js"></script>
   <script src="patroPantalo.js"></script>
   <script src="patroColls.js"></script>
-  <script src="patroFaldillaGodets.js"></script>
   <script src="patroManiga.js"></script>
-
-  <!-- Podràs crear també patroFaldaPantalon.js, patroPantalon.js, patroColls.js, patroManiga.js, patroFaldillaGodets.js -->
   <script src="sketch.js"></script>
 </body>
 </html>
