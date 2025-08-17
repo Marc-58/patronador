@@ -1,68 +1,88 @@
 <!DOCTYPE html>
 <html lang="ca">
 <head>
-  <meta charset="UTF-8" />
-  <title>Generador de Patrons</title>
+  <meta charset="UTF-8">
+  <title>Patronador de Moda</title>
   <style>
     body {
-      font-family: sans-serif;
-      padding: 20px;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
     }
 
-    .formulari, #triar-peca {
-      display: none;
-      margin-top: 20px;
-    }
-
-    .opcions-peces {
-      display: grid;
-      grid-template-columns: repeat(5, 150px); /* 5 imatges per fila */
-      justify-content: center; /* centra la quadrícula */
-      gap: 20px; /* espai entre imatges */
-    }
-
-    .opcions-peces img {
-      width: 150px;
-      cursor: pointer;
-      border: 2px solid transparent;
-      border-radius: 8px;
-    }
-
-    .opcions-peces img:hover {
-      border-color: #333;
-    }
-
-    #canvas-container {
-      margin-top: 20px;
-      text-align: center;
-    }
-
-    button {
-      margin-top: 10px;
-      padding: 10px;
+    /* Barra lateral */
+    .sidebar {
+      width: 220px;
       background-color: #333;
       color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      padding-top: 20px;
     }
 
-    input {
-      margin: 5px;
+    .sidebar h1 {
+      font-size: 20px;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .sidebar a {
+      padding: 15px 20px;
+      text-decoration: none;
+      color: white;
+      display: block;
+      transition: background 0.3s;
+    }
+
+    .sidebar a:hover {
+      background-color: #575757;
+    }
+
+    /* Contingut principal */
+    .content {
+      margin-left: 220px;
+      padding: 20px;
+      flex: 1;
+    }
+
+    .hidden {
+      display: none;
     }
   </style>
 </head>
 <body>
-  <h1>Generador de Patrons</h1>
 
-  <div id="mides-basiques">
-    <h2>Pas 1: Introdueix mides bàsiques</h2>
-    Cintura: <input id="cintura" type="number"><br>
-    Cadera: <input id="cadera" type="number"><br>
-    <button onclick="mostrarOpcions()">Continuar</button>
+  <!-- Barra lateral -->
+  <div class="sidebar">
+    <h1>La Meva Web</h1>
+    <a href="#" onclick="mostrarSeccio('quiSom')">Qui som</a>
+    <a href="#" onclick="mostrarSeccio('mides')">Com prendre mides</a>
+    <a href="#" onclick="mostrarSeccio('patronador')">Patronador</a>
+    <a href="#" onclick="mostrarSeccio('info')">Informació addicional</a>
   </div>
 
- <div id="triar-peca">
+  <!-- Contingut -->
+  <div class="content">
+    <div id="quiSom" class="hidden">
+      <h2>Qui som</h2>
+      <p>Aquí anirà el text explicatiu sobre qui som.</p>
+    </div>
+
+    <div id="mides" class="hidden">
+      <h2>Com prendre mides</h2>
+      <p>Guia de com prendre correctament les mides del cos.</p>
+    </div>
+
+    <div id="patronador" class="hidden">
+      <h2>Patronador</h2>
+      <!-- Aquí va el teu mòdul de triar peça + mides -->
+      <div id="triar-peca">
+        <h3>Tria la peça</h3>
+        <div class="opcions-peces">
   <h2>Pas 2: Tria la peça</h2>
   <div class="opcions-peces">
     <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" 
