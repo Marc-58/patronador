@@ -23,11 +23,13 @@ function seleccionar(peca) {
 
 function generarPatro(peca) {
   // Sempre assignem cintura i cadera si existeixen
-  mides.cintura = parseInt(document.getElementById("cintura")?.value, 10) || mides.cintura;
-  mides.cadera = parseInt(document.getElementById("cadera")?.value, 10) || mides.cadera;
+
 
   if (peca === "faldilla") {
     mides.llarg = parseInt(document.getElementById("llargFaldilla").value, 10);
+  mides.cintura = parseInt(document.getElementById("cintura")?.value, 10) || mides.cintura;
+  mides.cadera = parseInt(document.getElementById("cadera")?.value, 10) || mides.cadera;
+
     if (isNaN(mides.llarg)) {
       alert("Introdueix un valor vàlid per al llarg de la faldilla.");
       return;
@@ -44,7 +46,8 @@ function generarPatro(peca) {
     mides.torax = parseInt(document.getElementById("toraxVestit").value, 10);
     mides.pit = parseInt(document.getElementById("pitVestit").value, 10);
     mides.llargVestit = parseInt(document.getElementById("llargVestit").value, 10);
-
+  mides.cintura = parseInt(document.getElementById("cintura")?.value, 10) || mides.cintura;
+  mides.cadera = parseInt(document.getElementById("cadera")?.value, 10) || mides.cadera;
     let midesNecessaries = [
       mides.coll, mides.talleEspatlles, mides.talleDavanter, mides.altDePit,
       mides.espatllesTotal, mides.caiguda, mides.sisa, mides.torax,
@@ -66,7 +69,7 @@ function generarPatro(peca) {
     mides.sisa = parseInt(document.getElementById(`sisa${peca.charAt(0).toUpperCase() + peca.slice(1)}`).value, 10);
     mides.torax = parseInt(document.getElementById(`torax${peca.charAt(0).toUpperCase() + peca.slice(1)}`).value, 10);
     mides.pit = parseInt(document.getElementById(`pit${peca.charAt(0).toUpperCase() + peca.slice(1)}`).value, 10);
-
+  mides.cintura = parseInt(document.getElementById("cintura")?.value, 10) || mides.cintura;
     if ([mides.coll, mides.talleEspatlles, mides.talleDavanter, mides.altDePit, mides.espatllesTotal, mides.caiguda, mides.sisa, mides.torax, mides.pit].some(v => isNaN(v))) {
       alert(`Revisa que totes les mides del ${peca} estiguin introduïdes correctament.`);
       return;
@@ -76,6 +79,8 @@ function generarPatro(peca) {
   else if (peca === "faldillaPantalon") {
     mides.llarg = parseInt(document.getElementById("llargFaldillaPantalon").value, 10);
     mides.tiro = parseInt(document.getElementById("tiroFaldillaPantalon").value, 10);
+      mides.cintura = parseInt(document.getElementById("cintura")?.value, 10) || mides.cintura;
+  mides.cadera = parseInt(document.getElementById("cadera")?.value, 10) || mides.cadera;
     if (isNaN(mides.llarg) || isNaN(mides.tiro)) {
       alert("Introdueix valors vàlids per a la faldilla pantaló.");
       return;
@@ -85,6 +90,8 @@ function generarPatro(peca) {
     mides.llarg = parseInt(document.getElementById("llargPantalon").value, 10);
     mides.genoll = parseInt(document.getElementById("genollPantalon").value, 10);
     mides.tiro = parseInt(document.getElementById("tiroPantalon").value, 10);
+      mides.cintura = parseInt(document.getElementById("cintura")?.value, 10) || mides.cintura;
+  mides.cadera = parseInt(document.getElementById("cadera")?.value, 10) || mides.cadera;
     if (isNaN(mides.llarg) || isNaN(mides.genoll) || isNaN(mides.tiro)) {
       alert("Revisa les mides del pantaló.");
       return;
@@ -110,6 +117,7 @@ function generarPatro(peca) {
   }
   else if (peca === "faldillaMitjaCapa") {
     mides.llarg = parseInt(document.getElementById("llargFaldillaMitjaCapa").value, 10);
+      mides.cintura = parseInt(document.getElementById("cintura")?.value, 10) || mides.cintura;
     if (isNaN(mides.llarg)) {
       alert("Revisa les mides de la faldilla mitja capa.");
       return;
@@ -117,6 +125,7 @@ function generarPatro(peca) {
   }
   else if (peca === "faldillaCapaSencera") {
     mides.llarg = parseInt(document.getElementById("llargFaldillaCapaSencera").value, 10);
+      mides.cintura = parseInt(document.getElementById("cintura")?.value, 10) || mides.cintura;
     if (isNaN(mides.llarg)) {
       alert("Revisa les mides de la faldilla capa sencera.");
       return;
