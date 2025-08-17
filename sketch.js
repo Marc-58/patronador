@@ -115,6 +115,44 @@ function generarPatro(peca) {
       return;
     }
   }
+  else if (peca === "faldillaPantalon") {
+    mides.llarg = parseInt(document.getElementById("llargFaldillaPantalon").value, 10);
+    if (isNaN(mides.llarg)) {
+      alert("Introdueix un valor vàlid per al llarg de la faldilla pantaló.");
+      return;
+    }
+  } 
+  else if (peca === "pantalo") {
+    mides.llarg = parseInt(document.getElementById("llargPantalo").value, 10);
+    mides.genoll = parseInt(document.getElementById("genoll").value, 10);
+    if (isNaN(mides.llarg) || isNaN(mides.genoll)) {
+      alert("Revisa les mides del pantaló.");
+      return;
+    }
+  }
+  else if (peca === "colls") {
+    mides.circumferenciaColl = parseInt(document.getElementById("circumferenciaColl").value, 10);
+    if (isNaN(mides.circumferenciaColl)) {
+      alert("Introdueix la circumferència del coll.");
+      return;
+    }
+  }
+  else if (peca === "maniga") {
+    mides.llargManiga = parseInt(document.getElementById("llargManiga").value, 10);
+    mides.biceps = parseInt(document.getElementById("biceps").value, 10);
+    if (isNaN(mides.llargManiga) || isNaN(mides.biceps)) {
+      alert("Revisa les mides de la màniga.");
+      return;
+    }
+  }
+  else if (peca === "faldillaGodets") {
+    mides.llarg = parseInt(document.getElementById("llargFaldillaGodets").value, 10);
+    mides.nombreGodets = parseInt(document.getElementById("nombreGodets").value, 10);
+    if (isNaN(mides.llarg) || isNaN(mides.nombreGodets)) {
+      alert("Revisa les mides de la faldilla amb godets.");
+      return;
+    }
+  }
 
   const container = document.getElementById("canvas-container");
   container.innerHTML = '';
@@ -138,6 +176,16 @@ function dibuixaPatro(p) {
       dibuixarPatroCosACadera(p, mides, escala);
     } else if (tipus === "vestit") {
       dibuixarPatroVestit(p, mides, escala);
+    } else if (tipus === "faldillaPantalon") {
+      dibuixarPatroFaldillaPantalon(p, mides, escala);
+    } else if (tipus === "pantalo") {
+      dibuixarPatroPantalo(p, mides, escala);
+    } else if (tipus === "colls") {
+      dibuixarPatroColls(p, mides, escala);
+    } else if (tipus === "maniga") {
+      dibuixarPatroManiga(p, mides, escala);
+    } else if (tipus === "faldillaGodets") {
+      dibuixarPatroFaldillaGodets(p, mides, escala);
     }
   };
 }
@@ -152,4 +200,3 @@ function descarregarCanvas() {
     link.click();
   }
 }
-
