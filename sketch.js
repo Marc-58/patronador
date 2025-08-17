@@ -160,4 +160,5 @@ mides.cadera = parseInt(document.getElementById("cadera").value, 10);
   const container = document.getElementById("canvas-container");
   container.innerHTML = '';
   new p5(dibuixaPatro, container);
+  function descarregarCanvas() { const canvases = document.getElementsByTagName("canvas"); if (canvases.length > 0) { const canvas = canvases[0]; const link = document.createElement('a'); link.download = tipus + '_patro.png'; link.href = canvas.toDataURL(); link.click(); } }
 }
