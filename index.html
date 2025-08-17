@@ -79,7 +79,9 @@
       <img src="https://cdn-icons-png.flaticon.com/512/1256/1256692.png" 
            alt="Màniga" onclick="seleccionar('maniga')">
       <img src="https://cdn-icons-png.flaticon.com/512/1258/1258473.png" 
-           alt="Faldilla godets" onclick="seleccionar('faldillaGodets')">
+           alt="Faldilla mitja capa" onclick="seleccionar('faldillaGodets')">
+       <img src="https://cdn-icons-png.flaticon.com/512/1258/1258473.png" 
+           alt="Faldilla capa entera" onclick="seleccionar('faldillaGodets')">
     </div>
   </div>
 
@@ -139,34 +141,48 @@
   <!-- NOVES FORMULARIS (buits per omplir després) -->
   <div id="faldaPantalon-form" class="formulari">
     <h2>Falda pantaló</h2>
-    <!-- Afegir inputs aquí -->
+    Llarg: <input id="llarg" type="number"><br>
+    Tiro: <input id="tiro" type="number"><br>
     <button onclick="generarPatro('faldaPantalon')">Generar patró</button>
   </div>
 
+  
   <div id="pantalon-form" class="formulari">
     <h2>Pantaló</h2>
-    <!-- Afegir inputs aquí -->
+    Llarg: <input id="llarg" type="number"><br>
+    Tiro: <input id="tiro" type="number"><br>
     <button onclick="generarPatro('pantalon')">Generar patró</button>
   </div>
 
   <div id="colls-form" class="formulari">
     <h2>Colls</h2>
-    <!-- Afegir inputs aquí -->
+    Coll: <input id="coll" type="number"><br>
     <button onclick="generarPatro('colls')">Generar patró</button>
   </div>
 
   <div id="maniga-form" class="formulari">
     <h2>Màniga</h2>
-    <!-- Afegir inputs aquí -->
+    Llarg Total: <input id="llargTotal " type="number"><br>
+    Llarg Braç: <input id="llargBraç" type="number"><br>
+    Munyeca: <input id="munyeca" type="number"><br>
+    Sisa: <input id="sisa" type="number"><br>
+    Contorn Braç: <input id="contornBraç" type="number"><br>
     <button onclick="generarPatro('maniga')">Generar patró</button>
   </div>
 
-  <div id="faldillaGodets-form" class="formulari">
+  <div id="faldillaMitjaCapa-form" class="formulari">
     <h2>Faldilla Godets</h2>
-    <!-- Afegir inputs aquí -->
+    Llarg: <input id="llargFaldilla" type="number"><br>
     <button onclick="generarPatro('faldillaGodets')">Generar patró</button>
   </div>
 
+   <div id="faldillaCapaSencera-form" class="formulari">
+    <h2>Faldilla Godets</h2>
+    Llarg: <input id="llargFaldilla" type="number"><br>
+    <button onclick="generarPatro('faldillaGodets')">Generar patró</button>
+  </div>
+
+  
   <!-- Canvas i botó de descàrrega -->
   <div id="canvas-container"></div>
   <button onclick="descarregarCanvas()">Descarregar imatge</button>
