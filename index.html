@@ -54,20 +54,6 @@
     }
   </style>
 </head>
-  <script>
-  function mostrarSeccio(id) {
-    // Amaga totes les seccions
-    const seccions = document.querySelectorAll('.content > div');
-    seccions.forEach(sec => sec.classList.add('hidden'));
-
-    // Mostra només la secció escollida
-    const seccio = document.getElementById(id);
-    if (seccio) {
-      seccio.classList.remove('hidden');
-    }
-  }
-</script>
-
 <body>
 
   <!-- Barra lateral -->
