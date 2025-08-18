@@ -33,3 +33,4 @@ function dibuixarPatroFaldilla(p, mides, escala) {
     p.line(pinçaX2 + 3 * escala, marge, pinçaX2 + 1.5 * escala, marge + 10 * escala); // línia de pinça dreta
 }
 
+
