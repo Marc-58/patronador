@@ -134,7 +134,16 @@
                alt="Faldilla capa sencera" title="Faldilla capa sencera" onclick="seleccionar('faldillaCapaSencera')">
         </div>
       </div>
-
+  function createCanvas() {
+      const canvasContainer = document.getElementById('canvas-container');
+      const canvas = document.createElement('canvas');
+      canvas.width = 800; // Ample del canvas
+      canvas.height = 600; // Alt del canvas
+      canvas.style.border = '1px solid #ccc'; // Estil del canvas
+      canvasContainer.appendChild(canvas);
+      
+      // Aquí pots afegir la lògica per dibuixar al canvas
+    }
       <!-- Formularis -->
       <div id="faldilla-form" class="formulari">
         <h2>Faldilla</h2>
@@ -275,16 +284,7 @@
       createCanvas(); // Crear el canvas al iniciar la pàgina
     };
 
-    function createCanvas() {
-      const canvasContainer = document.getElementById('canvas-container');
-      const canvas = document.createElement('canvas');
-      canvas.width = 800; // Ample del canvas
-      canvas.height = 600; // Alt del canvas
-      canvas.style.border = '1px solid #ccc'; // Estil del canvas
-      canvasContainer.appendChild(canvas);
-      
-      // Aquí pots afegir la lògica per dibuixar al canvas
-    }
+  
   </script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
