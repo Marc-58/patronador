@@ -61,9 +61,14 @@
       border-radius: 8px;
     }
 
+    .opcions-peces {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+    }
+
     .opcions-peces img {
-      width: 120px;
-      margin: 5px;
+      width: 100%;
       cursor: pointer;
       border: 2px solid transparent;
       border-radius: 8px;
@@ -72,6 +77,10 @@
 
     .opcions-peces img:hover {
       border: 2px solid #333;
+    }
+
+    #canvas-container {
+      margin-top: 20px;
     }
   </style>
 </head>
@@ -263,7 +272,19 @@
 
     window.onload = function() {
       mostrarSeccio('quiSom');
+      createCanvas(); // Crear el canvas al iniciar la pàgina
     };
+
+    function createCanvas() {
+      const canvasContainer = document.getElementById('canvas-container');
+      const canvas = document.createElement('canvas');
+      canvas.width = 800; // Ample del canvas
+      canvas.height = 600; // Alt del canvas
+      canvas.style.border = '1px solid #ccc'; // Estil del canvas
+      canvasContainer.appendChild(canvas);
+      
+      // Aquí pots afegir la lògica per dibuixar al canvas
+    }
   </script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
