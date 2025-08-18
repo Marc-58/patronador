@@ -38,7 +38,7 @@ function generarPatro(peca) {
     let midesNecessaries = [
       mides.coll, mides.talleEspatlles, mides.talleDavanter, mides.altDePit,
       mides.espatlles, mides.caiguda, mides.sisa, mides.torax,
-      mides.pit, mides.llargVestit
+      mides.pit, mides.llarg
     ];
 
     if (midesNecessaries.some(v => isNaN(v))) {
@@ -70,7 +70,7 @@ else if (peca === "cosACadera") {
   mides.talleEspatlles = parseInt(document.getElementById("talleEspatlles").value, 10);
   mides.talleDavanter = parseInt(document.getElementById("talleDavanter").value, 10);
   mides.altDePit = parseInt(document.getElementById("altDePit").value, 10);
-  mides.espatllesTotal = parseInt(document.getElementById("espatllesTotal").value, 10);
+  mides.espatlles = parseInt(document.getElementById("espatllesTotal").value, 10);
   mides.caiguda = parseInt(document.getElementById("caiguda").value, 10);
   mides.sisa = parseInt(document.getElementById("sisa").value, 10);
   mides.torax = parseInt(document.getElementById("torax").value, 10);
