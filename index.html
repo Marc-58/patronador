@@ -12,7 +12,7 @@
 
     /* Barra lateral */
     .sidebar {
-      width: 220px;
+      width: 250px;
       background-color: #333;
       color: white;
       height: 100vh;
@@ -80,7 +80,7 @@
   <!-- Barra lateral -->
   <div class="sidebar">
     <h1>La Meva Web</h1>
-    <a href="#" onclick="mostrarSeccio('quiSom')">Qui som</a>
+    <a href="#" onclick="mostrarSeccio('quiSom')">Qui soc</a>
     <a href="#" onclick="mostrarSeccio('mides')">Com prendre mides</a>
     <a href="#" onclick="mostrarSeccio('patronador')">Patronador</a>
     <a href="#" onclick="mostrarSeccio('info')">Informació addicional</a>
@@ -88,7 +88,7 @@
 
   <!-- Contingut -->
   <div class="content">
-    <div id="quiSom">
+    <div id="quiSoc">
       <h2>Qui som</h2>
       <p>Aquí anirà el text explicatiu sobre qui som.</p>
     </div>
@@ -129,37 +129,37 @@
       <!-- Formularis -->
       <div id="faldilla-form" class="formulari">
         <h2>Faldilla</h2>
-        Cintura: <input id="cinturaFaldilla" type="number"><br>
-        Cadera: <input id="caderaFaldilla" type="number"><br>
-        Llarg: <input id="llargFaldilla" type="number"><br>
+        Cintura: <input id="cintura" type="number"><br>
+        Cadera: <input id="cadera" type="number"><br>
+        Llarg: <input id="llarg" type="number"><br>
         <button onclick="generarPatro('faldilla')">Generar patró</button>
       </div>
 
       <div id="vestit-form" class="formulari">
         <h2>Vestit</h2>
-        Cintura: <input id="cinturaFaldilla" type="number"><br>
-        Cadera: <input id="caderaFaldilla" type="number"><br>
+        Cintura: <input id="cintura" type="number"><br>
+        Cadera: <input id="cadera" type="number"><br>
         Coll: <input id="coll" type="number"><br>
         Talle Espatlles: <input id="talleEspatlles" type="number"><br>
         Talle davanter: <input id="talleDavanter" type="number"><br>
         Alt de pit: <input id="altDePit" type="number"><br>
-        Espatlles: <input id="espatllesTotal" type="number"><br>
+        Espatlles: <input id="espatlles" type="number"><br>
         Caiguda: <input id="caiguda" type="number"><br>
         Sisa: <input id="sisa" type="number"><br>
         Tòrax: <input id="torax" type="number"><br>
         Pit: <input id="pit" type="number"><br>
-        Llarg del vestit: <input id="llargVestit" type="number"><br>
+        Llarg: <input id="llarg" type="number"><br>
         <button onclick="generarPatro('vestit')">Generar patró</button>
       </div>
 
       <div id="cosACintura-form" class="formulari">
         <h2>Cos a cintura</h2>
-        Cintura: <input id="cinturaFaldilla" type="number"><br>
+        Cintura: <input id="cintura" type="number"><br>
         Coll: <input id="coll" type="number"><br>
         Talle Espatlles: <input id="talleEspatlles" type="number"><br>
         Talle davanter: <input id="talleDavanter" type="number"><br>
         Alt de pit: <input id="altDePit" type="number"><br>
-        Espatlles: <input id="espatllesTotal" type="number"><br>
+        Espatlles: <input id="espatlles" type="number"><br>
         Caiguda: <input id="caiguda" type="number"><br>
         Sisa: <input id="sisa" type="number"><br>
         Tòrax: <input id="torax" type="number"><br>
@@ -169,13 +169,13 @@
 
       <div id="cosACadera-form" class="formulari">
         <h2>Cos a cadera</h2>
-        Cintura: <input id="cinturaFaldilla" type="number"><br>
-        Cadera: <input id="caderaFaldilla" type="number"><br>
+        Cintura: <input id="cintura" type="number"><br>
+        Cadera: <input id="cadera" type="number"><br>
         Coll: <input id="coll" type="number"><br>
         Talle Espatlles: <input id="talleEspatlles" type="number"><br>
         Talle davanter: <input id="talleDavanter" type="number"><br>
         Alt de pit: <input id="altDePit" type="number"><br>
-        Espatlles: <input id="espatllesTotal" type="number"><br>
+        Espatlles: <input id="espatlles" type="number"><br>
         Caiguda: <input id="caiguda" type="number"><br>
         Sisa: <input id="sisa" type="number"><br>
         Tòrax: <input id="torax" type="number"><br>
@@ -185,8 +185,8 @@
 
       <div id="faldaPantalon-form" class="formulari">
         <h2>Falda pantaló</h2>
-        Cintura: <input id="cinturaFaldilla" type="number"><br>
-        Cadera: <input id="caderaFaldilla" type="number"><br>
+        Cintura: <input id="cintura" type="number"><br>
+        Cadera: <input id="cadera" type="number"><br>
         Llarg: <input id="llarg" type="number"><br>
         Tiro: <input id="tiro" type="number"><br>
         <button onclick="generarPatro('faldaPantalon')">Generar patró</button>
@@ -194,8 +194,8 @@
 
       <div id="pantalon-form" class="formulari">
         <h2>Pantaló</h2>
-        Cintura: <input id="cinturaFaldilla" type="number"><br>
-        Cadera: <input id="caderaFaldilla" type="number"><br>
+        Cintura: <input id="cintura" type="number"><br>
+        Cadera: <input id="cadera" type="number"><br>
         Llarg: <input id="llarg" type="number"><br>
         Tiro: <input id="tiro" type="number"><br>
         Genoll: <input id="genoll" type="number"><br>
@@ -220,15 +220,15 @@
 
       <div id="faldillaMitjaCapa-form" class="formulari">
         <h2>Faldilla Mitja Capa</h2>
-        Cintura: <input id="cinturaFaldilla" type="number"><br>
-        Llarg: <input id="llargFaldilla" type="number"><br>
+        Cintura: <input id="cintura" type="number"><br>
+        Llarg: <input id="llarg" type="number"><br>
         <button onclick="generarPatro('faldillaMitjaCapa')">Generar patró</button>
       </div>
 
       <div id="faldillaCapaSencera-form" class="formulari">
         <h2>Faldilla Capa Sencera</h2>
-        Cintura: <input id="cinturaFaldilla" type="number"><br>
-        Llarg: <input id="llargFaldilla" type="number"><br>
+        Cintura: <input id="cintura" type="number"><br>
+        Llarg: <input id="llarg" type="number"><br>
         <button onclick="generarPatro('faldillaCapaSencera')">Generar patró</button>
       </div>
     </div>
