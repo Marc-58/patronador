@@ -81,7 +81,6 @@
 
     #canvas-container {
       margin-top: 20px;
-      text-align: center;
     }
   </style>
 </head>
@@ -90,7 +89,7 @@
   <!-- Barra lateral -->
   <div class="sidebar">
     <h1>La Meva Web</h1>
-    <a href="#" onclick="mostrarSeccio('quiSom')">Qui soc</a>
+    <a href="#" onclick="mostrarSeccio('quiSoc')">Qui soc</a>
     <a href="#" onclick="mostrarSeccio('mides')">Com prendre mides</a>
     <a href="#" onclick="mostrarSeccio('patronador')">Patronador</a>
     <a href="#" onclick="mostrarSeccio('info')">Informació addicional</a>
@@ -99,8 +98,8 @@
   <!-- Contingut -->
   <div class="content">
     <div id="quiSom">
-      <h2>Qui som</h2>
-      <p>Aquí anirà el text explicatiu sobre qui som.</p>
+      <h2>Qui soc</h2>
+      <p>Aquí anirà el text explicatiu sobre qui soc 1.</p>
     </div>
 
     <div id="mides" class="hidden">
@@ -159,22 +158,6 @@
   </div>
 
   <script>
-    let canvas;
-
-    function setup() {
-      canvas = createCanvas(800, 600);
-      canvas.parent('canvas-container'); // Col·locar el canvas dins del contenidor
-      background(255); // Fons blanc
-    }
-
-    function draw() {
-      // Aquí pots afegir la lògica per dibuixar al canvas
-      fill(0);
-      if (mouseIsPressed) {
-        ellipse(mouseX, mouseY, 50, 50); // Exemple: dibuixar un cercle on es fa clic
-      }
-    }
-
     function mostrarSeccio(id) {
       const seccions = document.querySelectorAll('.content > div');
       seccions.forEach(sec => sec.classList.add('hidden'));
@@ -182,8 +165,6 @@
       if (seccio) {
         seccio.classList.remove('hidden');
       }
-      clear(); // Netejar el canvas quan canviem de secció
-      setup(); // Re-inicialitzar el canvas
     }
 
     function seleccionar(id) {
@@ -193,21 +174,39 @@
       if (form) {
         form.style.display = 'block';
       }
-      clear(); // Netejar el canvas abans de dibuixar
-      setup(); // Re-inicialitzar el canvas
+      createCanvas(); // Crear el canvas quan es selecciona una peça
+    }
+
+    function createCanvas() {
+      const canvasContainer = document.getElementById('canvas-container');
+      canvasContainer.innerHTML = ''; // Netejar el contenidor abans de crear un nou canvas
+      const canvas = document.createElement('canvas');
+      canvas.width = 800; // Ample del canvas
+      canvas.height = 600; // Alt del canvas
+      canvas.style.border = '1px solid #ccc'; // Estil del canvas
+      canvasContainer.appendChild(canvas);
+      
+      // Aquí pots afegir la lògica per dibuixar al canvas, si cal
     }
 
     function descarregarCanvas() {
-      const link = document.createElement('a');
-      link.download = 'patro.png';
-      link.href = canvas.toDataURL();
-      link.click();
+      const canvases = document.getElementsByTagName("canvas");
+      if (canvases.length > 0) {
+        const canvas = canvases[0];
+        const link = document.createElement('a');
+        link.download = 'patro.png';
+        link.href = canvas.toDataURL();
+        link.click();
+      }
     }
 
-    // Inicialitzar p5.js
-    new p5(setup, draw);
+    window.onload = function() {
+      mostrarSeccio('quiSom');
+      createCanvas(); // Crear el canvas al iniciar la pàgina
+    };
   </script>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
   <script src="patroCosACintura.js"></script>
   <script src="patroCosACadera.js"></script>
   <script src="patroFaldilla.js"></script>
@@ -221,3 +220,4 @@
   <script src="sketch.js"></script>
 </body>
 </html>
+
