@@ -102,8 +102,9 @@ function generarPatro(peca) {
     }
   }
 
+  // Generar el canvas
   const container = document.getElementById("canvas-container");
-  container.innerHTML = '';
+  container.innerHTML = ''; // Netejar el contenidor abans de crear un nou canvas
   new p5(dibuixaPatro, container);
 }
 
@@ -164,3 +165,4 @@ function descarregarCanvas() {
     link.click();
   }
 }
+
