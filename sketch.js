@@ -141,19 +141,39 @@ else if (peca === "cosACadera") {
       return;
     }
   }
+const container = document.getElementById("canvas-container");
+container.innerHTML = '';
+new p5(dibuixaPatro, container);
 
-  const container = document.getElementById("canvas-container");
-  container.innerHTML = '';
-  new p5(dibuixaPatro, container);
+function dibuixaPatro(p) {
+  p.setup = function () {
+    const escala = 10;
 
-  function descarregarCanvas() {
-    const canvases = document.getElementsByTagName("canvas");
-    if (canvases.length > 0) {
-      const canvas = canvases[0];
-      const link = document.createElement('a');
-      link.download = tipus + '_patro.png';
-      link.href = canvas.toDataURL();
-      link.click();
+    p.createCanvas(1300, 1300);
+    p.background(255);
+    p.stroke(0);
+    p.noFill();
+
+    if (tipus === "cosACintura") {
+      dibuixarPatroCosACintura(p, mides, escala);
+    } else if (tipus === "faldilla") {
+      dibuixarPatroFaldilla(p, mides, escala);
+    } else if (tipus === "cosACadera") {
+      dibuixarPatroCosACadera(p, mides, escala);
+    } else if (tipus === "vestit") {
+      dibuixarPatroVestit(p, mides, escala);
     }
+  };
+}
+
+function descarregarCanvas() {
+  const canvases = document.getElementsByTagName("canvas");
+  if (canvases.length > 0) {
+    const canvas = canvases[0];
+    const link = document.createElement('a');
+    link.download = tipus + '_patro.png';
+    link.href = canvas.toDataURL();
+    link.click();
   }
 }
+
