@@ -1,272 +1,190 @@
 <!DOCTYPE html>
 <html lang="ca">
 <head>
-  <meta charset="UTF-8">
-  <title>Patronador de Moda</title>
+  <meta charset="UTF-8" />
+  <title>Generador de Patrons</title>
   <style>
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      display: flex;
-    }
-
-    /* Barra lateral */
-    .sidebar {
-      width: 200px;
-      background-color: #333;
-      color: white;
-      height: 100vh;
-      position: fixed;
-      top: 0;
-      left: 0;
-      display: flex;
-      flex-direction: column;
-      padding-top: 20px;
-    }
-
-    .sidebar h1 {
-      font-size: 20px;
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    .sidebar a {
-      padding: 15px 20px;
-      text-decoration: none;
-      color: white;
-      display: block;
-      transition: background 0.3s;
-    }
-
-    .sidebar a:hover {
-      background-color: #575757;
-    }
-
-    /* Contingut principal */
-    .content {
-      margin-left: 220px;
+      font-family: sans-serif;
       padding: 20px;
-      flex: 1;
     }
 
-    .hidden {
-      display: none;
-    }
-
-    .formulari {
+    .formulari, #triar-peca {
       display: none;
       margin-top: 20px;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-    }
-
-    .opcions-peces {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 10px;
     }
 
     .opcions-peces img {
-      width: 100%;
+      width: 150px;
+      margin: 10px;
       cursor: pointer;
       border: 2px solid transparent;
       border-radius: 8px;
-      transition: border 0.3s;
     }
 
     .opcions-peces img:hover {
-      border: 2px solid #333;
+      border-color: #333;
     }
 
     #canvas-container {
       margin-top: 20px;
+      text-align: center;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    input {
+      margin: 5px;
     }
   </style>
 </head>
 <body>
+  <h1>Generador de Patrons</h1>
 
-  <!-- Barra lateral -->
-  <div class="sidebar">
-    <h1>La Meva Web</h1>
-    <a href="#" onclick="mostrarSeccio('quiSom')">Qui soc</a>
-    <a href="#" onclick="mostrarSeccio('mides')">Com prendre mides</a>
-    <a href="#" onclick="mostrarSeccio('patronador')">Patronador</a>
-    <a href="#" onclick="mostrarSeccio('info')">Informació addicional</a>
+  <div id="mides-basiques">
+    <h2>Pas 1: Introdueix mides bàsiques</h2>
+    Cintura: <input id="cintura" type="number"><br>
+    Cadera: <input id="cadera" type="number"><br>
+    <button onclick="mostrarOpcions()">Continuar</button>
   </div>
 
-  <!-- Contingut -->
-  <div class="content">
-    <div id="quiSom">
-      <h2>Qui som</h2>
-      <p>Aquí anirà el text explicatiu sobre qui som.</p>
+  <div id="triar-peca">
+    <h2>Pas 2: Tria la peça</h2>
+    <div class="opcions-peces" style="display:flex; flex-wrap:wrap; gap:20px; justify-content:center;">
+      <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" 
+           alt="Cos a cintura" onclick="seleccionar('cosACintura')">
+      <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" 
+           alt="Cos a cadera" onclick="seleccionar('cosACadera')">
+      <img src="L1_dress_sleeveless.jpg" 
+           alt="Vestit" title="Vestit tipus recte" onclick="seleccionar('vestit')">
+      <img src="https://cdn-icons-png.flaticon.com/512/743/743007.png" 
+           alt="Falda pantaló" onclick="seleccionar('faldaPantalon')">
+      <img src="https://cdn-icons-png.flaticon.com/512/1258/1258475.png" 
+           alt="Pantaló" onclick="seleccionar('pantalon')">
+      <img src="https://cdn-icons-png.flaticon.com/512/1256/1256650.png" 
+           alt="Colls" onclick="seleccionar('colls')">
+      <img src="https://cdn-icons-png.flaticon.com/512/1256/1256692.png" 
+           alt="Màniga" onclick="seleccionar('maniga')">
+      <img src="https://cdn-icons-png.flaticon.com/512/1258/1258473.png" 
+           alt="Faldilla mitja capa" onclick="seleccionar('faldillaMitjaCapa')">
+      <img src="https://cdn-icons-png.flaticon.com/512/1258/1258473.png" 
+           alt="Faldilla capa sencera" onclick="seleccionar('faldillaCapaSencera')">
     </div>
-
-    <div id="mides" class="hidden">
-      <h2>Com prendre mides</h2>
-      <p>Guia de com prendre correctament les mides del cos.</p>
-    </div>
-
-    <div id="patronador" class="hidden">
-      <h2>Patronador</h2>
-      <div id="triar-peca">
-        <h2>Pas 2: Tria la peça</h2>
-        <div class="opcions-peces">
-          <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" 
-               alt="Faldilla" title="Faldilla" onclick="seleccionar('faldilla')">
-          <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" 
-               alt="Cos a cintura" title="Cos a cintura" onclick="seleccionar('cosACintura')">
-          <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" 
-               alt="Cos a cadera" title="Cos a cadera" onclick="seleccionar('cosACadera')">
-          <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" 
-               alt="Vestit" title="Vestit tipus recte" onclick="seleccionar('vestit')">
-          <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" 
-               alt="Falda pantaló" title="Falda pantaló" onclick="seleccionar('faldaPantalon')">
-          <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" 
-               alt="Pantaló" title="Pantaló" onclick="seleccionar('pantalon')">
-          <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" 
-               alt="Colls" title="Colls" onclick="seleccionar('colls')">
-          <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" 
-               alt="Màniga" title="Màniga" onclick="seleccionar('maniga')">
-          <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" 
-               alt="Faldilla mitja capa" title="Faldilla mitja capa" onclick="seleccionar('faldillaMitjaCapa')">
-          <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" 
-               alt="Faldilla capa sencera" title="Faldilla capa sencera" onclick="seleccionar('faldillaCapaSencera')">
-        </div>
-      </div>
-  function createCanvas() {
-      const canvasContainer = document.getElementById('canvas-container');
-      const canvas = document.createElement('canvas');
-      canvas.width = 800; // Ample del canvas
-      canvas.height = 600; // Alt del canvas
-      canvas.style.border = '1px solid #ccc'; // Estil del canvas
-      canvasContainer.appendChild(canvas);
-      
-      // Aquí pots afegir la lògica per dibuixar al canvas
-    }
-      <!-- Formularis -->
-      <div id="faldilla-form" class="formulari">
-        <h2>Faldilla</h2>
-        Cintura: <input id="cinturaFaldilla" type="number"><br>
-        Cadera: <input id="caderaFaldilla" type="number"><br>
-        Llarg: <input id="llargFaldilla" type="number"><br>
-        <button onclick="generarPatro('faldilla')">Generar patró</button>
-      </div>
-
-      <div id="vestit-form" class="formulari">
-        <h2>Vestit</h2>
-        Cintura: <input id="cinturaVestit" type="number"><br>
-        Cadera: <input id="caderaVestit" type="number"><br>
-        Coll: <input id="collVestit" type="number"><br>
-        Talle Espatlles: <input id="talleEspatlles" type="number"><br>
-        Talle davanter: <input id="talleDavanter" type="number"><br>
-        Alt de pit: <input id="altDePit" type="number"><br>
-        Espatlles: <input id="espatllesVestit" type="number"><br>
-        Caiguda: <input id="caigudaVestit" type="number"><br>
-        Sisa: <input id="sisaVestit" type="number"><br>
-        Tòrax: <input id="toraxVestit" type="number"><br>
-        Pit: <input id="pitVestit" type="number"><br>
-        Llarg: <input id="llargVestit" type="number"><br>
-        <button onclick="generarPatro('vestit')">Generar patró</button>
-      </div>
-
-      <div id="cosACintura-form" class="formulari">
-        <h2>Cos a cintura</h2>
-        Cintura: <input id="cinturaCosACintura" type="number"><br>
-        Coll: <input id="collCosACintura" type="number"><br>
-        Talle Espatlles: <input id="talleEspatllesCosACintura" type="number"><br>
-        Talle davanter: <input id="talleDavanterCosACintura" type="number"><br>
-        Alt de pit: <input id="altDePitCosACintura" type="number"><br>
-        Espatlles: <input id="espatllesCosACintura" type="number"><br>
-        Caiguda: <input id="caigudaCosACintura" type="number"><br>
-        Sisa: <input id="sisaCosACintura" type="number"><br>
-        Tòrax: <input id="toraxCosACintura" type="number"><br>
-        Pit: <input id="pitCosACintura" type="number"><br>
-        <button onclick="generarPatro('cosACintura')">Generar patró</button>
-      </div>
-
-      <div id="cosACadera-form" class="formulari">
-        <h2>Cos a cadera</h2>
-        Cintura: <input id="cinturaCosACadera" type="number"><br>
-        Cadera: <input id="caderaCosACadera" type="number"><br>
-        Coll: <input id="collCosACadera" type="number"><br>
-        Talle Espatlles: <input id="talleEspatllesCosACadera" type="number"><br>
-        Talle davanter: <input id="talleDavanterCosACadera" type="number"><br>
-        Alt de pit: <input id="altDePitCosACadera" type="number"><br>
-        Espatlles: <input id="espatllesCosACadera" type="number"><br>
-        Caiguda: <input id="caigudaCosACadera" type="number"><br>
-        Sisa: <input id="sisaCosACadera" type="number"><br>
-        Tòrax: <input id="toraxCosACadera" type="number"><br>
-        Pit: <input id="pitCosACadera" type="number"><br>
-        <button onclick="generarPatro('cosACadera')">Generar patró</button>
-      </div>
-
-      <div id="faldaPantalon-form" class="formulari">
-        <h2>Falda pantaló</h2>
-        Cintura: <input id="cinturaFaldaPantalon" type="number"><br>
-        Cadera: <input id="caderaFaldaPantalon" type="number"><br>
-        Llarg: <input id="llargFaldaPantalon" type="number"><br>
-        Tiro: <input id="tiroFaldaPantalon" type="number"><br>
-        <button onclick="generarPatro('faldaPantalon')">Generar patró</button>
-      </div>
-
-      <div id="pantalon-form" class="formulari">
-        <h2>Pantaló</h2>
-        Cintura: <input id="cinturaPantalon" type="number"><br>
-        Cadera: <input id="caderaPantalon" type="number"><br>
-        Llarg: <input id="llargPantalon" type="number"><br>
-        Tiro: <input id="tiroPantalon" type="number"><br>
-        Genoll: <input id="genollPantalon" type="number"><br>
-        <button onclick="generarPatro('pantalon')">Generar patró</button>
-      </div>
-
-      <div id="colls-form" class="formulari">
-        <h2>Colls</h2>
-        Coll: <input id="colls" type="number"><br>
-        <button onclick="generarPatro('colls')">Generar patró</button>
-      </div>
-
-      <div id="maniga-form" class="formulari">
-        <h2>Màniga</h2>
-        Llarg Total: <input id="llargTotal" type="number"><br>
-        Llarg Braç: <input id="llargBraç" type="number"><br>
-        Munyeca: <input id="munyeca" type="number"><br>
-        Sisa: <input id="sisaManiga" type="number"><br>
-        Contorn Braç: <input id="contornBraç" type="number"><br>
-        <button onclick="generarPatro('maniga')">Generar patró</button>
-      </div>
-
-      <div id="faldillaMitjaCapa-form" class="formulari">
-        <h2>Faldilla Mitja Capa</h2>
-        Cintura: <input id="cinturaFaldillaMitjaCapa" type="number"><br>
-        Llarg: <input id="llargFaldillaMitjaCapa" type="number"><br>
-        <button onclick="generarPatro('faldillaMitjaCapa')">Generar patró</button>
-      </div>
-
-      <div id="faldillaCapaSencera-form" class="formulari">
-        <h2>Faldilla Capa Sencera</h2>
-        Cintura: <input id="cinturaFaldillaCapaSencera" type="number"><br>
-        Llarg: <input id="llargFaldillaCapaSencera" type="number"><br>
-        <button onclick="generarPatro('faldillaCapaSencera')">Generar patró</button>
-      </div>
-    </div>
-
-    <div id="info" class="hidden">
-      <h2>Informació addicional</h2>
-      <p>Altres detalls que vulguis afegir aquí.</p>
-    </div>
-
-    <div id="canvas-container"></div>
-    <button onclick="descarregarCanvas()">Descarregar imatge</button>
   </div>
+
+  <!-- Formularis per a cada peça -->
+  <div id="faldilla-form" class="formulari">
+    <h2>Faldilla</h2>
+    Llarg: <input id="llargFaldilla" type="number"><br>
+    <button onclick="generarPatro('faldilla')">Generar patró</button>
+  </div>
+
+  <div id="vestit-form" class="formulari">
+    <h2>Vestit</h2>
+    Coll: <input id="collVestit" type="number"><br>
+    Talle Espatlles: <input id="talleEspatlles" type="number"><br>
+    Talle davanter: <input id="talleDavanter" type="number"><br>
+    Alt de pit: <input id="altDePit" type="number"><br>
+    Espatlles: <input id="espatllesTotal" type="number"><br>
+    Caiguda: <input id="caiguda" type="number"><br>
+    Sisa: <input id="sisa" type="number"><br>
+    Tòrax: <input id="torax" type="number"><br>
+    Pit: <input id="pit" type="number"><br>
+    Llarg del vestit: <input id="llargVestit" type="number"><br>
+    <button onclick="generarPatro('vestit')">Generar patró</button>
+  </div>
+
+  <div id="cosACintura-form" class="formulari">
+    <h2>Cos a cintura</h2>
+    Coll: <input id="collCosACintura" type="number"><br>
+    Talle Espatlles: <input id="talleEspatllesCosACintura" type="number"><br>
+    Talle davanter: <input id="talleDavanterCosACintura" type="number"><br>
+    Alt de pit: <input id="altDePitCosACintura" type="number"><br>
+    Espatlles: <input id="espatllesTotalCosACintura" type="number"><br>
+    Caiguda: <input id="caigudaCosACintura" type="number"><br>
+    Sisa: <input id="sisaCosACintura" type="number"><br>
+    Tòrax: <input id="toraxCosACintura" type="number"><br>
+    Pit: <input id="pitCosACintura" type="number"><br>
+    <button onclick="generarPatro('cosACintura')">Generar patró</button>
+  </div>
+
+  <div id="cosACadera-form" class="formulari">
+    <h2>Cos a cadera</h2>
+    Coll: <input id="collCosACadera" type="number"><br>
+    Talle Espatlles: <input id="talleEspatllesCosACadera" type="number"><br>
+    Talle davanter: <input id="talleDavanterCosACadera" type="number"><br>
+    Alt de pit: <input id="altDePitCosACadera" type="number"><br>
+    Espatlles: <input id="espatllesTotalCosACadera" type="number"><br>
+    Caiguda: <input id="caigudaCosACadera" type="number"><br>
+    Sisa: <input id="sisaCosACadera" type="number"><br>
+    Tòrax: <input id="toraxCosACadera" type="number"><br>
+    Pit: <input id="pitCosACadera" type="number"><br>
+    <button onclick="generarPatro('cosACadera')">Generar patró</button>
+  </div>
+
+  <div id="faldaPantalon-form" class="formulari">
+    <h2>Falda pantaló</h2>
+    Llarg: <input id="llargFaldaPantalon" type="number"><br>
+    Tiro: <input id="tiroFaldaPantalon" type="number"><br>
+    <button onclick="generarPatro('faldaPantalon')">Generar patró</button>
+  </div>
+
+  <div id="pantalon-form" class="formulari">
+    <h2>Pantaló</h2>
+    Llarg: <input id="llargPantalon" type="number"><br>
+    Tiro: <input id="tiroPantalon" type="number"><br>
+    <button onclick="generarPatro('pantalon')">Generar patró</button>
+  </div>
+
+  <div id="colls-form" class="formulari">
+    <h2>Colls</h2>
+    Coll: <input id="colls" type="number"><br>
+    <button onclick="generarPatro('colls')">Generar patró</button>
+  </div>
+
+  <div id="maniga-form" class="formulari">
+    <h2>Màniga</h2>
+    Llarg Total: <input id="llargTotalManiga" type="number"><br>
+    Llarg Braç: <input id="llargBrac" type="number"><br>
+    Munyeca: <input id="munyeca" type="number"><br>
+    Sisa: <input id="sisaManiga" type="number"><br>
+    Contorn Braç: <input id="contornBrac" type="number"><br>
+    <button onclick="generarPatro('maniga')">Generar patró</button>
+  </div>
+
+  <div id="faldillaMitjaCapa-form" class="formulari">
+    <h2>Faldilla Mitja Capa</h2>
+    Llarg: <input id="llargFaldillaMitjaCapa" type="number"><br>
+    <button onclick="generarPatro('faldillaMitjaCapa')">Generar patró</button>
+  </div>
+
+  <div id="faldillaCapaSencera-form" class="formulari">
+    <h2>Faldilla Capa Sencera</h2>
+    Llarg: <input id="llargFaldillaCapaSencera" type="number"><br>
+    <button onclick="generarPatro('faldillaCapaSencera')">Generar patró</button>
+  </div>
+
+  <div id="canvas-container"></div>
+  <button onclick="descarregarCanvas()">Descarregar imatge</button>
 
   <script>
-    function mostrarSeccio(id) {
-      const seccions = document.querySelectorAll('.content > div');
-      seccions.forEach(sec => sec.classList.add('hidden'));
-      const seccio = document.getElementById(id);
-      if (seccio) {
-        seccio.classList.remove('hidden');
+    function mostrarOpcions() {
+      const cintura = document.getElementById('cintura').value;
+      const cadera = document.getElementById('cadera').value;
+
+      if (cintura && cadera) {
+        document.getElementById('mides-basiques').style.display = 'none';
+        document.getElementById('triar-peca').style.display = 'block';
+      } else {
+        alert("Si us plau, introdueix les mides bàsiques.");
       }
     }
 
@@ -277,14 +195,31 @@
       if (form) {
         form.style.display = 'block';
       }
+      createCanvas(); // Crear el canvas quan es selecciona una peça
     }
 
-    window.onload = function() {
-      mostrarSeccio('quiSom');
-      createCanvas(); // Crear el canvas al iniciar la pàgina
-    };
+    function createCanvas() {
+      const canvasContainer = document.getElementById('canvas-container');
+      canvasContainer.innerHTML = ''; // Netejar el contenidor abans de crear un nou canvas
+      const canvas = document.createElement('canvas');
+      canvas.width = 800; // Ample del canvas
+      canvas.height = 600; // Alt del canvas
+      canvas.style.border = '1px solid #ccc'; // Estil del canvas
+      canvasContainer.appendChild(canvas);
+      
+      // Aquí pots afegir la lògica per dibuixar al canvas
+    }
 
-  
+    function descarregarCanvas() {
+      const canvases = document.getElementsByTagName("canvas");
+      if (canvases.length > 0) {
+        const canvas = canvases[0];
+        const link = document.createElement('a');
+        link.download = 'patro.png';
+        link.href = canvas.toDataURL();
+        link.click();
+      }
+    }
   </script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
@@ -295,10 +230,7 @@
   <script src="patroFaldillaPantalo.js"></script>
   <script src="patroPantalo.js"></script>
   <script src="patroColls.js"></script>
-  <script src="patroFaldillaMitjaCapa.js"></script>
-  <script src="patroFaldillaCapaSencera.js"></script>
   <script src="patroManiga.js"></script>
   <script src="sketch.js"></script>
 </body>
 </html>
-
