@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ca">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Patronador de Moda</title>
   <style>
     body {
@@ -47,6 +47,7 @@
       margin-left: 220px;
       padding: 20px;
       flex: 1;
+      min-height: 100vh;
     }
 
     .hidden {
@@ -79,9 +80,39 @@
       border: 2px solid #333;
     }
 
+    /* Canvas (posat més avall) */
     #canvas-container {
-      margin-top: 20px;
+      margin-top: 60px;
       text-align: center;
+      padding-bottom: 60px;
+    }
+
+    canvas {
+      border: 1px solid #aaa;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      max-width: 100%;
+      height: auto;
+    }
+
+    #descarregar-btn {
+      display: inline-block;
+      margin: 12px auto;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    #descarregar-btn:hover { background-color: #575757; }
+
+    /* Petita responsivitat */
+    @media (max-width: 1000px) {
+      .opcions-peces { grid-template-columns: repeat(2, 1fr); }
+      .content { padding: 12px; margin-left: 0; }
+      .sidebar { position: relative; width: 100%; height: auto; flex-direction: row; gap: 10px; padding: 10px;}
     }
   </style>
 </head>
@@ -90,10 +121,10 @@
   <!-- Barra lateral -->
   <div class="sidebar">
     <h1>La Meva Web</h1>
-    <a href="#" onclick="mostrarSeccio('quiSoc')">Qui soc</a>
-    <a href="#" onclick="mostrarSeccio('mides')">Com prendre mides</a>
-    <a href="#" onclick="mostrarSeccio('patronador')">Patronador</a>
-    <a href="#" onclick="mostrarSeccio('info')">Informació addicional</a>
+    <a href="#" onclick="mostrarSeccio('quiSoc'); return false;">Qui soc</a>
+    <a href="#" onclick="mostrarSeccio('mides'); return false;">Com prendre mides</a>
+    <a href="#" onclick="mostrarSeccio('patronador'); return false;">Patronador</a>
+    <a href="#" onclick="mostrarSeccio('info'); return false;">Informació addicional</a>
   </div>
 
   <!-- Contingut -->
@@ -113,30 +144,20 @@
       <div id="triar-peca">
         <h2>Pas 2: Tria la peça</h2>
         <div class="opcions-peces">
-          <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" 
-               alt="Faldilla" title="Faldilla" onclick="seleccionar('faldilla')">
-          <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" 
-               alt="Cos a cintura" title="Cos a cintura" onclick="seleccionar('cosACintura')">
-          <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" 
-               alt="Cos a cadera" title="Cos a cadera" onclick="seleccionar('cosACadera')">
-          <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" 
-               alt="Vestit" title="Vestit tipus recte" onclick="seleccionar('vestit')">
-          <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" 
-               alt="Falda pantaló" title="Falda pantaló" onclick="seleccionar('faldaPantalon')">
-          <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" 
-               alt="Pantaló" title="Pantaló" onclick="seleccionar('pantalon')">
-          <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" 
-               alt="Colls" title="Colls" onclick="seleccionar('colls')">
-          <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" 
-               alt="Màniga" title="Màniga" onclick="seleccionar('maniga')">
-          <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" 
-               alt="Faldilla mitja capa" title="Faldilla mitja capa" onclick="seleccionar('faldillaMitjaCapa')">
-          <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" 
-               alt="Faldilla capa sencera" title="Faldilla capa sencera" onclick="seleccionar('faldillaCapaSencera')">
+          <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" alt="Faldilla" title="Faldilla" onclick="seleccionar('faldilla')">
+          <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" alt="Cos a cintura" title="Cos a cintura" onclick="seleccionar('cosACintura')">
+          <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" alt="Cos a cadera" title="Cos a cadera" onclick="seleccionar('cosACadera')">
+          <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" alt="Vestit" title="Vestit" onclick="seleccionar('vestit')">
+          <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" alt="Falda pantaló" title="Falda pantaló" onclick="seleccionar('faldaPantalon')">
+          <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" alt="Pantaló" title="Pantaló" onclick="seleccionar('pantalon')">
+          <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" alt="Colls" title="Colls" onclick="seleccionar('colls')">
+          <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" alt="Màniga" title="Màniga" onclick="seleccionar('maniga')">
+          <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" alt="Faldilla mitja capa" title="Faldilla mitja capa" onclick="seleccionar('faldillaMitjaCapa')">
+          <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" alt="Faldilla capa sencera" title="Faldilla capa sencera" onclick="seleccionar('faldillaCapaSencera')">
         </div>
       </div>
 
-      <!-- Formularis -->
+      <!-- Formularis (IDs específics per a cada peça) -->
       <div id="faldilla-form" class="formulari">
         <h2>Faldilla</h2>
         Cintura: <input id="cinturaFaldilla" type="number"><br>
@@ -241,73 +262,25 @@
         Llarg: <input id="llargFaldillaCapaSencera" type="number"><br>
         <button onclick="generarPatro('faldillaCapaSencera')">Generar patró</button>
       </div>
-    </div>
+
+    </div> <!-- fi patronador -->
 
     <div id="info" class="hidden">
       <h2>Informació addicional</h2>
       <p>Altres detalls que vulguis afegir aquí.</p>
     </div>
 
-    <div id="canvas-container"></div>
-    <button onclick="descarregarCanvas()">Descarregar imatge</button>
-  </div>
+    <!-- CANVAS (més avall) -->
+    <div id="canvas-container" aria-label="Canvas del patró"></div>
+    <div style="text-align:center;"><button id="descarregar-btn" onclick="descarregarCanvas()">Descarregar imatge</button></div>
 
-  <script>
-    let canvas;
+  </div> <!-- fi content -->
 
-    function setup() {
-      canvas = createCanvas(800, 600);
-      canvas.parent('canvas-container'); // Col·locar el canvas dins del contenidor
-      background(255); // Fons blanc
-    }
-
-    function draw() {
-      // Aquí pots afegir la lògica per dibuixar al canvas
-      if (mouseIsPressed) {
-        fill(0);
-        ellipse(mouseX, mouseY, 50, 50); // Exemple: dibuixar un cercle on es fa clic
-      }
-    }
-
-    function mostrarSeccio(id) {
-      const seccions = document.querySelectorAll('.content > div');
-      seccions.forEach(sec => sec.classList.add('hidden'));
-      const seccio = document.getElementById(id);
-      if (seccio) {
-        seccio.classList.remove('hidden');
-      }
-      clear(); // Netejar el canvas quan canviem de secció
-      setup(); // Re-inicialitzar el canvas
-    }
-
-    function seleccionar(id) {
-      const formularis = document.querySelectorAll('.formulari');
-      formularis.forEach(f => f.style.display = 'none');
-      const form = document.getElementById(id + '-form');
-      if (form) {
-        form.style.display = 'block';
-      }
-      clear(); // Netejar el canvas abans de dibuixar
-      setup(); // Re-inicialitzar el canvas
-    }
-
-    function descarregarCanvas() {
-      const link = document.createElement('a');
-      link.download = 'patro.png';
-      link.href = canvas.toDataURL();
-      link.click();
-    }
-
-    window.onload = function() {
-      mostrarSeccio('quiSoc');
-      setup(); // Crear el canvas al iniciar la pàgina
-    };
-  </script>
-
-  <!-- Llibreria p5.js -->
+  <!-- ---------- LLIBRERIES i FITXERS DE PATRONS ---------- -->
+  <!-- p5.js primer -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
 
-  <!-- Fitxers de patrons -->
+  <!-- Fitxers de patrons: per favor mantén aquests arxius en la mateixa carpeta -->
   <script src="patroCosACintura.js"></script>
   <script src="patroCosACadera.js"></script>
   <script src="patroFaldilla.js"></script>
@@ -318,6 +291,258 @@
   <script src="patroFaldillaMitjaCapa.js"></script>
   <script src="patroFaldillaCapaSencera.js"></script>
   <script src="patroManiga.js"></script>
-  <script src="sketch.js"></script>
+  <script src="sketch.js"></script> <!-- si tens més codi de suport -->
+
+  <!-- ---------- CODI PRINCIPAL (usa p5 instance-mode) ---------- -->
+  <script>
+    let mides = {};
+    let tipus = null;
+    let p5instance = null; // referència a l'instance p5 creada
+
+    function mostrarSeccio(id) {
+      const seccions = document.querySelectorAll('.content > div');
+      seccions.forEach(sec => sec.classList.add('hidden'));
+      const seccio = document.getElementById(id);
+      if (seccio) seccio.classList.remove('hidden');
+
+      // Neteja el canvas (si existeix)
+      if (p5instance && p5instance.clear) {
+        p5instance.clear();
+      }
+    }
+
+    function seleccionar(id) {
+      tipus = id;
+      const formularis = document.querySelectorAll('.formulari');
+      formularis.forEach(f => f.style.display = 'none');
+      const form = document.getElementById(id + '-form');
+      if (form) form.style.display = 'block';
+
+      // Neteja el canvas visual
+      if (p5instance && p5instance.clear) p5instance.clear();
+    }
+
+    function generarPatro(peca) {
+      tipus = peca;
+
+      // Assignar mides segons la peça (llegir dels inputs amb els IDs que tens)
+      // Important: utilitza els IDs que estan al HTML anterior
+      function num(id) {
+        const el = document.getElementById(id);
+        if (!el) return NaN;
+        const v = parseFloat(el.value);
+        return isNaN(v) ? NaN : v;
+      }
+
+      // Posar cintura/cadera comunes si existeixen en formularis específics
+      // Ara llegeixo segons l'ID de cada formulari específic
+      if (peca === 'faldilla') {
+        mides.cintura = num('cinturaFaldilla') || mides.cintura;
+        mides.cadera  = num('caderaFaldilla')  || mides.cadera;
+        mides.llarg   = num('llargFaldilla');
+        if (isNaN(mides.llarg)) { alert('Introdueix un valor vàlid per al llarg de la faldilla.'); return; }
+      } else if (peca === 'vestit') {
+        mides.cintura = num('cinturaVestit') || mides.cintura;
+        mides.cadera  = num('caderaVestit')  || mides.cadera;
+        mides.coll = num('collVestit');
+        mides.talleEspatlles = num('talleEspatlles');
+        mides.talleDavanter = num('talleDavanter');
+        mides.altDePit = num('altDePit');
+        mides.espatlles = num('espatllesVestit');
+        mides.caiguda = num('caigudaVestit');
+        mides.sisa = num('sisaVestit');
+        mides.torax = num('toraxVestit');
+        mides.pit = num('pitVestit');
+        mides.llarg = num('llargVestit');
+        const arr = [mides.coll, mides.talleEspatlles, mides.talleDavanter, mides.altDePit, mides.espatlles, mides.caiguda, mides.sisa, mides.torax, mides.pit, mides.llarg];
+        if (arr.some(v=>isNaN(v))) { alert('Revisa que totes les mides del vestit estiguin introduïdes correctament.'); return; }
+      } else if (peca === 'cosACintura' || peca === 'cosACadera') {
+        const suf = (peca === 'cosACintura') ? 'CosACintura' : 'CosACadera';
+        mides.cintura = num('cintura' + suf) || mides.cintura;
+        mides.cadera  = num('cadera' + suf) || mides.cadera;
+        mides.coll = num('coll' + suf);
+        mides.talleEspatlles = num('talleEspatlles' + suf);
+        mides.talleDavanter = num('talleDavanter' + suf);
+        mides.altDePit = num('altDePit' + suf);
+        mides.espatlles = num('espatlles' + suf);
+        mides.caiguda = num('caiguda' + suf);
+        mides.sisa = num('sisa' + suf);
+        mides.torax = num('torax' + suf);
+        mides.pit = num('pit' + suf);
+        const arr = [mides.coll, mides.talleEspatlles, mides.talleDavanter, mides.altDePit, mides.espatlles, mides.caiguda, mides.sisa, mides.torax, mides.pit];
+        if (arr.some(v=>isNaN(v))) { alert('Revisa que totes les mides del cos estiguin introduïdes correctament.'); return; }
+      } else if (peca === 'faldaPantalon') {
+        mides.cintura = num('cinturaFaldaPantalon') || mides.cintura;
+        mides.cadera  = num('caderaFaldaPantalon') || mides.cadera;
+        mides.llarg = num('llargFaldaPantalon');
+        mides.tiro  = num('tiroFaldaPantalon');
+        if (isNaN(mides.llarg) || isNaN(mides.tiro)) { alert('Introdueix valors vàlids per a la faldilla pantaló.'); return; }
+      } else if (peca === 'pantalon') {
+        mides.cintura = num('cinturaPantalon') || mides.cintura;
+        mides.cadera  = num('caderaPantalon') || mides.cadera;
+        mides.llarg = num('llargPantalon');
+        mides.tiro  = num('tiroPantalon');
+        mides.genoll = num('genollPantalon');
+        if (isNaN(mides.llarg) || isNaN(mides.tiro) || isNaN(mides.genoll)) { alert('Revisa les mides del pantaló.'); return; }
+      } else if (peca === 'colls') {
+        mides.coll = num('colls');
+        if (isNaN(mides.coll)) { alert('Introdueix la circumferència del coll.'); return; }
+      } else if (peca === 'maniga') {
+        mides.llargTotal = num('llargTotal');
+        mides.llargBraç = num('llargBraç');
+        mides.munyeca = num('munyeca');
+        mides.sisa = num('sisaManiga');
+        mides.contornBraç = num('contornBraç');
+        const arr = [mides.llargTotal, mides.llargBraç, mides.munyeca, mides.sisa, mides.contornBraç];
+        if (arr.some(v=>isNaN(v))) { alert('Revisa les mides de la màniga.'); return; }
+      } else if (peca === 'faldillaMitjaCapa' || peca === 'faldillaCapaSencera') {
+        const suf = (peca === 'faldillaMitjaCapa') ? 'FaldillaMitjaCapa' : 'FaldillaCapaSencera';
+        mides.llarg = num('llarg' + suf);
+        mides.cintura = num('cintura' + suf) || mides.cintura;
+        if (isNaN(mides.llarg)) { alert('Revisa les mides de la faldilla.'); return; }
+      } else {
+        // peça desconeguda, només n'oferim un procés bàsic
+      }
+
+      // Crear/renovar el canvas dins del contenidor (instance mode)
+      const container = document.getElementById('canvas-container');
+      container.innerHTML = ''; // netejar
+      p5instance = new p5(function(p) {
+        p.setup = function() {
+          // canvas gran
+          p.createCanvas(1200, 1600);
+          p.background(255);
+          p.stroke(0);
+          p.noFill();
+
+          const escala = 10;
+
+          // Cridar la funció de dibuix corresponent si existeix a l'entorn global
+          try {
+            switch (tipus) {
+              case 'faldilla':
+                if (typeof window.dibuixarPatroFaldilla === 'function') {
+                  window.dibuixarPatroFaldilla(p, mides, escala);
+                } else {
+                  // fallback simple en cas que no tinguis la funció externa
+                  p.textAlign(p.CENTER);
+                  p.text('Patró de faldilla (fallback)', p.width/2, 50);
+                }
+                break;
+
+              case 'vestit':
+                if (typeof window.dibuixarPatroVestit === 'function') {
+                  window.dibuixarPatroVestit(p, mides, escala);
+                } else {
+                  p.textAlign(p.CENTER);
+                  p.text('Patró de vestit (fallback)', p.width/2, 50);
+                }
+                break;
+
+              case 'cosACintura':
+                if (typeof window.dibuixarPatroCosACintura === 'function') {
+                  window.dibuixarPatroCosACintura(p, mides, escala);
+                } else {
+                  p.text('Patró cos a cintura (fallback)', 50, 50);
+                }
+                break;
+
+              case 'cosACadera':
+                if (typeof window.dibuixarPatroCosACadera === 'function') {
+                  window.dibuixarPatroCosACadera(p, mides, escala);
+                } else {
+                  p.text('Patró cos a cadera (fallback)', 50, 50);
+                }
+                break;
+
+              case 'faldaPantalon':
+                if (typeof window.dibuixarPatroFaldillaPantalon === 'function') {
+                  window.dibuixarPatroFaldillaPantalon(p, mides, escala);
+                } else {
+                  p.text('Patró falda pantaló (fallback)', 50, 50);
+                }
+                break;
+
+              case 'pantalon':
+                if (typeof window.dibuixarPatroPantalon === 'function') {
+                  window.dibuixarPatroPantalon(p, mides, escala);
+                } else {
+                  p.text('Patró pantaló (fallback)', 50, 50);
+                }
+                break;
+
+              case 'colls':
+                if (typeof window.dibuixarPatroColls === 'function') {
+                  window.dibuixarPatroColls(p, mides, escala);
+                } else {
+                  p.text('Patró coll (fallback)', 50, 50);
+                }
+                break;
+
+              case 'maniga':
+                if (typeof window.dibuixarPatroManiga === 'function') {
+                  window.dibuixarPatroManiga(p, mides, escala);
+                } else {
+                  p.text('Patró màniga (fallback)', 50, 50);
+                }
+                break;
+
+              case 'faldillaMitjaCapa':
+                if (typeof window.dibuixarPatroFaldillaMitjaCapa === 'function') {
+                  window.dibuixarPatroFaldillaMitjaCapa(p, mides, escala);
+                } else {
+                  p.text('Patró mitja capa (fallback)', 50, 50);
+                }
+                break;
+
+              case 'faldillaCapaSencera':
+                if (typeof window.dibuixarPatroFaldillaCapaSencera === 'function') {
+                  window.dibuixarPatroFaldillaCapaSencera(p, mides, escala);
+                } else {
+                  p.text('Patró capa sencera (fallback)', 50, 50);
+                }
+                break;
+
+              default:
+                p.text('Peça desconeguda', 50, 50);
+            }
+          } catch(err) {
+            // Mostrar error dins del canvas i consola
+            console.error('Error dibuixant patró:', err);
+            p.push();
+            p.fill(200,0,0);
+            p.noStroke();
+            p.text('Error dibuixant patró — mira la consola', 20, 20);
+            p.pop();
+          }
+        }; // fi p.setup
+
+        p.draw = function() {
+          // No fem res a draw; tot el dibuix principal es fa a setup
+          p.noLoop();
+        };
+
+      }, container);
+    } // fi generarPatro
+
+    function descarregarCanvas() {
+      if (!p5instance) {
+        alert('No hi ha canvas per descarregar.');
+        return;
+      }
+      try {
+        // utilitzem el mètode saveCanvas de p5 instance
+        p5instance.saveCanvas(p5instance.canvas, (tipus || 'patro'), 'png');
+      } catch (err) {
+        console.error('No s\'ha pogut desar el canvas:', err);
+        alert('No s\'ha pogut desar la imatge. Mira la consola.');
+      }
+    }
+
+    // Mostrar secció inicial
+    window.onload = function() {
+      mostrarSeccio('quiSoc');
+    };
+  </script>
 </body>
 </html>
