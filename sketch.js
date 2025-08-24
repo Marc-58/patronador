@@ -43,16 +43,17 @@ function generarPatro(peca) {
       return;
   }
   else if (peca === "cosACintura") {
-    mides.cintura = parseFloat(document.getElementById("cinturaVestit").value);
-    mides.coll = parseFloat(document.getElementById("collVestit").value);
-    mides.talleEspatlles = parseFloat(document.getElementById("talleEspatllesVestit").value); 
-    mides.talleDavanter = parseFloat(document.getElementById("talleDavanterVestit").value);
-    mides.altDePit = parseFloat(document.getElementById("altDePitVestit").value);
-    mides.espatllesTotal = parseFloat(document.getElementById("espatllesTotalVestit").value);
-    mides.caiguda = parseFloat(document.getElementById("caigudaVestit").value);
-    mides.sisa = parseFloat(document.getElementById("sisaVestit").value);
-    mides.torax = parseFloat(document.getElementById("toraxVestit").value);
-    mides.pit = parseFloat(document.getElementById("pitVestit").value);
+   mides.cintura = parseFloat(document.getElementById("cinturaCosCintura").value);
+mides.coll = parseFloat(document.getElementById("collCosCintura").value);
+mides.talleEspatlles = parseFloat(document.getElementById("talleEspatllesCosCintura").value); 
+mides.talleDavanter = parseFloat(document.getElementById("talleDavanterCosCintura").value);
+mides.altDePit = parseFloat(document.getElementById("altDePitCosCintura").value);
+mides.espatllesTotal = parseFloat(document.getElementById("espatllesCosCintura").value);
+mides.caiguda = parseFloat(document.getElementById("caigudaCosCintura").value);
+mides.sisa = parseFloat(document.getElementById("sisaCosCintura").value);
+mides.torax = parseFloat(document.getElementById("toraxCosCintura").value);
+mides.pit = parseFloat(document.getElementById("pitCosCintura").value);
+
 
     let midesNecessaries = [
       mides.coll, mides.talleEspatlles, mides.talleDavanter,
