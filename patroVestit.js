@@ -92,7 +92,7 @@ function dibuixarPatroCosACintura(p, mides, escala) {
   );
 
   // Cos + faldilla fins la cadera
-  p.rect(10, 10, cadera / 2, llargVestit);
+  p.rect(10, talleEspatlles+18+10, cadera / 2-1, llargVestit-18);
 }
 
     }
