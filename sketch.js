@@ -117,6 +117,8 @@ function generarPatro(peca) {
   }
   else if (peca === "faldillaPantalon") {
     mides.llarg = parseInt(document.getElementById("llargFaldillaPantalon").value, 10);
+    mides.tiro = parseInt(document.getElementById("tiro").value, 10);
+
     if (isNaN(mides.llarg)) {
       alert("Introdueix un valor vàlid per al llarg de la faldilla pantaló.");
       return;
@@ -124,6 +126,7 @@ function generarPatro(peca) {
   } 
   else if (peca === "pantalo") {
     mides.llarg = parseInt(document.getElementById("llargPantalo").value, 10);
+    mides.tiro = parseInt(document.getElementById("tiro").value, 10);
     mides.genoll = parseInt(document.getElementById("genoll").value, 10);
     if (isNaN(mides.llarg) || isNaN(mides.genoll)) {
       alert("Revisa les mides del pantaló.");
@@ -138,18 +141,25 @@ function generarPatro(peca) {
     }
   }
   else if (peca === "maniga") {
-    mides.llargManiga = parseInt(document.getElementById("llargManiga").value, 10);
-    mides.biceps = parseInt(document.getElementById("biceps").value, 10);
+    mides.llargTotal = parseInt(document.getElementById("llargTotal").value, 10);
+    mides.llargBraç = parseInt(document.getElementById("llargBraç").value, 10);
+    mides.munyeca = parseInt(document.getElementById("munyeca").value, 10);
+    mides.sisa = parseInt(document.getElementById("sisa").value, 10);
     if (isNaN(mides.llargManiga) || isNaN(mides.biceps)) {
       alert("Revisa les mides de la màniga.");
       return;
     }
   }
-  else if (peca === "faldillaGodets") {
-    mides.llarg = parseInt(document.getElementById("llargFaldillaGodets").value, 10);
-    mides.nombreGodets = parseInt(document.getElementById("nombreGodets").value, 10);
-    if (isNaN(mides.llarg) || isNaN(mides.nombreGodets)) {
-      alert("Revisa les mides de la faldilla amb godets.");
+  else if (peca === "faldillaMitjaCapa") {
+    mides.llarg = parseInt(document.getElementById("llarg").value, 10);
+    if (isNaN(mides.llarg) ) {
+      alert("Revisa les mides de la faldilla mitja capa.");
+      return;
+    }
+  }else if (peca === "faldillaCapaSencera") {
+    mides.llarg = parseInt(document.getElementById("llarg").value, 10);
+    if (isNaN(mides.llarg) ) {
+      alert("Revisa les mides de la faldilla capa sencera.");
       return;
     }
   }
@@ -184,8 +194,10 @@ function dibuixaPatro(p) {
       dibuixarPatroColls(p, mides, escala);
     } else if (tipus === "maniga") {
       dibuixarPatroManiga(p, mides, escala);
-    } else if (tipus === "faldillaGodets") {
-      dibuixarPatroFaldillaGodets(p, mides, escala);
+    } else if (tipus === "faldillaMitjaCapa") {
+      dibuixarPatroFaldillaMitjaCapa(p, mides, escala);
+    } else if (tipus === "faldillaCapaSencera") {
+      dibuixarPatroFaldillaCapaSencera(p, mides, escala);
     }
   };
 }
