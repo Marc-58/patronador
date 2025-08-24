@@ -49,10 +49,8 @@
 <body>
   <h1>Generador de Patrons</h1>
 
-  
-
   <!-- PAS 2: Tria la peça -->
-  <div id="triar-peca">
+  <div id="triar-peca" style="display:block;">
     <h2>Pas 2: Tria la peça</h2>
     <div class="opcions-peces" style="display:flex; flex-wrap:wrap; gap:20px; justify-content:center;">
       <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" 
@@ -73,7 +71,7 @@
            alt="Màniga" onclick="seleccionar('maniga')">
       <img src="https://cdn-icons-png.flaticon.com/512/1258/1258473.png" 
            alt="Faldilla mitja capa" onclick="seleccionar('faldillaMitjaCapa')">
-       <img src="https://cdn-icons-png.flaticon.com/512/1258/1258473.png" 
+      <img src="https://cdn-icons-png.flaticon.com/512/1258/1258473.png" 
            alt="Faldilla capa sencera" onclick="seleccionar('faldillaCapaSencera')">
     </div>
   </div>
@@ -131,7 +129,7 @@
     <button onclick="generarPatro('cosACadera')">Generar patró</button>
   </div>
 
-  <!-- NOVES FORMULARIS (buits per omplir després) -->
+  <!-- NOVES FORMULARIS -->
   <div id="faldaPantalon-form" class="formulari">
     <h2>Falda pantaló</h2>
     Tiro: <input id="tiro" type="number"><br>
@@ -180,7 +178,6 @@
   <button onclick="descarregarCanvas()">Descarregar imatge</button>
 
   <!-- JS -->
-  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
   <script src="patroCosACintura.js"></script>
   <script src="patroCosACadera.js"></script>
