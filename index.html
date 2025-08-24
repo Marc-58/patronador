@@ -8,10 +8,12 @@
       font-family: sans-serif;
       padding: 20px;
     }
+
     .formulari, #triar-peca {
       display: none;
       margin-top: 20px;
     }
+
     .opcions-peces img {
       width: 150px;
       margin: 10px;
@@ -19,13 +21,16 @@
       border: 2px solid transparent;
       border-radius: 8px;
     }
+
     .opcions-peces img:hover {
       border-color: #333;
     }
+
     #canvas-container {
       margin-top: 20px;
       text-align: center;
     }
+
     button {
       margin-top: 10px;
       padding: 10px;
@@ -35,6 +40,7 @@
       border-radius: 5px;
       cursor: pointer;
     }
+
     input {
       margin: 5px;
     }
@@ -55,16 +61,25 @@
   <div id="triar-peca">
     <h2>Pas 2: Tria la peça</h2>
     <div class="opcions-peces" style="display:flex; flex-wrap:wrap; gap:20px; justify-content:center;">
-      <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" alt="Faldilla" onclick="seleccionar('faldilla')">
-      <img src="https://i.pinimg.com/736x/fe/6b/87/fe6b87de0418757dbfbaf99b6ca5c782.jpg" alt="Cos a cintura" onclick="seleccionar('cosACintura')">
-      <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" alt="Cos a cadera" onclick="seleccionar('cosACadera')">
-      <img src="L1_dress_sleeveless.jpg" alt="Vestit" title="Vestit tipus recte" onclick="seleccionar('vestit')">
-      <img src="https://png.pngtree.com/png-clipart/20230921/original/pngtree-pants-skirt-culotte-gaucho-technical-fashion-illustration-with-ankle-floor-lengthoversize-png-image_12816189.png" alt="Falda pantaló" onclick="seleccionar('faldaPantalon')">
-      <img src="https://cdn-icons-png.flaticon.com/512/1258/1258475.png" alt="Pantaló" onclick="seleccionar('pantalon')">
-      <img src="https://cdn-icons-png.flaticon.com/512/1256/1256650.png" alt="Colls" onclick="seleccionar('colls')">
-      <img src="https://cdn-icons-png.flaticon.com/512/1256/1256692.png" alt="Màniga" onclick="seleccionar('maniga')">
-      <img src="https://cdn-icons-png.flaticon.com/512/1258/1258473.png" alt="Faldilla mitja capa" onclick="seleccionar('faldillaMitjaCapa')">
-      <img src="https://cdn-icons-png.flaticon.com/512/1258/1258473.png" alt="Faldilla capa sencera" onclick="seleccionar('faldillaCapaSencera')">
+      <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" 
+           alt="Faldilla" onclick="seleccionar('faldilla')">
+      <img src="https://i.pinimg.com/736x/fe/6b/87/fe6b87de0418757dbfbaf99b6ca5c782.jpg" 
+           alt="Cos a cintura" onclick="seleccionar('cosACintura')">
+      <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" 
+           alt="Cos a cadera" onclick="seleccionar('cosACadera')">
+      <img src="L1_dress_sleeveless.jpg" 
+           alt="Vestit" title="Vestit tipus recte" onclick="seleccionar('vestit')">
+      <!-- NOVES OPCIONS -->
+      <img src="https://cdn-icons-png.flaticon.com/512/743/743007.png" 
+           alt="Falda pantaló" onclick="seleccionar('faldaPantalon')">
+      <img src="https://cdn-icons-png.flaticon.com/512/1258/1258475.png" 
+           alt="Pantaló" onclick="seleccionar('pantalon')">
+      <img src="https://cdn-icons-png.flaticon.com/512/1256/1256650.png" 
+           alt="Colls" onclick="seleccionar('colls')">
+      <img src="https://cdn-icons-png.flaticon.com/512/1256/1256692.png" 
+           alt="Màniga" onclick="seleccionar('maniga')">
+      <img src="https://cdn-icons-png.flaticon.com/512/1258/1258473.png" 
+           alt="Faldilla godets" onclick="seleccionar('faldillaGodets')">
     </div>
   </div>
 
@@ -121,47 +136,34 @@
     <button onclick="generarPatro('cosACadera')">Generar patró</button>
   </div>
 
-  <!-- NOVES FORMULARIS -->
+  <!-- NOVES FORMULARIS (buits per omplir després) -->
   <div id="faldaPantalon-form" class="formulari">
     <h2>Falda pantaló</h2>
-    Llarg: <input id="llarg" type="number"><br>
-    Tiro: <input id="tiro" type="number"><br>
+    <!-- Afegir inputs aquí -->
     <button onclick="generarPatro('faldaPantalon')">Generar patró</button>
   </div>
 
   <div id="pantalon-form" class="formulari">
     <h2>Pantaló</h2>
-    Llarg: <input id="llarg" type="number"><br>
-    Tiro: <input id="tiro" type="number"><br>
-    Genoll: <input id="genoll" type="number"><br>
+    <!-- Afegir inputs aquí -->
     <button onclick="generarPatro('pantalon')">Generar patró</button>
   </div>
 
   <div id="colls-form" class="formulari">
     <h2>Colls</h2>
-    Coll: <input id="coll" type="number"><br>
+    <!-- Afegir inputs aquí -->
     <button onclick="generarPatro('colls')">Generar patró</button>
   </div>
 
   <div id="maniga-form" class="formulari">
     <h2>Màniga</h2>
-    Llarg Total: <input id="llargTotal" type="number"><br>
-    Llarg Braç: <input id="llargBraç" type="number"><br>
-    Munyeca: <input id="munyeca" type="number"><br>
-    Sisa: <input id="sisa" type="number"><br>
-    Contorn Braç: <input id="contornBraç" type="number"><br>
+    <!-- Afegir inputs aquí -->
     <button onclick="generarPatro('maniga')">Generar patró</button>
   </div>
 
-  <div id="faldillaMitjaCapa-form" class="formulari">
-    <h2>Faldilla mitja capa</h2>
-    Llarg: <input id="llargFaldilla" type="number"><br>
-    <button onclick="generarPatro('faldillaGodets')">Generar patró</button>
-  </div>
-
-  <div id="faldillaCapaSencera-form" class="formulari">
-    <h2>Faldilla capa sencera</h2>
-    Llarg: <input id="llargFaldilla" type="number"><br>
+  <div id="faldillaGodets-form" class="formulari">
+    <h2>Faldilla Godets</h2>
+    <!-- Afegir inputs aquí -->
     <button onclick="generarPatro('faldillaGodets')">Generar patró</button>
   </div>
 
@@ -175,12 +177,7 @@
   <script src="patroCosACadera.js"></script>
   <script src="patroFaldilla.js"></script>
   <script src="patroVestit.js"></script>
-  <script src="patroFaldillaPantalo.js"></script>
-  <script src="patroPantalo.js"></script>
-  <script src="patroColls.js"></script>
-  <script src="patroFaldillaMitjaCapa.js"></script>
-  <script src="patroFaldillaCapaSencera.js"></script>
-  <script src="patroManiga.js"></script>
+  <!-- Podràs crear també patroFaldaPantalon.js, patroPantalon.js, patroColls.js, patroManiga.js, patroFaldillaGodets.js -->
   <script src="sketch.js"></script>
 </body>
 </html>
