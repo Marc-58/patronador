@@ -1,18 +1,7 @@
 let mides = {};
 let tipus; // Declarar la variable tipus
 
-function mostrarOpcions() {
-  mides.cintura = parseInt(document.getElementById("cintura").value, 10);
-  mides.cadera = parseInt(document.getElementById("cadera").value, 10);
 
-  if (isNaN(mides.cintura) || isNaN(mides.cadera)) {
-    alert("Si us plau, introdueix valors vàlids per a cintura i cadera.");
-    return;
-  }
-
-  document.getElementById("mides-basiques").style.display = "none";
-  document.getElementById("triar-peca").style.display = "block";
-}
 
 function seleccionar(peca) {
   tipus = peca;
