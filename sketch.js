@@ -109,7 +109,7 @@ function generarPatro(peca) {
       return;
     }
   }
-  else if (peca === "pantalo" || peca === "pantalon") {   // 🔧 correcció nom
+  else if (peca === "pantalo" ) {   
     mides.cadera = parseInt(document.getElementById("caderaPantalo").value, 10);
     mides.cintura = parseInt(document.getElementById("cinturaPantalo").value, 10);
     mides.llarg = parseInt(document.getElementById("llargPantalo").value, 10);
@@ -120,6 +120,19 @@ function generarPatro(peca) {
       return;
     }
   }
+      else if (peca === "FaldillaPantalo" ) {   
+    mides.cadera = parseInt(document.getElementById("caderaPantalo").value, 10);
+    mides.cintura = parseInt(document.getElementById("cinturaPantalo").value, 10);
+    mides.llarg = parseInt(document.getElementById("llargPantalo").value, 10);
+    mides.tiro = parseInt(document.getElementById("tiroPantalo").value, 10);
+    if (isNaN(mides.llarg) || isNaN(mides.genoll)) {
+      alert("Revisa les mides de la faldilla pantaló.");
+      return;
+    }
+  }
+    else if (peca === "colls") {
+    mides.circumferenciaColl = parseInt(document.getElementById("circunferenciaColl").value, 10);
+ }
   else if (peca === "maniga") {
     mides.llargTotal = parseInt(document.getElementById("llargTotalManiga").value, 10);
     mides.llargBraç = parseInt(document.getElementById("llargBraç").value, 10);
