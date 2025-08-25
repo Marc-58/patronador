@@ -30,13 +30,14 @@ function generarPatro(peca) {
     mides.torax = parseFloat(document.getElementById("toraxVestit").value);
     mides.pit = parseFloat(document.getElementById("pitVestit").value);
     mides.llargVestit = parseFloat(document.getElementById("llargVestit").value);
+
     let midesNecessaries = [
       mides.coll, mides.talleEspatlles, mides.talleDavanter, mides.altDePit,
       mides.espatllesTotal, mides.caiguda, mides.sisa, mides.torax,
       mides.pit, mides.llargVestit
     ];
     if (midesNecessaries.some(v => isNaN(v))) {
-      alert("Introdueix un valor vàlid per al llarg de la faldilla.");
+      alert("Revisa que totes les mides del vestit estiguin introduïdes correctament.");
       return;
     }
   } else if (peca === "cosACintura") {
@@ -50,6 +51,7 @@ function generarPatro(peca) {
     mides.sisa = parseFloat(document.getElementById("sisaCosCintura").value);
     mides.torax = parseFloat(document.getElementById("toraxCosCintura").value);
     mides.pit = parseFloat(document.getElementById("pitCosCintura").value);
+
     let midesNecessaries = [
       mides.coll, mides.talleEspatlles, mides.talleDavanter, mides.altDePit,
       mides.espatllesTotal, mides.caiguda, mides.sisa, mides.torax, mides.pit
@@ -70,6 +72,7 @@ function generarPatro(peca) {
     mides.sisa = parseFloat(document.getElementById("sisaVestit").value);
     mides.torax = parseFloat(document.getElementById("toraxVestit").value);
     mides.pit = parseFloat(document.getElementById("pitVestit").value);
+
     let midesNecessaries = [
       mides.coll, mides.talleEspatlles, mides.talleDavanter, mides.altDePit,
       mides.espatllesTotal, mides.caiguda, mides.sisa, mides.torax, mides.pit
@@ -105,7 +108,7 @@ function generarPatro(peca) {
     mides.munyeca = parseFloat(document.getElementById("munyecaManiga").value);
     mides.sisa = parseFloat(document.getElementById("sisaManiga").value);
     mides.biceps = parseFloat(document.getElementById("bicepsManiga").value);
-    if (isNaN(mides.llargTotal) {
+    if (isNaN(mides.llargTotal)) {   // ← aquí estava el problema
       alert("Revisa les mides de la màniga.");
       return;
     }
