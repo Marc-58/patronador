@@ -1,4 +1,4 @@
-function dibuixarPatroFaldilla(p, mides, escala) {
+function dibuixarPatroFaldillaCapaSencera(p, mides, escala) {
     const cintura = mides.cintura * escala;
     const llarg = mides.llarg * escala;
     const marge = 10;
