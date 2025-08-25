@@ -2,6 +2,10 @@ let mides = {};
 let tipus; // Variable per desar el tipus de peça seleccionada
 
 // --- FUNCIONS PRINCIPALS ---
+let mides = {};
+let tipus; // Variable per desar el tipus de peça seleccionada
+
+// --- FUNCIONS PRINCIPALS ---
 
 // Selecciona la peça de roba
 function seleccionar(peca) {
@@ -13,6 +17,9 @@ function seleccionar(peca) {
 
 // Genera el patró segons la peça
 function generarPatro(peca) {
+  // Esborrem el canvas anterior
+  document.getElementById("canvas-container").innerHTML = "";
+
   if (peca === "faldilla") {
     mides.cadera = parseFloat(document.getElementById("caderaFaldilla").value);
     mides.cintura = parseFloat(document.getElementById("cinturaFaldilla").value);
@@ -23,17 +30,25 @@ function generarPatro(peca) {
       return;
     }
 
+    new p5((p) => dibuixarPatroFaldilla(p, mides, 2), "canvas-container");
+
   } else if (peca === "vestit") {
     assignarMidesVestit();
     if (!validarMidesVestit()) return;
+
+    new p5((p) => dibuixarPatroVestit(p, mides, 2), "canvas-container");
 
   } else if (peca === "cosACintura") {
     assignarMidesCosCintura();
     if (!validarMidesCosCintura()) return;
 
+    new p5((p) => dibuixarPatroCosACintura(p, mides, 2), "canvas-container");
+
   } else if (peca === "cosACadera") {
     assignarMidesCosACadera();
     if (!validarMidesCosACadera()) return;
+
+    new p5((p) => dibuixarPatroCosACadera(p, mides, 2), "canvas-container");
 
   } else if (peca === "pantalo") {
     mides.cadera = parseFloat(document.getElementById("caderaPantalo").value);
@@ -47,6 +62,8 @@ function generarPatro(peca) {
       return;
     }
 
+    new p5((p) => dibuixarPatroPantalo(p, mides, 2), "canvas-container");
+
   } else if (peca === "faldillaPantalo") {
     mides.cadera = parseFloat(document.getElementById("caderaPantalo").value);
     mides.cintura = parseFloat(document.getElementById("cinturaPantalo").value);
@@ -58,8 +75,12 @@ function generarPatro(peca) {
       return;
     }
 
+    new p5((p) => dibuixarPatroFaldillaPantalo(p, mides, 2), "canvas-container");
+
   } else if (peca === "colls") {
     mides.circumferenciaColl = parseFloat(document.getElementById("circunferenciaColl").value);
+
+    new p5((p) => dibuixarPatroColls(p, mides, 2), "canvas-container");
 
   } else if (peca === "maniga") {
     mides.llargTotal = parseFloat(document.getElementById("llargTotalManiga").value);
@@ -73,6 +94,8 @@ function generarPatro(peca) {
       return;
     }
 
+    new p5((p) => dibuixarPatroManiga(p, mides, 2), "canvas-container");
+
   } else if (peca === "faldillaMitjaCapa") {
     mides.cintura = parseFloat(document.getElementById("cinturaFaldillaMitjaCapa").value);
 
@@ -80,9 +103,10 @@ function generarPatro(peca) {
       alert("Revisa la cintura per a la faldilla de mitja capa.");
       return;
     }
+
+    new p5((p) => dibuixarPatroFaldillaMitjaCapa(p, mides, 2), "canvas-container");
   }
 
-  // Aquí pots afegir la lògica de dibuix o càlcul del patró
   console.log("Mides registrades per a " + peca, mides);
 }
 
@@ -170,5 +194,3 @@ function validarMidesCosACadera() {
   }
   return true;
 }
-
-
