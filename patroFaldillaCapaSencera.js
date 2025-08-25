@@ -4,4 +4,6 @@ function dibuixarPatroFaldilla(p, mides, escala) {
     const marge = 10;
     const radi =   cintura/2*3.14;
 
-  ellipse(marge+llarg+radi, marge, llarg+radi, llarg+radi); // x, y, ample, alt
+arc(marge+llarg+radi/2, marge, llarg+radi/2, llarg+radi/2, PI, TWO_PI); // x, y, ample, alt
+arc(marge+llarg+radi/2, marge,radi/2, radi/2, PI, TWO_PI); // x, y, ample, alt
+p.line(marge, marge, marge +2*llarg+radi, marge); // línia esquerra
