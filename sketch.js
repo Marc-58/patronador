@@ -105,7 +105,7 @@ function generarPatro(peca) {
     mides.munyeca = parseFloat(document.getElementById("munyecaManiga").value);
     mides.sisa = parseFloat(document.getElementById("sisaManiga").value);
     mides.biceps = parseFloat(document.getElementById("bicepsManiga").value);
-    if (isNaN(mides.llargTotal) || isNaN(mides.biceps)) {
+    if (isNaN(mides.llargTotal) {
       alert("Revisa les mides de la màniga.");
       return;
     }
