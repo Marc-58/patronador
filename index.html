@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="ca">
 <head>
   <meta charset="UTF-8" />
@@ -62,9 +62,9 @@
       <img src="L1_dress_sleeveless.jpg" 
            alt="Vestit" title="Vestit tipus recte" onclick="seleccionar('vestit')">
       <img src="https://cdn-icons-png.flaticon.com/512/743/743007.png" 
-           alt="Falda pantaló" onclick="seleccionar('faldaPantalon')">
+           alt="Faldilla pantalo" onclick="seleccionar('faldillaPantalo')">
       <img src="https://cdn-icons-png.flaticon.com/512/1258/1258475.png" 
-           alt="Pantaló" onclick="seleccionar('pantalon')">
+           alt="Pantalo" onclick="seleccionar('pantalo')">
       <img src="https://cdn-icons-png.flaticon.com/512/1256/1256650.png" 
            alt="Colls" onclick="seleccionar('colls')">
       <img src="https://cdn-icons-png.flaticon.com/512/1256/1256692.png" 
@@ -85,6 +85,7 @@
     <button onclick="generarPatro('faldilla')">Generar patró</button>
   </div>
 
+  <!-- Formulari vestit -->
   <div id="vestit-form" class="formulari">
     <h2>Vestit</h2>
     Cintura: <input id="cinturaVestit" type="number"><br>
@@ -102,6 +103,7 @@
     <button onclick="generarPatro('vestit')">Generar patró</button>
   </div>
 
+  <!-- Formulari cos a cintura -->
   <div id="cosACintura-form" class="formulari">
     <h2>Cos a cintura</h2>
     Cintura: <input id="cinturaCosCintura" type="number"><br>
@@ -117,6 +119,7 @@
     <button onclick="generarPatro('cosACintura')">Generar patró</button>
   </div>
 
+  <!-- Formulari cos a cadera -->
   <div id="cosACadera-form" class="formulari">
     <h2>Cos a cadera</h2>
     Cintura: <input id="cinturaCosCadera" type="number"><br>
@@ -133,31 +136,35 @@
     <button onclick="generarPatro('cosACadera')">Generar patró</button>
   </div>
 
-  <div id="faldaPantalon-form" class="formulari">
-    <h2>Falda pantaló</h2>
-    Cintura: <input id="cinturaFaldaPantalon" type="number"><br>
-    Cadera: <input id="caderaFaldaPantalon" type="number"><br>
-    Llarg: <input id="llargFaldaPantalon" type="number"><br>
-    Tiro: <input id="tiroFaldaPantalon" type="number"><br>
-    <button onclick="generarPatro('faldaPantalon')">Generar patró</button>
+  <!-- Formulari faldilla pantalo -->
+  <div id="faldillaPantalo-form" class="formulari">
+    <h2>Faldilla pantalo</h2>
+    Cintura: <input id="cinturaFaldillaPantalo" type="number"><br>
+    Cadera: <input id="caderaFaldillaPantalo" type="number"><br>
+    Llarg: <input id="llargFaldillaPantalo" type="number"><br>
+    Tiro: <input id="tiroFaldillaPantalo" type="number"><br>
+    <button onclick="generarPatro('faldillaPantalo')">Generar patró</button>
   </div>
 
-  <div id="pantalon-form" class="formulari">
-    <h2>Pantaló</h2>
-    Cintura: <input id="cinturaPantalon" type="number"><br>
-    Cadera: <input id="caderaPantalon" type="number"><br>
-    Llarg: <input id="llargPantalon" type="number"><br>
-    Tiro: <input id="tiroPantalon" type="number"><br>   
-    Genoll: <input id="genollPantalon" type="number"><br>   
-    <button onclick="generarPatro('pantalon')">Generar patró</button>
+  <!-- Formulari pantalo -->
+  <div id="pantalo-form" class="formulari">
+    <h2>Pantalo</h2>
+    Cintura: <input id="cinturaPantalo" type="number"><br>
+    Cadera: <input id="caderaPantalo" type="number"><br>
+    Llarg: <input id="llargPantalo" type="number"><br>
+    Tiro: <input id="tiroPantalo" type="number"><br>   
+    Genoll: <input id="genollPantalo" type="number"><br>   
+    <button onclick="generarPatro('pantalo')">Generar patró</button>
   </div>
 
+  <!-- Formulari colls -->
   <div id="colls-form" class="formulari">
     <h2>Colls</h2>
     Coll: <input id="collColls" type="number"><br>
     <button onclick="generarPatro('colls')">Generar patró</button>
   </div>
 
+  <!-- Formulari màniga -->
   <div id="maniga-form" class="formulari">
     <h2>Màniga</h2>
     Llarg Total: <input id="llargTotalManiga" type="number"><br>
@@ -168,6 +175,7 @@
     <button onclick="generarPatro('maniga')">Generar patró</button>
   </div>
 
+  <!-- Formulari faldilla mitja capa -->
   <div id="faldillaMitjaCapa-form" class="formulari">
     <h2>Faldilla mitja capa</h2>
     Cintura: <input id="cinturaMitjaCapa" type="number"><br>
@@ -175,6 +183,7 @@
     <button onclick="generarPatro('faldillaMitjaCapa')">Generar patró</button>
   </div>
 
+  <!-- Formulari faldilla capa sencera -->
   <div id="faldillaCapaSencera-form" class="formulari">
     <h2>Faldilla capa sencera</h2>
     Cintura: <input id="cinturaCapaSencera" type="number"><br>
