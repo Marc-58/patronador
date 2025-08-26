@@ -1,190 +1,165 @@
 let mides = {};
-let tipus; // Declarar la variable tipus
+let tipus; // Variable per desar el tipus de peça seleccionada
 
+// --- FUNCIONS PRINCIPALS ---
+
+// Selecciona la peça de roba
 function seleccionar(peca) {
   tipus = peca;
   document.getElementById("triar-peca").style.display = "none";
-  document.querySelectorAll('.formulari').forEach(f => f.style.display = 'none');
-  document.getElementById(peca + '-form').style.display = 'block';
+  document.querySelectorAll(".formulari").forEach(f => f.style.display = "none");
+  document.getElementById(peca + "-form").style.display = "block";
 }
 
+// Genera el patró segons la peça
 function generarPatro(peca) {
   if (peca === "faldilla") {
-    mides.cadera = parseInt(document.getElementById("caderaFaldilla").value, 10);
-    mides.cintura = parseInt(document.getElementById("cinturaFaldilla").value, 10);
-    mides.llarg = parseInt(document.getElementById("llargFaldilla").value, 10);
+    mides.cadera = parseFloat(document.getElementById("caderaFaldilla").value);
+    mides.cintura = parseFloat(document.getElementById("cinturaFaldilla").value);
+    mides.llarg = parseFloat(document.getElementById("llargFaldilla").value);
     if (isNaN(mides.llarg)) {
       alert("Introdueix un valor vàlid per al llarg de la faldilla.");
       return;
     }
-  } 
-  else if (peca === "vestit") {
-    mides.cadera = parseInt(document.getElementById("caderaVestit").value, 10);
-    mides.cintura = parseInt(document.getElementById("cinturaVestit").value, 10);
-    mides.coll = parseInt(document.getElementById("collVestit").value, 10);
-    mides.talleEspatlles = parseInt(document.getElementById("talleEspatllesVestit").value, 10); 
-    mides.talleDavanter = parseInt(document.getElementById("talleDavanterVestit").value, 10);
-    mides.altDePit = parseInt(document.getElementById("altDePitVestit").value, 10);
-    mides.espatllesTotal = parseInt(document.getElementById("espatllesTotalVestit").value, 10);
-    mides.caiguda = parseInt(document.getElementById("caigudaVestit").value, 10);
-    mides.sisa = parseInt(document.getElementById("sisaVestit").value, 10);
-    mides.torax = parseInt(document.getElementById("toraxVestit").value, 10);
-    mides.pit = parseInt(document.getElementById("pitVestit").value, 10);
-    mides.llargVestit = parseInt(document.getElementById("llargVestit").value, 10);
 
-    let midesNecessaries = [
-      mides.coll, mides.talleEspatlles, mides.talleDavanter,
-      mides.altDePit, mides.espatllesTotal, mides.caiguda,
-      mides.sisa, mides.torax, mides.pit, mides.llargVestit
-    ];
+  } else if (peca === "vestit") {
+    assignarMidesVestit();
+    if (!validarMidesVestit()) return;
 
-    if (midesNecessaries.some(v => isNaN(v))) {
-      alert("Revisa que totes les mides del vestit estiguin introduïdes correctament.");
-      return;
-    }
-  }
-  else if (peca === "cosACintura") {
-    mides.cintura = parseInt(document.getElementById("cinturaVestit").value, 10);
-    mides.coll = parseInt(document.getElementById("collVestit").value, 10);
-    mides.talleEspatlles = parseInt(document.getElementById("talleEspatllesVestit").value, 10); 
-    mides.talleDavanter = parseInt(document.getElementById("talleDavanterVestit").value, 10);
-    mides.altDePit = parseInt(document.getElementById("altDePitVestit").value, 10);
-    mides.espatllesTotal = parseInt(document.getElementById("espatllesTotalVestit").value, 10);
-    mides.caiguda = parseInt(document.getElementById("caigudaVestit").value, 10);
-    mides.sisa = parseInt(document.getElementById("sisaVestit").value, 10);
-    mides.torax = parseInt(document.getElementById("toraxVestit").value, 10);
-    mides.pit = parseInt(document.getElementById("pitVestit").value, 10);
+  } else if (peca === "cosACintura") {
+    assignarMidesCosCintura();
+    if (!validarMidesCosCintura()) return;
 
-    let midesNecessaries = [
-      mides.coll, mides.talleEspatlles, mides.talleDavanter,
-      mides.altDePit, mides.espatllesTotal, mides.caiguda,
-      mides.sisa, mides.torax, mides.pit
-    ];
+  } else if (peca === "cosACadera") {
+    assignarMidesCosACadera();
+    if (!validarMidesCosACadera()) return;
 
-    if (midesNecessaries.some(v => isNaN(v))) {
-      alert("Revisa que totes les mides del cos a cintura estiguin introduïdes correctament.");
-      return;
-    }
-  }
-  else if (peca === "cosACadera") {
-    mides.cadera = parseInt(document.getElementById("caderaVestit").value, 10);
-    mides.cintura = parseInt(document.getElementById("cinturaVestit").value, 10);
-    mides.coll = parseInt(document.getElementById("collVestit").value, 10);
-    mides.talleEspatlles = parseInt(document.getElementById("talleEspatllesVestit").value, 10); 
-    mides.talleDavanter = parseInt(document.getElementById("talleDavanterVestit").value, 10);
-    mides.altDePit = parseInt(document.getElementById("altDePitVestit").value, 10);
-    mides.espatllesTotal = parseInt(document.getElementById("espatllesTotalVestit").value, 10);
-    mides.caiguda = parseInt(document.getElementById("caigudaVestit").value, 10);
-    mides.sisa = parseInt(document.getElementById("sisaVestit").value, 10);
-    mides.torax = parseInt(document.getElementById("toraxVestit").value, 10);
-    mides.pit = parseInt(document.getElementById("pitVestit").value, 10);
-
-    let midesNecessaries = [
-      mides.coll, mides.talleEspatlles, mides.talleDavanter,
-      mides.altDePit, mides.espatllesTotal, mides.caiguda,
-      mides.sisa, mides.torax, mides.pit
-    ];
-
-    if (midesNecessaries.some(v => isNaN(v))) {
-      alert("Revisa que totes les mides del cos a cadera estiguin introduïdes correctament.");
-      return;
-    }
-  }
-  else if (peca === "pantalo") {
-    mides.cadera = parseInt(document.getElementById("caderaPantalo").value, 10);
-    mides.cintura = parseInt(document.getElementById("cinturaPantalo").value, 10);
-    mides.llarg = parseInt(document.getElementById("llargPantalo").value, 10);
-    mides.tiro = parseInt(document.getElementById("tiroPantalo").value, 10);
-    mides.genoll = parseInt(document.getElementById("genollPantalo").value, 10);
+  } else if (peca === "pantalo") {
+    mides.cadera = parseFloat(document.getElementById("caderaPantalo").value);
+    mides.cintura = parseFloat(document.getElementById("cinturaPantalo").value);
+    mides.llarg = parseFloat(document.getElementById("llargPantalo").value);
+    mides.tiro = parseFloat(document.getElementById("tiroPantalo").value);
+    mides.genoll = parseFloat(document.getElementById("genollPantalo").value);
     if (isNaN(mides.llarg) || isNaN(mides.genoll)) {
       alert("Revisa les mides del pantaló.");
       return;
     }
-  }
-  else if (peca === "faldillaPantalo") {
-    mides.cadera = parseInt(document.getElementById("caderaFaldillaPantalo").value, 10);
-    mides.cintura = parseInt(document.getElementById("cinturaFaldillaPantalo").value, 10);
-    mides.llarg = parseInt(document.getElementById("llargFaldillaPantalo").value, 10);
+
+  } else if (peca === "faldillaPantalo") {
+    mides.cadera = parseFloat(document.getElementById("caderaPantalo").value);
+    mides.cintura = parseFloat(document.getElementById("cinturaPantalo").value);
+    mides.llarg = parseFloat(document.getElementById("llargPantalo").value);
+    mides.tiro = parseFloat(document.getElementById("tiroPantalo").value);
     if (isNaN(mides.llarg)) {
       alert("Revisa les mides de la faldilla pantaló.");
       return;
     }
-  }
-  else if (peca === "maniga") {
-    mides.llargTotal = parseInt(document.getElementById("llargTotalManiga").value, 10);
-    mides.llargBraç = parseInt(document.getElementById("llargBraç").value, 10);
-    mides.munyeca = parseInt(document.getElementById("munyecaManiga").value, 10);
-    mides.sisa = parseInt(document.getElementById("sisaManiga").value, 10);
-    mides.biceps = parseInt(document.getElementById("bicepsManiga").value, 10);
 
-    if (isNaN(mides.llargTotal) || isNaN(mides.biceps)) {
+  } else if (peca === "colls") {
+    mides.circumferenciaColl = parseFloat(document.getElementById("circunferenciaColl").value);
+
+  } else if (peca === "maniga") {
+    mides.llargTotal = parseFloat(document.getElementById("llargTotalManiga").value);
+    mides.llargBraç = parseFloat(document.getElementById("llargBraç").value);
+    mides.munyeca = parseFloat(document.getElementById("munyecaManiga").value);
+    mides.sisa = parseFloat(document.getElementById("sisaManiga").value);
+    mides.biceps = parseFloat(document.getElementById("bicepsManiga").value);
+    if (isNaN(mides.llargTotal)) {
       alert("Revisa les mides de la màniga.");
       return;
     }
-  }
-  else if (peca === "faldillaMitjaCapa") {
-    mides.cintura = parseInt(document.getElementById("cinturaFaldillaMitjaCapa").value, 10);
-    mides.llarg = parseInt(document.getElementById("llargFaldillaMitjaCapa").value, 10);
-    if (isNaN(mides.llarg) ) {
-      alert("Revisa les mides de la faldilla mitja capa.");
-      return;
-    }
-  }
-  else if (peca === "faldillaCapaSencera") {
-    mides.cintura = parseInt(document.getElementById("cinturaFaldillaCapaSencera").value, 10);
-    mides.llarg = parseInt(document.getElementById("llargFaldillaCapaSencera").value, 10);
-    if (isNaN(mides.llarg) ) {
-      alert("Revisa les mides de la faldilla capa sencera.");
+
+  } else if (peca === "faldillaMitjaCapa") {
+    mides.cintura = parseFloat(document.getElementById("cinturaFaldillaMitjaCapa").value);
+    if (isNaN(mides.cintura)) {
+      alert("Revisa la cintura per a la faldilla de mitja capa.");
       return;
     }
   }
 
-  const container = document.getElementById("canvas-container");
-  container.innerHTML = '';
-  new p5(dibuixaPatro, container);
+  console.log("Mides registrades per a " + peca, mides);
 }
 
-function dibuixaPatro(p) {
-  p.setup = function () {
-    const escala = 10;
+// --- FUNCIONS AUXILIARS ---
 
-    p.createCanvas(1300, 1300);
-    p.background(255);
-    p.stroke(0);
-    p.noFill();
-
-    if (tipus === "cosACintura") {
-      dibuixarPatroCosACintura(p, mides, escala);
-    } else if (tipus === "faldilla") {
-      dibuixarPatroFaldilla(p, mides, escala);
-    } else if (tipus === "cosACadera") {
-      dibuixarPatroCosACadera(p, mides, escala);
-    } else if (tipus === "vestit") {
-      dibuixarPatroVestit(p, mides, escala);
-    } else if (tipus === "faldillaPantalo") {
-      dibuixarPatroFaldillaPantalo(p, mides, escala);
-    } else if (tipus === "pantalo") {
-      dibuixarPatroPantalo(p, mides, escala);
-    } else if (tipus === "colls") {
-      dibuixarPatroColls(p, mides, escala);
-    } else if (tipus === "maniga") {
-      dibuixarPatroManiga(p, mides, escala);
-    } else if (tipus === "faldillaMitjaCapa") {
-      dibuixarPatroFaldillaMitjaCapa(p, mides, escala);
-    } else if (tipus === "faldillaCapaSencera") {
-      dibuixarPatroFaldillaCapaSencera(p, mides, escala);
-    }
-  };
+// Vestit
+function assignarMidesVestit() {
+  mides.cadera = parseFloat(document.getElementById("caderaVestit").value);
+  mides.cintura = parseFloat(document.getElementById("cinturaVestit").value);
+  mides.coll = parseFloat(document.getElementById("collVestit").value);
+  mides.talleEspatlles = parseFloat(document.getElementById("talleEspatllesVestit").value);
+  mides.talleDavanter = parseFloat(document.getElementById("talleDavanterVestit").value);
+  mides.altDePit = parseFloat(document.getElementById("altDePitVestit").value);
+  mides.espatllesTotal = parseFloat(document.getElementById("espatllesTotalVestit").value);
+  mides.caiguda = parseFloat(document.getElementById("caigudaVestit").value);
+  mides.sisa = parseFloat(document.getElementById("sisaVestit").value);
+  mides.torax = parseFloat(document.getElementById("toraxVestit").value);
+  mides.pit = parseFloat(document.getElementById("pitVestit").value);
+  mides.llargVestit = parseFloat(document.getElementById("llargVestit").value);
 }
 
-function descarregarCanvas() {
-  const canvases = document.getElementsByTagName("canvas");
-  if (canvases.length > 0) {
-    const canvas = canvases[0];
-    const link = document.createElement('a');
-    link.download = tipus + '_patro.png';
-    link.href = canvas.toDataURL();
-    link.click();
+function validarMidesVestit() {
+  let necessaries = [
+    mides.coll, mides.talleEspatlles, mides.talleDavanter, mides.altDePit,
+    mides.espatllesTotal, mides.caiguda, mides.sisa, mides.torax,
+    mides.pit, mides.llargVestit
+  ];
+  if (necessaries.some(v => isNaN(v))) {
+    alert("Revisa que totes les mides del vestit estiguin introduïdes correctament.");
+    return false;
   }
+  return true;
 }
 
+// Cos a cintura
+function assignarMidesCosCintura() {
+  mides.cintura = parseFloat(document.getElementById("cinturaCosCintura").value);
+  mides.coll = parseFloat(document.getElementById("collCosCintura").value);
+  mides.talleEspatlles = parseFloat(document.getElementById("talleEspatllesCosCintura").value);
+  mides.talleDavanter = parseFloat(document.getElementById("talleDavanterCosCintura").value);
+  mides.altDePit = parseFloat(document.getElementById("altDePitCosCintura").value);
+  mides.espatllesTotal = parseFloat(document.getElementById("espatllesCosCintura").value);
+  mides.caiguda = parseFloat(document.getElementById("caigudaCosCintura").value);
+  mides.sisa = parseFloat(document.getElementById("sisaCosCintura").value);
+  mides.torax = parseFloat(document.getElementById("toraxCosCintura").value);
+  mides.pit = parseFloat(document.getElementById("pitCosCintura").value);
+}
+
+function validarMidesCosCintura() {
+  let necessaries = [
+    mides.coll, mides.talleEspatlles, mides.talleDavanter, mides.altDePit,
+    mides.espatllesTotal, mides.caiguda, mides.sisa, mides.torax, mides.pit
+  ];
+  if (necessaries.some(v => isNaN(v))) {
+    alert("Revisa que totes les mides del cos estiguin introduïdes correctament.");
+    return false;
+  }
+  return true;
+}
+
+// Cos a cadera
+function assignarMidesCosACadera() {
+  mides.cadera = parseFloat(document.getElementById("caderaVestit").value);
+  mides.cintura = parseFloat(document.getElementById("cinturaVestit").value);
+  mides.coll = parseFloat(document.getElementById("collVestit").value);
+  mides.talleEspatlles = parseFloat(document.getElementById("talleEspatllesVestit").value);
+  mides.talleDavanter = parseFloat(document.getElementById("talleDavanterVestit").value);
+  mides.altDePit = parseFloat(document.getElementById("altDePitVestit").value);
+  mides.espatllesTotal = parseFloat(document.getElementById("espatllesTotalVestit").value);
+  mides.caiguda = parseFloat(document.getElementById("caigudaVestit").value);
+  mides.sisa = parseFloat(document.getElementById("sisaVestit").value);
+  mides.torax = parseFloat(document.getElementById("toraxVestit").value);
+  mides.pit = parseFloat(document.getElementById("pitVestit").value);
+}
+
+function validarMidesCosACadera() {
+  let necessaries = [
+    mides.coll, mides.talleEspatlles, mides.talleDavanter, mides.altDePit,
+    mides.espatllesTotal, mides.caiguda, mides.sisa, mides.torax, mides.pit
+  ];
+  if (necessaries.some(v => isNaN(v))) {
+    alert("Revisa que totes les mides del cos estiguin introduïdes correctament.");
+    return false;
+  }
+  return true;
+}
