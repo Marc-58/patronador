@@ -33,16 +33,9 @@ function generarPatro(peca) {
     mides.llargVestit = parseInt(document.getElementById("llargVestit").value, 10);
 
     let midesNecessaries = [
-      mides.coll,
-      mides.talleEspatlles,
-      mides.talleDavanter,
-      mides.altDePit,
-      mides.espatllesTotal,
-      mides.caiguda,
-      mides.sisa,
-      mides.torax,
-      mides.pit,
-      mides.llargVestit
+      mides.coll, mides.talleEspatlles, mides.talleDavanter,
+      mides.altDePit, mides.espatllesTotal, mides.caiguda,
+      mides.sisa, mides.torax, mides.pit, mides.llargVestit
     ];
 
     if (midesNecessaries.some(v => isNaN(v))) {
@@ -50,7 +43,7 @@ function generarPatro(peca) {
       return;
     }
   }
-     else if (peca === "cosACintura") {
+  else if (peca === "cosACintura") {
     mides.cintura = parseInt(document.getElementById("cinturaVestit").value, 10);
     mides.coll = parseInt(document.getElementById("collVestit").value, 10);
     mides.talleEspatlles = parseInt(document.getElementById("talleEspatllesVestit").value, 10); 
@@ -63,23 +56,17 @@ function generarPatro(peca) {
     mides.pit = parseInt(document.getElementById("pitVestit").value, 10);
 
     let midesNecessaries = [
-      mides.coll,
-      mides.talleEspatlles,
-      mides.talleDavanter,
-      mides.altDePit,
-      mides.espatllesTotal,
-      mides.caiguda,
-      mides.sisa,
-      mides.torax,
-      mides.pit,
+      mides.coll, mides.talleEspatlles, mides.talleDavanter,
+      mides.altDePit, mides.espatllesTotal, mides.caiguda,
+      mides.sisa, mides.torax, mides.pit
     ];
 
     if (midesNecessaries.some(v => isNaN(v))) {
-      alert("Revisa que totes les mides del vestit estiguin introduïdes correctament.");
+      alert("Revisa que totes les mides del cos a cintura estiguin introduïdes correctament.");
       return;
     }
   }
-        else if (peca === "cosACadera") {
+  else if (peca === "cosACadera") {
     mides.cadera = parseInt(document.getElementById("caderaVestit").value, 10);
     mides.cintura = parseInt(document.getElementById("cinturaVestit").value, 10);
     mides.coll = parseInt(document.getElementById("collVestit").value, 10);
@@ -93,23 +80,17 @@ function generarPatro(peca) {
     mides.pit = parseInt(document.getElementById("pitVestit").value, 10);
 
     let midesNecessaries = [
-      mides.coll,
-      mides.talleEspatlles,
-      mides.talleDavanter,
-      mides.altDePit,
-      mides.espatllesTotal,
-      mides.caiguda,
-      mides.sisa,
-      mides.torax,
-      mides.pit,
+      mides.coll, mides.talleEspatlles, mides.talleDavanter,
+      mides.altDePit, mides.espatllesTotal, mides.caiguda,
+      mides.sisa, mides.torax, mides.pit
     ];
 
     if (midesNecessaries.some(v => isNaN(v))) {
-      alert("Revisa que totes les mides del vestit estiguin introduïdes correctament.");
+      alert("Revisa que totes les mides del cos a cadera estiguin introduïdes correctament.");
       return;
     }
   }
-  else if (peca === "pantalo" || peca === "pantalon") {   // 🔧 correcció nom
+  else if (peca === "pantalo") {
     mides.cadera = parseInt(document.getElementById("caderaPantalo").value, 10);
     mides.cintura = parseInt(document.getElementById("cinturaPantalo").value, 10);
     mides.llarg = parseInt(document.getElementById("llargPantalo").value, 10);
@@ -117,6 +98,15 @@ function generarPatro(peca) {
     mides.genoll = parseInt(document.getElementById("genollPantalo").value, 10);
     if (isNaN(mides.llarg) || isNaN(mides.genoll)) {
       alert("Revisa les mides del pantaló.");
+      return;
+    }
+  }
+  else if (peca === "faldillaPantalo") {
+    mides.cadera = parseInt(document.getElementById("caderaFaldillaPantalo").value, 10);
+    mides.cintura = parseInt(document.getElementById("cinturaFaldillaPantalo").value, 10);
+    mides.llarg = parseInt(document.getElementById("llargFaldillaPantalo").value, 10);
+    if (isNaN(mides.llarg)) {
+      alert("Revisa les mides de la faldilla pantaló.");
       return;
     }
   }
@@ -171,9 +161,9 @@ function dibuixaPatro(p) {
       dibuixarPatroCosACadera(p, mides, escala);
     } else if (tipus === "vestit") {
       dibuixarPatroVestit(p, mides, escala);
-    } else if (tipus === "faldillaPantalon") {
-      dibuixarPatroFaldillaPantalon(p, mides, escala);
-    } else if (tipus === "pantalo" || tipus === "pantalon") {   // 🔧
+    } else if (tipus === "faldillaPantalo") {
+      dibuixarPatroFaldillaPantalo(p, mides, escala);
+    } else if (tipus === "pantalo") {
       dibuixarPatroPantalo(p, mides, escala);
     } else if (tipus === "colls") {
       dibuixarPatroColls(p, mides, escala);
@@ -197,5 +187,4 @@ function descarregarCanvas() {
     link.click();
   }
 }
-
 
