@@ -8,32 +8,29 @@
       font-family: sans-serif;
       padding: 20px;
     }
+
     .formulari, #triar-peca {
       display: none;
       margin-top: 20px;
     }
-    /* Graella de 2 files x 5 */
-    .opcions-peces {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 20px;
-      justify-items: center;
-      max-width: 1000px;
-      margin: auto;
-    }
+
     .opcions-peces img {
       width: 170px;
+      margin: 10px;
       cursor: pointer;
       border: 2px solid transparent;
       border-radius: 8px;
     }
+
     .opcions-peces img:hover {
       border-color: #333;
     }
+
     #canvas-container {
       margin-top: 20px;
       text-align: center;
     }
+
     button {
       margin-top: 10px;
       padding: 10px;
@@ -43,6 +40,7 @@
       border-radius: 5px;
       cursor: pointer;
     }
+
     input {
       margin: 5px;
     }
@@ -54,7 +52,7 @@
   <!-- Tria la peça -->
   <div id="triar-peca" style="display:block;">
     <h2>Tria la peça</h2>
-    <div class="opcions-peces">
+    <div class="opcions-peces" style="display:flex; flex-wrap:wrap; gap:20px; justify-content:center;">
       <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" alt="Faldilla" onclick="seleccionar('faldilla')">
       <img src="https://i.pinimg.com/736x/fe/6b/87/fe6b87de0418757dbfbaf99b6ca5c782.jpg" alt="Cos a cintura" onclick="seleccionar('cosACintura')">
       <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" alt="Cos a cadera" onclick="seleccionar('cosACadera')">
@@ -193,3 +191,4 @@
   <script src="sketch.js"></script>
 </body>
 </html>
+
