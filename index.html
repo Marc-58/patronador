@@ -14,9 +14,18 @@
       margin-top: 20px;
     }
 
+    /* Aquí canviem de flex → grid */
+    .opcions-peces {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr); /* 5 columnes */
+      gap: 20px;
+      justify-items: center;
+      margin: auto;
+      max-width: 1000px; /* opcional per centrar el conjunt */
+    }
+
     .opcions-peces img {
       width: 170px;
-      margin: 10px;
       cursor: pointer;
       border: 2px solid transparent;
       border-radius: 8px;
