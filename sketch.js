@@ -1,3 +1,4 @@
+
 let mides = {};
 let tipus; // Variable per desar el tipus de peça seleccionada
 
