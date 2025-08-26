@@ -151,19 +151,30 @@ function dibuixaPatro(p) {
     p.stroke(0);
     p.noFill();
 
-    if (tipus === "cosACintura") dibuixarPatroCosACintura(p, mides, escala);
-    else if (tipus === "faldilla") dibuixarPatroFaldilla(p, mides, escala);
-    else if (tipus === "cosACadera") dibuixarPatroCosACadera(p, mides, escala);
-    else if (tipus === "vestit") dibuixarPatroVestit(p, mides, escala);
-    else if (tipus === "faldillaPantalon") dibuixarPatroFaldillaPantalon(p, mides, escala);
-    else if (tipus === "pantalo") dibuixarPatroPantalo(p, mides, escala);
-    else if (tipus === "colls") dibuixarPatroColls(p, mides, escala);
-    else if (tipus === "maniga") dibuixarPatroManiga(p, mides, escala);
-    else if (tipus === "faldillaMitjaCapa") dibuixarPatroFaldillaMitjaCapa(p, mides, escala);
-    else if (tipus === "faldillaCapaSencera") dibuixarPatroFaldillaCapaSencera(p, mides, escala);
-  };
-}
+     if (tipus === "cosACintura") {
+      dibuixarPatroCosACintura(p, mides, escala);
+    } else if (tipus === "faldilla") {
+      dibuixarPatroFaldilla(p, mides, escala);
+    } else if (tipus === "cosACadera") {
+      dibuixarPatroCosACadera(p, mides, escala);
+    } else if (tipus === "vestit") {
+      dibuixarPatroVestit(p, mides, escala);
+    } else if (tipus === "faldillaPantalon") {
+      dibuixarPatroFaldillaPantalon(p, mides, escala);
+    } else if (tipus === "pantalo") {
+      dibuixarPatroPantalo(p, mides, escala);
+    } else if (tipus === "colls") {
+      dibuixarPatroColls(p, mides, escala);
+    } else if (tipus === "maniga") {
+      dibuixarPatroManiga(p, mides, escala);
+    } else if (tipus === "faldillaMitjaCapa") {
+      dibuixarPatroFaldillaMitjaCapa(p, mides, escala);
+    } else if (tipus === "faldillaCapaSencera") {
+      dibuixarPatroFaldillaCapaSencera(p, mides, escala);
+    }
 
+}
+}
 function descarregarCanvas() {
   const canvases = document.getElementsByTagName("canvas");
   if (canvases.length > 0) {
