@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="ca">
 <head>
   <meta charset="UTF-8" />
@@ -8,29 +8,33 @@
       font-family: sans-serif;
       padding: 20px;
     }
-
-    .formulari, #triar-peca {
+    .formulari,
+    #triar-peca {
       display: none;
       margin-top: 20px;
     }
-
+    /* Graella de 2 files x 5 */
+    .opcions-peces {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 20px;
+      justify-items: center;
+      max-width: 1000px;
+      margin: auto;
+    }
     .opcions-peces img {
-      width: 150px;
-      margin: 10px;
+      width: 170px;
       cursor: pointer;
       border: 2px solid transparent;
       border-radius: 8px;
     }
-
     .opcions-peces img:hover {
       border-color: #333;
     }
-
     #canvas-container {
       margin-top: 20px;
       text-align: center;
     }
-
     button {
       margin-top: 10px;
       padding: 10px;
@@ -40,43 +44,33 @@
       border-radius: 5px;
       cursor: pointer;
     }
-
     input {
       margin: 5px;
     }
   </style>
 </head>
+
 <body>
   <h1>Generador de Patrons</h1>
 
   <!-- Tria la peça -->
   <div id="triar-peca" style="display:block;">
-    <h2> Tria la peça</h2>
-    <div class="opcions-peces" style="display:flex; flex-wrap:wrap; gap:20px; justify-content:center;">
-      <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" 
-           alt="Faldilla" onclick="seleccionar('faldilla')">
-      <img src="https://i.pinimg.com/736x/fe/6b/87/fe6b87de0418757dbfbaf99b6ca5c782.jpg" 
-           alt="Cos a cintura" onclick="seleccionar('cosACintura')">
-      <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" 
-           alt="Cos a cadera" onclick="seleccionar('cosACadera')">
-      <img src="L1_dress_sleeveless.jpg" 
-           alt="Vestit" title="Vestit tipus recte" onclick="seleccionar('vestit')">
-      <img src="https://cdn-icons-png.flaticon.com/512/743/743007.png" 
-           alt="Faldilla pantalo" onclick="seleccionar('faldillaPantalo')">
-      <img src="https://cdn-icons-png.flaticon.com/512/1258/1258475.png" 
-           alt="Pantalo" onclick="seleccionar('pantalo')">
-      <img src="https://cdn-icons-png.flaticon.com/512/1256/1256650.png" 
-           alt="Colls" onclick="seleccionar('colls')">
-      <img src="https://cdn-icons-png.flaticon.com/512/1256/1256692.png" 
-           alt="Màniga" onclick="seleccionar('maniga')">
-      <img src="https://cdn-icons-png.flaticon.com/512/1258/1258473.png" 
-           alt="Faldilla mitja capa" onclick="seleccionar('faldillaMitjaCapa')">
-      <img src="https://cdn-icons-png.flaticon.com/512/1258/1258473.png" 
-           alt="Faldilla capa sencera" onclick="seleccionar('faldillaCapaSencera')">
+    <h2>Tria la peça</h2>
+    <div class="opcions-peces">
+      <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" alt="Faldilla" onclick="seleccionar('faldilla')">
+      <img src="https://i.pinimg.com/736x/fe/6b/87/fe6b87de0418757dbfbaf99b6ca5c782.jpg" alt="Cos a cintura" onclick="seleccionar('cosACintura')">
+      <img src="https://i.pinimg.com/736x/52/d7/8f/52d78f97d4773d860a5092113134fd90.jpg" alt="Cos a cadera" onclick="seleccionar('cosACadera')">
+      <img src="https://i.pinimg.com/236x/c1/5c/15/c15c159f09b1de522f791643eb5a4e78.jpg" alt="Vestit" title="Vestit tipus recte" onclick="seleccionar('vestit')">
+      <img src="https://patronesmujer.com/blog/wp-content/uploads/2015/01/Falda-pantal%C3%B3n-delantero11.jpg" alt="Falda pantaló" onclick="seleccionar('faldaPantalon')">
+      <img src="https://i.pinimg.com/736x/a8/a7/1d/a8a71d7805cdb415529d58a67bed72e1.jpg" alt="Pantaló" onclick="seleccionar('pantalon')">
+      <img src="https://png.pngtree.com/png-vector/20220110/ourlarge/pngtree-clothing-men-s-shirt-collar-style-drawing-png-image_4294149.png" alt="Colls" onclick="seleccionar('colls')">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Straight_sleeve.jpg" alt="Màniga" onclick="seleccionar('maniga')">
+      <img src="https://img.freepik.com/vector-premium/dibujo-tecnico-falda-vistas-delantera-trasera_837135-47.jpg" alt="Faldilla mitja capa" onclick="seleccionar('faldillaMitjaCapa')">
+      <img src="https://patronesmujer.com/blog/wp-content/uploads/2014/12/patron-falda-capa.jpg" alt="Faldilla capa sencera" onclick="seleccionar('faldillaCapaSencera')">
     </div>
   </div>
 
-  <!-- Formulari de faldilla -->
+  <!-- Formularis -->
   <div id="faldilla-form" class="formulari">
     <h2>Faldilla</h2>
     Cintura: <input id="cinturaFaldilla" type="number"><br>
@@ -85,7 +79,6 @@
     <button onclick="generarPatro('faldilla')">Generar patró</button>
   </div>
 
-  <!-- Formulari vestit -->
   <div id="vestit-form" class="formulari">
     <h2>Vestit</h2>
     Cintura: <input id="cinturaVestit" type="number"><br>
@@ -103,7 +96,6 @@
     <button onclick="generarPatro('vestit')">Generar patró</button>
   </div>
 
-  <!-- Formulari cos a cintura -->
   <div id="cosACintura-form" class="formulari">
     <h2>Cos a cintura</h2>
     Cintura: <input id="cinturaCosCintura" type="number"><br>
@@ -119,7 +111,6 @@
     <button onclick="generarPatro('cosACintura')">Generar patró</button>
   </div>
 
-  <!-- Formulari cos a cadera -->
   <div id="cosACadera-form" class="formulari">
     <h2>Cos a cadera</h2>
     Cintura: <input id="cinturaCosCadera" type="number"><br>
@@ -136,35 +127,31 @@
     <button onclick="generarPatro('cosACadera')">Generar patró</button>
   </div>
 
-  <!-- Formulari faldilla pantalo -->
-  <div id="faldillaPantalo-form" class="formulari">
-    <h2>Faldilla pantalo</h2>
-    Cintura: <input id="cinturaFaldillaPantalo" type="number"><br>
-    Cadera: <input id="caderaFaldillaPantalo" type="number"><br>
-    Llarg: <input id="llargFaldillaPantalo" type="number"><br>
-    Tiro: <input id="tiroFaldillaPantalo" type="number"><br>
-    <button onclick="generarPatro('faldillaPantalo')">Generar patró</button>
+  <div id="faldaPantalon-form" class="formulari">
+    <h2>Falda pantaló</h2>
+    Cintura: <input id="cinturaFaldaPantalon" type="number"><br>
+    Cadera: <input id="caderaFaldaPantalon" type="number"><br>
+    Llarg: <input id="llargFaldaPantalon" type="number"><br>
+    Tiro: <input id="tiroFaldaPantalon" type="number"><br>
+    <button onclick="generarPatro('faldaPantalon')">Generar patró</button>
   </div>
 
-  <!-- Formulari pantalo -->
-  <div id="pantalo-form" class="formulari">
-    <h2>Pantalo</h2>
-    Cintura: <input id="cinturaPantalo" type="number"><br>
-    Cadera: <input id="caderaPantalo" type="number"><br>
-    Llarg: <input id="llargPantalo" type="number"><br>
-    Tiro: <input id="tiroPantalo" type="number"><br>   
-    Genoll: <input id="genollPantalo" type="number"><br>   
-    <button onclick="generarPatro('pantalo')">Generar patró</button>
+  <div id="pantalon-form" class="formulari">
+    <h2>Pantaló</h2>
+    Cintura: <input id="cinturaPantalon" type="number"><br>
+    Cadera: <input id="caderaPantalon" type="number"><br>
+    Llarg: <input id="llargPantalon" type="number"><br>
+    Tiro: <input id="tiroPantalon" type="number"><br>
+    Genoll: <input id="genollPantalon" type="number"><br>
+    <button onclick="generarPatro('pantalon')">Generar patró</button>
   </div>
 
-  <!-- Formulari colls -->
   <div id="colls-form" class="formulari">
     <h2>Colls</h2>
     Coll: <input id="collColls" type="number"><br>
     <button onclick="generarPatro('colls')">Generar patró</button>
   </div>
 
-  <!-- Formulari màniga -->
   <div id="maniga-form" class="formulari">
     <h2>Màniga</h2>
     Llarg Total: <input id="llargTotalManiga" type="number"><br>
@@ -175,7 +162,6 @@
     <button onclick="generarPatro('maniga')">Generar patró</button>
   </div>
 
-  <!-- Formulari faldilla mitja capa -->
   <div id="faldillaMitjaCapa-form" class="formulari">
     <h2>Faldilla mitja capa</h2>
     Cintura: <input id="cinturaMitjaCapa" type="number"><br>
@@ -183,7 +169,6 @@
     <button onclick="generarPatro('faldillaMitjaCapa')">Generar patró</button>
   </div>
 
-  <!-- Formulari faldilla capa sencera -->
   <div id="faldillaCapaSencera-form" class="formulari">
     <h2>Faldilla capa sencera</h2>
     Cintura: <input id="cinturaCapaSencera" type="number"><br>
@@ -201,8 +186,8 @@
   <script src="patroCosACadera.js"></script>
   <script src="patroFaldilla.js"></script>
   <script src="patroVestit.js"></script>
-  <script src="patroFaldillaPantalo.js"></script>
-  <script src="patroPantalo.js"></script>
+  <script src="patroFaldaPantalon.js"></script>
+  <script src="patroPantalon.js"></script>
   <script src="patroColls.js"></script>
   <script src="patroFaldillaMitjaCapa.js"></script>
   <script src="patroFaldillaCapaSencera.js"></script>
@@ -210,3 +195,4 @@
   <script src="sketch.js"></script>
 </body>
 </html>
+
