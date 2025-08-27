@@ -94,4 +94,4 @@ function dibuixarPatroCosACadera(p, mides, escala) {
   //cadera
   p.line(10 +cadera / 2-1 ,talleEspatlles+18+10, 10 + cintura / 4 + 2 * escala, 10 + talleEspatlles); // cintura
   p.line(marge+cadera / 2+1,talleDavanter+18+10, marge + (cintura / 4 + 4 * escala), 10 + talleDavanter); // línia cintura
-
+                                                                                              }
