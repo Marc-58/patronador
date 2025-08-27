@@ -7,24 +7,27 @@
     body {
       font-family: sans-serif;
       padding: 20px;
-      margin: 0;
     }
 
-    /* Barra de navegació superior */
-    nav {
-      background-color: #333;
-      padding: 10px;
-      text-align: center;
+    /* Barra superior */
+    .navbar {
+      width: 100%;
+      border-bottom: 2px solid #333;
+      padding: 10px 0;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
     }
 
-    nav a {
-      color: white;
-      margin: 0 15px;
+    .navbar a {
       text-decoration: none;
+      color: #333;
       font-weight: bold;
+      font-size: 18px;
     }
 
-    nav a:hover {
+    .navbar a:hover {
       text-decoration: underline;
     }
 
@@ -33,13 +36,14 @@
       margin-top: 20px;
     }
 
+    /* Aquí canviem de flex → grid */
     .opcions-peces {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(5, 1fr); /* 5 columnes */
       gap: 20px;
       justify-items: center;
       margin: auto;
-      max-width: 1000px;
+      max-width: 1000px; /* opcional per centrar el conjunt */
     }
 
     .opcions-peces img {
@@ -75,12 +79,12 @@
 </head>
 <body>
 
-  <!-- Barra de navegació -->
-  <nav>
-    <a href="#qui-soc">Qui soc</a>
-    <a href="#com-prendre-mides">Com prendre mides</a>
-    <a href="#informacio">Informació addicional</a>
-  </nav>
+  <!-- Barra superior amb enllaços -->
+  <div class="navbar">
+    <a href="quisoc.html" target="_blank">Qui sóc</a>
+    <a href="comprendre-mides.html" target="_blank">Com prendre mides</a>
+    <a href="informacio.html" target="_blank">Informació addicional</a>
+  </div>
 
   <h1>Generador de Patrons</h1>
 
