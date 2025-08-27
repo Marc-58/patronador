@@ -122,9 +122,9 @@ function generarPatro(peca) {
   } else if (peça==="faldillaCapaSencera"){
   mides.cintura=parseFloat(document.getElementById("cinturaFaldillaCapaSencera").value);
   mides.llarg=parseFloat(document.getElementById("llargFaldillaCapaSencera").value);
-  if(isNaN(mides.llarg)){
-    alert("Revisa les mides de la faldilla capa sencera ");
-    return;
+     if (isNaN(mides.llarg)) {
+      alert("Introdueix un valor vàlid per al llarg de la faldilla.");
+      return;
   }
 }
 
