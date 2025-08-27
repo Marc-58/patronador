@@ -1,19 +1,29 @@
-function setup() {
-  createCanvas(600, 400);
-  background(255);
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <title>Qui sóc</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      text-decoration: none;
+      background: #333;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Qui sóc</h1>
+  <p>Aquí pots escriure informació sobre tu, la teva experiència i el propòsit d’aquesta aplicació.</p>
 
-  textAlign(CENTER, CENTER);
-  textSize(24);
-  fill(50);
-  text("Qui sóc", width / 2, 50);
-
-  textSize(16);
-  text("Hola! Sóc la creadora d'aquest projecte de patrons digitals.\n" +
-       "Aquesta eina està pensada per ajudar a estudiants i modistes\n" +
-       "a generar patrons bàsics a partir de mesures.", width / 2, height / 2);
-}
-
-function draw() {
-  // No cal res aquí, és només text estàtic
-}
-
+  <a href="index.html">⬅️ Tornar a l'inici</a>
+</body>
+</html>
