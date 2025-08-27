@@ -7,6 +7,25 @@
     body {
       font-family: sans-serif;
       padding: 20px;
+      margin: 0;
+    }
+
+    /* Barra de navegació superior */
+    nav {
+      background-color: #333;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
     }
 
     .formulari, #triar-peca {
@@ -14,14 +33,13 @@
       margin-top: 20px;
     }
 
-    /* Aquí canviem de flex → grid */
     .opcions-peces {
       display: grid;
-      grid-template-columns: repeat(5, 1fr); /* 5 columnes */
+      grid-template-columns: repeat(5, 1fr);
       gap: 20px;
       justify-items: center;
       margin: auto;
-      max-width: 1000px; /* opcional per centrar el conjunt */
+      max-width: 1000px;
     }
 
     .opcions-peces img {
@@ -56,6 +74,14 @@
   </style>
 </head>
 <body>
+
+  <!-- Barra de navegació -->
+  <nav>
+    <a href="#qui-soc">Qui soc</a>
+    <a href="#com-prendre-mides">Com prendre mides</a>
+    <a href="#informacio">Informació addicional</a>
+  </nav>
+
   <h1>Generador de Patrons</h1>
 
   <!-- Tria la peça -->
@@ -199,6 +225,21 @@
   <script src="patroFaldillaCapaSencera.js"></script>
   <script src="patroManiga.js"></script>
   <script src="sketch.js"></script>
+  
+  <section id="qui-soc">
+    <h2>Qui soc</h2>
+    <p>Aquí pots posar informació sobre tu.</p>
+  </section>
+
+  <section id="com-prendre-mides">
+    <h2>Com prendre mides</h2>
+    <p>Aquí pots explicar com mesurar correctament.</p>
+  </section>
+
+  <section id="informacio">
+    <h2>Informació addicional</h2>
+    <p>Aquí pots afegir detalls extra sobre patrons o costura.</p>
+  </section>
 </body>
 </html>
 
