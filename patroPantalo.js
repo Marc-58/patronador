@@ -4,6 +4,10 @@ function dibuixarPatroPantalo(p, mides, escala) {
     const llarg = mides.llarg * escala;
     const tiro = mides.tiro * escala;
     const genoll = mides.genoll * escala;
-    const marge = 10;
+    const marge = 50;
 
-   p.rect(marge, marge, cadera / 4, llarg);}
+   p.rect(marge, marge, cadera / 4, llarg);
+   p.rect(cadera/4+2*marge, marge, cadera / 4, llarg);
+
+}
+
