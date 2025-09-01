@@ -13,10 +13,12 @@ function generarPatro(peca) {
     mides.cadera = parseFloat(document.getElementById("caderaFaldilla").value);
     mides.cintura = parseFloat(document.getElementById("cinturaFaldilla").value);
     mides.llarg = parseFloat(document.getElementById("llargFaldilla").value);
+
     if (isNaN(mides.llarg)) {
       alert("Introdueix un valor vàlid per al llarg de la faldilla.");
       return;
     }
+
   } else if (peca === "vestit") {
     mides.cadera = parseFloat(document.getElementById("caderaVestit").value);
     mides.cintura = parseFloat(document.getElementById("cinturaVestit").value);
@@ -32,9 +34,10 @@ function generarPatro(peca) {
     mides.llargVestit = parseFloat(document.getElementById("llargVestit").value);
 
     if (isNaN(mides.llargVestit)) {
-      alert("Introdueix un valor vàlid per al llarg de la faldilla.");
+      alert("Introdueix un valor vàlid per al llarg del vestit.");
       return;
     }
+
   } else if (peca === "cosACintura") {
     mides.cintura = parseFloat(document.getElementById("cinturaCosCintura").value);
     mides.coll = parseFloat(document.getElementById("collCosCintura").value);
@@ -51,10 +54,12 @@ function generarPatro(peca) {
       mides.coll, mides.talleEspatlles, mides.talleDavanter, mides.altDePit,
       mides.espatllesTotal, mides.caiguda, mides.sisa, mides.torax, mides.pit
     ];
+
     if (midesNecessaries.some(v => isNaN(v))) {
       alert("Revisa que totes les mides del cos estiguin introduïdes correctament.");
       return;
     }
+
   } else if (peca === "cosACadera") {
     mides.cadera = parseFloat(document.getElementById("caderaVestit").value);
     mides.cintura = parseFloat(document.getElementById("cinturaVestit").value);
@@ -72,56 +77,68 @@ function generarPatro(peca) {
       mides.coll, mides.talleEspatlles, mides.talleDavanter, mides.altDePit,
       mides.espatllesTotal, mides.caiguda, mides.sisa, mides.torax, mides.pit
     ];
+
     if (midesNecessaries.some(v => isNaN(v))) {
       alert("Revisa que totes les mides del cos estiguin introduïdes correctament.");
       return;
     }
+
   } else if (peca === "pantalo") {
     mides.cadera = parseFloat(document.getElementById("caderaPantalo").value);
     mides.cintura = parseFloat(document.getElementById("cinturaPantalo").value);
     mides.llarg = parseFloat(document.getElementById("llargPantalo").value);
     mides.tiro = parseFloat(document.getElementById("tiroPantalo").value);
     mides.genoll = parseFloat(document.getElementById("genollPantalo").value);
+
     if (isNaN(mides.llarg) || isNaN(mides.genoll)) {
       alert("Revisa les mides del pantaló.");
       return;
     }
+
   } else if (peca === "faldillaPantalo") {
     mides.cadera = parseFloat(document.getElementById("caderaPantalo").value);
     mides.cintura = parseFloat(document.getElementById("cinturaPantalo").value);
     mides.llarg = parseFloat(document.getElementById("llargPantalo").value);
     mides.tiro = parseFloat(document.getElementById("tiroPantalo").value);
+
     if (isNaN(mides.llarg)) {
       alert("Revisa les mides de la faldilla pantaló.");
       return;
     }
+
   } else if (peca === "colls") {
     mides.circumferenciaColl = parseFloat(document.getElementById("circunferenciaColl").value);
+
   } else if (peca === "maniga") {
     mides.llargTotal = parseFloat(document.getElementById("llargTotalManiga").value);
     mides.llargBraç = parseFloat(document.getElementById("llargBraç").value);
     mides.munyeca = parseFloat(document.getElementById("munyecaManiga").value);
     mides.sisa = parseFloat(document.getElementById("sisaManiga").value);
     mides.biceps = parseFloat(document.getElementById("bicepsManiga").value);
-    if (isNaN(mides.llargTotal)) {   // ← aquí estava el problema
+
+    if (isNaN(mides.llargTotal)) {
       alert("Revisa les mides de la màniga.");
       return;
     }
+
   } else if (peca === "faldillaMitjaCapa") {
     mides.cintura = parseFloat(document.getElementById("cinturaFaldillaMitjaCapa").value);
     mides.llarg = parseFloat(document.getElementById("llargFaldillaMitjaCapa").value);
+
     if (isNaN(mides.llarg)) {
       alert("Revisa les mides de la faldilla mitja capa.");
       return;
     }
-  } else if (peça==="faldillaCapaSencera"){
-  mides.cintura=parseFloat(document.getElementById("cinturaFaldillaCapaSencera").value);
-  mides.llarg=parseFloat(document.getElementById("llargFaldillaCapaSencera").value);
-     if (isNaN(mides.llarg)) {
+
+  } else if (peca === "faldillaCapaSencera") {
+    mides.cintura = parseFloat(document.getElementById("cinturaFaldillaCapaSencera").value);
+    mides.llarg = parseFloat(document.getElementById("llargFaldillaCapaSencera").value);
+
+    if (isNaN(mides.llarg)) {
       alert("Introdueix un valor vàlid per al llarg de la faldilla.");
       return;
+    }
   }
-}
 
   const container = document.getElementById("canvas-container");
   container.innerHTML = '';
@@ -154,13 +171,11 @@ function dibuixaPatro(p) {
       dibuixarPatroManiga(p, mides, escala);
     } else if (tipus === "faldillaMitjaCapa") {
       dibuixarPatroFaldillaMitjaCapa(p, mides, escala);
-    } else if (tipus==="faldillaCapaSencera"){
-      dibuixarPatroFaldillaCapaSencera(p,mides,escala);
+    } else if (tipus === "faldillaCapaSencera") {
+      dibuixarPatroFaldillaCapaSencera(p, mides, escala);
     }
   };
 }
-
-
 
 function descarregarCanvas() {
   const canvases = document.getElementsByTagName("canvas");
