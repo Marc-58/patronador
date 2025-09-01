@@ -177,7 +177,6 @@ function dibuixaPatro(p) {
   };
 }
 
-
 function descarregarCanvas() {
   const canvases = document.getElementsByTagName("canvas");
   if (canvases.length > 0) {
@@ -188,5 +187,3 @@ function descarregarCanvas() {
     link.click();
   }
 }
-
-  
