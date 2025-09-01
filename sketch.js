@@ -31,13 +31,8 @@ function generarPatro(peca) {
     mides.pit = parseFloat(document.getElementById("pitVestit").value);
     mides.llargVestit = parseFloat(document.getElementById("llargVestit").value);
 
-    let midesNecessaries = [
-      mides.coll, mides.talleEspatlles, mides.talleDavanter, mides.altDePit,
-      mides.espatllesTotal, mides.caiguda, mides.sisa, mides.torax,
-      mides.pit, mides.llargVestit
-    ];
-    if (midesNecessaries.some(v => isNaN(v))) {
-      alert("Revisa que totes les mides del vestit estiguin introduïdes correctament.");
+    if (isNaN(mides.llargVestit)) {
+      alert("Introdueix un valor vàlid per al llarg de la faldilla.");
       return;
     }
   } else if (peca === "cosACintura") {
