@@ -1,14 +1,10 @@
 function dibuixarPatroFaldillaMitjaCapa(p, mides, escala) {
-    const cintura = mides.cintura * escala;
-    const llarg = mides.llarg * escala;
-    const marge = 10;
+   const cintura = mides.cintura * escala;
+      const llarg = mides.llarg * escala;
+       const radi = cintura / (2 * Math.PI)*2;
 
-    const radi = cintura / 2 * Math.PI; 
-
-    // Dibuixar arcs
-    p.arc(marge + llarg + radi, marge, llarg + radi, llarg + radi, p.PI, p.TWO_PI + p.PI); 
-    p.arc(marge + llarg + radi, marge, radi, radi, p.PI, p.TWO_PI + p.PI); 
-
-    // Línia esquerra
-    p.line(marge, marge, marge + llarg + radi / 2, marge);
-}
+    // Arc de cintura (semicercle cap avall)
+    p.arc(0, marge , 2 *radi ,2*radi, 0, p.PI);
+    p.arc(0 , marge , 2 * radi+llarg*2, 2 * radi+llarg*2, 0, p.PI);
+    p.line(0,marge, radi+llarg, marge );
+    p.line(1,marge, 1, marge+radi+llarg );
